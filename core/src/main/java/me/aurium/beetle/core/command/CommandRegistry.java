@@ -6,5 +6,7 @@ package me.aurium.beetle.core.command;
  */
 public interface CommandRegistry {
 
+    void registerCommand(AbstractCommand command);
+
 
 }

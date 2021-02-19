@@ -8,14 +8,14 @@
     <artifactId>beetle</artifactId>
     <packaging>pom</packaging>
 
-    <version>${beetle.version}</version>
+    <version>0.1.0-SNAPSHOT</version>
 
     <modules>
         <module>core</module>
+        <module>core-omniscient</module>
         <module>spigot-impl</module>
-        <module>core-database</module>
         <module>velo-impl</module>
-        <module>omniscient-impl</module>
+        <module>core-default</module>
     </modules>
 
     <properties>
@@ -24,9 +24,10 @@
         <beetle.version>0.1.0-SNAPSHOT</beetle.version>
 
         <core.version>0.1.0-SNAPSHOT</core.version>
-        <spigot-impl.version>0.1.0-SNAPSHOT</spigot-impl.version>
+        <default.version>0.1.0-SNAPSHOT</default.version>
 
         <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
+        <logger.version>1.7.25</logger.version>
 
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
         <maven.compiler.target>${compiler.version}</maven.compiler.target>

@@ -10,7 +10,7 @@ public class SpigotTaskRunner implements TaskRunner {
 
     private final JavaPlugin plugin;
 
-    SpigotTaskRunner(JavaPlugin plugin) {
+    public SpigotTaskRunner(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 

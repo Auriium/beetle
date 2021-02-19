@@ -14,16 +14,15 @@
     <dependencies>
         <dependency>
             <groupId>me.aurium</groupId>
-            <artifactId>beetle</artifactId>
-            <version>${beetle.version}</version>
-            <scope>compile</scope>
+            <artifactId>core</artifactId>
+            <version>${core.version}</version>
         </dependency>
         <dependency>
             <groupId>me.aurium</groupId>
-            <artifactId>core</artifactId>
-            <version>${core.version}</version>
-            <scope>compile</scope>
+            <artifactId>core-default</artifactId>
+            <version>${default.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>

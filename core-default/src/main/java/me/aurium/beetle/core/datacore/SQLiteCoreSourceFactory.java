@@ -25,6 +25,6 @@ public class SQLiteCoreSourceFactory implements CoreSourceFactory {
         String username = config.getDatabaseUser();
         String password = config.getDatabasePassword();
 
-        return new SQLiteCoreSource(address,username,password);
+        return new AddressCoreSource(address,username,password);
     }
 }

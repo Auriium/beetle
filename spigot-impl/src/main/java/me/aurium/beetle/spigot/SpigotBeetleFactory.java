@@ -1,9 +1,15 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.core.BeetleFactory;
+import me.aurium.beetle.core.Beetle;
+import me.aurium.beetle.core.logger.SLFLoggerHelper;
+import me.aurium.beetle.core.logger.SimpleLogger;
+import me.aurium.beetle.core.runner.TaskRunner;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
+/**
+ * A Helper BeetleFactory based around the Spigot API.
+ */
+public class SpigotBeetleFactory {
 
     private final JavaPlugin plugin;
 
@@ -12,14 +18,36 @@ public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
     }
 
     /**
-     * Build a new SpigotBeetle using defaults
-     * @return a new SpigotBeetle
+     * Build a new Spigot-Type Beetle from Spigot-Type defaults.
+     * @return a new Beetle
      */
-    @Override
-    public SpigotBeetle build() {
-        SpigotTaskRunner taskRunner = new SpigotTaskRunner(plugin);
+    public Beetle build() {
+        //produce dependencies
+
+        SimpleLogger logger = new SLFLoggerHelper().buildLogger();
+        TaskRunner runner = new SpigotTaskRunner(plugin);
 
 
+        return null;
+    }
+
+    public Beetle build(TaskRunner runner) {
+        SimpleLogger logger = new SLFLoggerHelper().buildLogger();
+
+
+        return null;
+    }
+
+    public Beetle build(SimpleLogger logger) {
+        TaskRunner runner = new SpigotTaskRunner(plugin);
+
+
+        return null;
+    }
+
+    public Beetle build(TaskRunner runner, SimpleLogger logger) {
+
+        SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();
 
         return null;
     }

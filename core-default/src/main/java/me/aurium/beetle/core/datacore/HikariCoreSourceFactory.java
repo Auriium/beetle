@@ -25,7 +25,7 @@ public class HikariCoreSourceFactory implements CoreSourceFactory {
         hikari.setPassword(config.getDatabasePassword());
         hikari.setPoolName(config.getPluginName() + "-datakore-hikari");
 
-        return new MysqlCoreSource(new HikariDataSource(hikari));
+        return new DatasourceCoreSource(new HikariDataSource(hikari));
     }
 
 }

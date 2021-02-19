@@ -94,6 +94,10 @@ public class SourceConfig {
             return this;
         }
 
+        public SourceConfig build() {
+            return new SourceConfig(pluginName,databaseName,databaseUser,databasePassword,databaseHostLocation,databasePort);
+        }
+
     }
 
 }

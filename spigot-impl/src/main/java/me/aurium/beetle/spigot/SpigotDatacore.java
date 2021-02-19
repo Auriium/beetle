@@ -5,7 +5,7 @@ import me.aurium.beetle.core.datacore.DataCore;
 import me.aurium.beetle.core.datacore.SQLTransact;
 import me.aurium.beetle.core.datacore.TransactConsumer;
 import me.aurium.beetle.core.runner.TaskRunner;
-import me.aurium.beetle.core.utility.exception.UnchektSQLException;
+import me.aurium.beetle.core.utility.exception.UncheckedSQLException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -44,7 +44,7 @@ public class SpigotDatacore implements DataCore {
                 return value;
 
             } catch (SQLException ex) {
-                throw new UnchektSQLException(ex);
+                throw new UncheckedSQLException(ex);
             }
         });
     }

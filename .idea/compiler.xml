@@ -8,10 +8,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
         <module name="core-omniscient" />
+        <module name="core-default" />
         <module name="velo-impl" />
         <module name="spigot-impl" />
-        <module name="core-database" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="core-database" target="11" />
+      <module name="core-defaults" target="11" />
+      <module name="core-implementation" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

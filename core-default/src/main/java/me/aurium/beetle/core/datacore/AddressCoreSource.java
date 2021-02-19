@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLiteCoreSource implements CoreSource {
+public class AddressCoreSource implements CoreSource {
 
     private final String address;
     private final String username;
     private final String password;
 
-    SQLiteCoreSource(String address, String username, String password) {
+    AddressCoreSource(String address, String username, String password) {
         this.address = address;
         this.username = username;
         this.password = password;
