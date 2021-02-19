@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * An interface representing something that can have services registered to it as well as provide them.
  */
-public interface ClassRegistry {
+public interface ServiceRegistry {
 
     /**
      * Registers a Service to a Class-Type.
@@ -18,9 +18,8 @@ public interface ClassRegistry {
     <T> void registerService(Class<T> clazz, T object);
 
     /**
-     * Unregisters a service based on class type.
+     * Unregisters a service based on class type. If the service is not present nothing occurs.
      * @param clazz the type of service
-     * @throws me.aurium.beetle.core.utility.exception.MissingServiceException if no service was present mapped to that class.
      */
     void unregisterService(Class<?> clazz);
 

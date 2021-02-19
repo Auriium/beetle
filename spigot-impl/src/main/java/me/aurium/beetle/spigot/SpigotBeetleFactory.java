@@ -3,7 +3,9 @@ package me.aurium.beetle.spigot;
 import me.aurium.beetle.core.Beetle;
 import me.aurium.beetle.core.logger.SLFLoggerHelper;
 import me.aurium.beetle.core.logger.SimpleLogger;
+import me.aurium.beetle.core.registry.SimpleRegistry;
 import me.aurium.beetle.core.runner.TaskRunner;
+import me.aurium.beetle.core.service.ServiceRegistry;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -28,26 +30,27 @@ public class SpigotBeetleFactory {
         TaskRunner runner = new SpigotTaskRunner(plugin);
 
 
-        return null;
+        return build(runner,logger);
     }
 
     public Beetle build(TaskRunner runner) {
         SimpleLogger logger = new SLFLoggerHelper().buildLogger();
 
 
-        return null;
+        return build(runner,logger);
     }
 
     public Beetle build(SimpleLogger logger) {
         TaskRunner runner = new SpigotTaskRunner(plugin);
 
 
-        return null;
+        return build(runner,logger);
     }
 
     public Beetle build(TaskRunner runner, SimpleLogger logger) {
 
         SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();
+        ServiceRegistry serviceRegistry = new SimpleRegistry();
 
         return null;
     }

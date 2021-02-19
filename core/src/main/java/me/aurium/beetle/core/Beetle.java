@@ -4,7 +4,7 @@ import me.aurium.beetle.core.command.CommandRegistry;
 import me.aurium.beetle.core.datacore.DataCoreFactory;
 import me.aurium.beetle.core.logger.SimpleLogger;
 import me.aurium.beetle.core.runner.TaskRunner;
-import me.aurium.beetle.core.service.ClassRegistry;
+import me.aurium.beetle.core.service.ServiceRegistry;
 
 public interface Beetle {
 
@@ -13,7 +13,7 @@ public interface Beetle {
 
     DataCoreFactory getDatacoreFactory();
 
-    ClassRegistry getServiceRegistry();
+    ServiceRegistry getServiceRegistry();
     CommandRegistry getCommandRegistry();
 
 }
