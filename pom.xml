@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.aurium</groupId>
+    <artifactId>beetle</artifactId>
+    <packaging>pom</packaging>
+
+    <version>${beetle.version}</version>
+
+    <modules>
+        <module>core</module>
+        <module>spigot-impl</module>
+        <module>core-database</module>
+        <module>velo-impl</module>
+        <module>omniscient-impl</module>
+    </modules>
+
+    <properties>
+
+        <compiler.version>11</compiler.version>
+        <beetle.version>0.1.0-SNAPSHOT</beetle.version>
+
+        <core.version>0.1.0-SNAPSHOT</core.version>
+        <spigot-impl.version>0.1.0-SNAPSHOT</spigot-impl.version>
+
+        <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
+
+        <maven.compiler.source>${compiler.version}</maven.compiler.source>
+        <maven.compiler.target>${compiler.version}</maven.compiler.target>
+    </properties>
+
+</project>
