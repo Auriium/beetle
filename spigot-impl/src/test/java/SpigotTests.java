@@ -1,20 +1,17 @@
-import me.aurium.beetle.core.Beetle;
-import me.aurium.beetle.spigot.SpigotBeetleFactory;
-import me.aurium.beetle.spigot.SpigotCommandRegistry;
-import org.bukkit.plugin.java.JavaPlugin;
+/**
+ * TODO: set up unit tests with mockito
+ */
+public class SpigotTests {
 
-public class SpigotTests extends JavaPlugin {
 
-    //@Test
-    public void main() {
-        Beetle beetle = new SpigotBeetleFactory(this).build();
+
+    /*public void main() {
+        Beetle beetle = new SpigotBeetleFactory(this, false).build();
 
         beetle.getServiceRegistry().getService(SpigotCommandRegistry.class).ifPresent(registry -> {
             registry.registerCommand(new CommandTest());
         });
-
-
-    }
+    }*/
 
 
 }

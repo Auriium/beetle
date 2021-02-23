@@ -1,7 +1,7 @@
-package me.aurium.beetle.core.utility.exception;
+package me.aurium.beetle.core.exception;
 
 /**
- * Specific marker exception
+ * Exception thrown when an internal command map already contains a command
  */
 public class IllegalCommandMapState extends RuntimeException {
 

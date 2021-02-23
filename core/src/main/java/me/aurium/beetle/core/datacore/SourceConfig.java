@@ -3,7 +3,7 @@ package me.aurium.beetle.core.datacore;
 /**
  * If only java 11 supported records...
  */
-public class SourceConfig {
+public final class SourceConfig {
 
     private final String pluginName;
     private final String databaseName;
@@ -46,7 +46,7 @@ public class SourceConfig {
         return databaseHostLocation;
     }
 
-    public static class Builder {
+    public final static class Builder {
 
         private String pluginName;
         private String databaseName;

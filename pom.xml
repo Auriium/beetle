@@ -4,31 +4,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.aurium</groupId>
     <artifactId>beetle</artifactId>
     <packaging>pom</packaging>
 
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0</version>
+
+    <parent>
+        <artifactId>insect</artifactId>
+        <groupId>me.aurium</groupId>
+        <version>0.1.0</version>
+    </parent>
 
     <modules>
         <module>core</module>
+        <module>core-default</module>
+        <module>core-branch</module>
         <module>core-omniscient</module>
         <module>spigot-impl</module>
         <module>velo-impl</module>
-        <module>core-default</module>
-        <module>core-branch</module>
+
     </modules>
 
     <properties>
 
-        <compiler.version>11</compiler.version>
-        <beetle.version>0.1.0-SNAPSHOT</beetle.version>
+        <beetle.version>0.2.0</beetle.version>
 
-        <core.version>0.1.0-SNAPSHOT</core.version>
-        <default.version>0.1.0-SNAPSHOT</default.version>
+        <core.version>0.2.0</core.version>
+        <default.version>0.2.0</default.version>
 
         <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
         <logger.version>1.7.25</logger.version>
+
+        <junit.version>4.10</junit.version>
 
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
         <maven.compiler.target>${compiler.version}</maven.compiler.target>

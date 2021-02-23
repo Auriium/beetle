@@ -3,7 +3,7 @@ package me.aurium.beetle.spigot;
 import me.aurium.beetle.core.config.DataHolder;
 import me.aurium.beetle.core.config.FileProducer;
 import me.aurium.beetle.core.config.SimpleFileProvider;
-import me.aurium.beetle.core.utility.exception.IllegalFileException;
+import me.aurium.beetle.core.exception.IllegalFileException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;

@@ -17,9 +17,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class SpigotBeetleFactory {
 
     private final JavaPlugin plugin;
+    private final boolean isDebug;
 
-    public SpigotBeetleFactory(JavaPlugin plugin) {
+    public SpigotBeetleFactory(JavaPlugin plugin, boolean isDebug) {
         this.plugin = plugin;
+        this.isDebug = isDebug;
     }
 
     /**
@@ -58,7 +60,7 @@ public class SpigotBeetleFactory {
 
         serviceRegistry.registerService(SpigotCommandRegistry.class,new SpigotCMDHelper(plugin).produceRegistry());
 
-        return new DefaultBeetle(runner,logger,dataCoreFactory,serviceRegistry);
+        return new DefaultBeetle(runner,logger,dataCoreFactory,serviceRegistry,isDebug);
     }
 
 }

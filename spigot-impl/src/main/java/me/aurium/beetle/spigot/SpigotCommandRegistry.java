@@ -2,7 +2,7 @@ package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.core.command.AbstractCommand;
 import me.aurium.beetle.core.command.CommandRegistry;
-import me.aurium.beetle.core.utility.exception.IllegalCommandMapState;
+import me.aurium.beetle.core.exception.IllegalCommandMapState;
 import me.aurium.beetle.spigot.command.SpigotCommandWrapper;
 import me.aurium.beetle.spigot.command.SpigotSenderWrapper;
 import org.bukkit.command.CommandMap;

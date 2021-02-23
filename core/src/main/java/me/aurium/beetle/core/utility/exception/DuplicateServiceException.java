@@ -1,5 +1,8 @@
 package me.aurium.beetle.core.utility.exception;
 
+/**
+ * Exception thrown when there is already a service registered to the ServiceRegistry
+ */
 public class DuplicateServiceException extends RuntimeException {
 
     public DuplicateServiceException(String message) {

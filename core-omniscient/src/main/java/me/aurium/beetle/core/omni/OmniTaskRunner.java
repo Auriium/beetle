@@ -10,6 +10,10 @@ import java.util.function.Supplier;
  */
 public class OmniTaskRunner implements TaskRunner {
 
+    public OmniTaskRunner() {
+
+    }
+
     @Override
     public void runTaskSync(Runnable runnable) {
 

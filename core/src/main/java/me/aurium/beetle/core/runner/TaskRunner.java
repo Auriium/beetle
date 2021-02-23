@@ -8,9 +8,24 @@ import java.util.function.Supplier;
  */
 public interface TaskRunner {
 
+    /**
+     * Runs a task synchronously based on the platform
+     * @param runnable runnable to run
+     */
     void runTaskSync(Runnable runnable);
+
+    /**
+     * Runs a task asynchronously based on the platform
+     * @param runnable runnable to run
+     */
     void runTaskAsync(Runnable runnable);
 
+    /**
+     * Supplies a CompletableFuture asynchronously
+     * @param supplier the supplier
+     * @param <T> type of object to return
+     * @return a completablefuture containin the type
+     */
     <T> CompletableFuture<T> supplyAsync(Supplier<T> supplier);
 
 }

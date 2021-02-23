@@ -12,7 +12,8 @@ public interface Beetle {
     SimpleLogger getLogger();
 
     DataCoreFactory getDatacoreFactory();
-
     ServiceRegistry getServiceRegistry();
+
+    boolean isDebug();
 
 }

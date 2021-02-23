@@ -26,9 +26,9 @@ public interface ServiceRegistry {
     /**
      * Gets a service from the registry if it is present.
      *
-     * @param clazz
-     * @param <T>
-     * @return
+     * @param clazz the type of service
+     * @param <T> type of service to return
+     * @return the service
      */
     <T> Optional<T> getService(Class<T> clazz);
 
