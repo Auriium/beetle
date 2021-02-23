@@ -11,9 +11,11 @@ import java.util.logging.Level;
 public class SpigotLogger implements SimpleLogger {
 
     private final JavaPlugin plugin;
+    private final boolean debug;
 
-    public SpigotLogger(JavaPlugin plugin) {
+    public SpigotLogger(JavaPlugin plugin, boolean debug) {
         this.plugin = plugin;
+        this.debug = debug;
     }
 
     @Override
@@ -28,7 +30,9 @@ public class SpigotLogger implements SimpleLogger {
 
     @Override
     public void debug(String string) {
-        plugin.getLogger().log(Level.INFO,string);
+        if (debug) {
+            plugin.getLogger().log(Level.INFO,string);
+        }
     }
 
     @Override

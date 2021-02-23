@@ -6,8 +6,8 @@ public class SLFLoggerHelper {
 
     public SLFLoggerHelper() {}
 
-    public SLFLogger buildLogger() {
-        return new SLFLogger(LoggerFactory.getLogger(SLFLoggerHelper.class));
+    public SLFLogger buildLogger(boolean debug) {
+        return new SLFLogger(LoggerFactory.getLogger(SLFLoggerHelper.class),debug);
     }
 
 }

@@ -9,9 +9,11 @@ import org.slf4j.Logger;
 public class SLFLogger implements SimpleLogger {
 
     private final Logger logger;
+    private final boolean debug;
 
-    SLFLogger(Logger logger) {
+    SLFLogger(Logger logger, boolean debug) {
         this.logger = logger;
+        this.debug = debug;
     }
 
     @Override
@@ -26,7 +28,9 @@ public class SLFLogger implements SimpleLogger {
 
     @Override
     public void debug(String string) {
-        logger.debug(string);
+        if (debug) {
+            logger.debug(string);
+        }
     }
 
     @Override

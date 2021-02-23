@@ -31,7 +31,7 @@ public class SpigotBeetleFactory {
     public Beetle build() {
         //produce dependencies
 
-        SimpleLogger logger = new SLFLoggerHelper().buildLogger();
+        SimpleLogger logger = new SLFLoggerHelper().buildLogger(isDebug);
         TaskRunner runner = new SpigotTaskRunner(plugin);
 
 
@@ -39,7 +39,7 @@ public class SpigotBeetleFactory {
     }
 
     public Beetle build(TaskRunner runner) {
-        SimpleLogger logger = new SLFLoggerHelper().buildLogger();
+        SimpleLogger logger = new SLFLoggerHelper().buildLogger(isDebug);
 
 
         return build(runner,logger);
