@@ -1,5 +1,9 @@
 package me.aurium.beetle.core.datacore;
 
+/**
+ * use this if you like squeelite
+ * you need a driver or it'll bitch and moan
+ */
 public class SQLiteCoreSourceFactory implements CoreSourceFactory {
 
     private final SourceConfig config;

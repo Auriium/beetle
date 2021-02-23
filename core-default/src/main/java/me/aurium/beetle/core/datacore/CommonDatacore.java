@@ -1,9 +1,5 @@
-package me.aurium.beetle.spigot;
+package me.aurium.beetle.core.datacore;
 
-import me.aurium.beetle.core.datacore.CoreSource;
-import me.aurium.beetle.core.datacore.DataCore;
-import me.aurium.beetle.core.datacore.SQLTransact;
-import me.aurium.beetle.core.datacore.TransactConsumer;
 import me.aurium.beetle.core.runner.TaskRunner;
 import me.aurium.beetle.core.utility.exception.UncheckedSQLException;
 
@@ -11,12 +7,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.concurrent.CompletableFuture;
 
-public class SpigotDatacore implements DataCore {
+public class CommonDatacore implements DataCore{
 
     private final CoreSource source;
     private final TaskRunner runner;
 
-    SpigotDatacore(CoreSource source, TaskRunner runner) {
+    public CommonDatacore(CoreSource source, TaskRunner runner) {
         this.source = source;
         this.runner = runner;
     }
@@ -48,4 +44,5 @@ public class SpigotDatacore implements DataCore {
             }
         });
     }
+
 }

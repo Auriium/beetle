@@ -1,12 +1,12 @@
 package me.aurium.beetle.core.command;
 
-/**
- * Represents something that can have commands registered to it.
- *
- */
-public interface CommandRegistry {
+import java.util.Collection;
 
-    void registerCommand(AbstractCommand command);
+public interface CommandRegistry<T extends CommandData> {
 
+    void registerCommand(AbstractCommand<T> abstractCommand);
+    void removeCommand(AbstractCommand<T> abstractCommand);
+
+    Collection<AbstractCommand<T>> getAllCommands();
 
 }

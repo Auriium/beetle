@@ -1,26 +1,29 @@
 package me.aurium.beetle.core.command;
 
-import me.aurium.beetle.core.human.Person;
-
 import java.util.Collection;
+import java.util.Collections;
 
-
-//todo: figure out if we need to type specify the ActivePerson.
-public interface AbstractCommand {
+public interface AbstractCommand<T extends CommandData> {
 
     String getName();
-    Collection<String> getAliases();
     String getPermission();
+    boolean execute(T sender, String[] args);
+
+
+    default Collection<String> getAliases() {
+        return Collections.emptySet();
+    }
+
+    default Collection<String> tabComplete(T sender, String[] args) {
+        return Collections.emptySet();
+    }
+
 
     default String getUsage() {
         return "Default Usage for Minecraft-Like APIs";
     }
-
     default String getDescription() {
         return "Default Description for Minecraft-Like APIs";
     }
-
-    boolean execute(Person<?> sender, String[] args);
-    Collection<String> tabComplete(Person<?> sender, String[] args);
 
 }

@@ -8,7 +8,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class SimpleRegistry implements ServiceRegistry {
 
-    private final ConcurrentHashMap<Class<?>,Service<?>> serviceMappings = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Class<?>,Service<?>> serviceMappings;
+
+    //Not sure how to feel about these - probably clean this up later
+    public SimpleRegistry() {
+        this.serviceMappings = new ConcurrentHashMap<>();
+    }
+
+    public SimpleRegistry(ConcurrentHashMap<Class<?>,Service<?>> map) {
+        this.serviceMappings = map;
+    }
+
+    public SimpleRegistry(Class<?> clz, Object t) {
+        ConcurrentHashMap<Class<?>,Service<?>> map = new ConcurrentHashMap<>();
+
+        map.put(clz,new Service<>(t));
+
+        this.serviceMappings = map;
+    }
 
     @Override
     public <T> void registerService(Class<T> clazz, T object) {

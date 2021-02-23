@@ -16,6 +16,7 @@
         <module>spigot-impl</module>
         <module>velo-impl</module>
         <module>core-default</module>
+        <module>core-branch</module>
     </modules>
 
     <properties>

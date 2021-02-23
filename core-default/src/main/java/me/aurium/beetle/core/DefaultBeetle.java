@@ -12,14 +12,12 @@ public class DefaultBeetle implements Beetle {
     private final SimpleLogger simpleLogger;
     private final DataCoreFactory dataCoreFactory;
     private final ServiceRegistry classRegistry;
-    private final CommandRegistry commandRegistry;
 
-    public DefaultBeetle(TaskRunner taskRunner, SimpleLogger logger, DataCoreFactory dataCoreFactory, ServiceRegistry classRegistry, CommandRegistry commandRegistry) {
+    public DefaultBeetle(TaskRunner taskRunner, SimpleLogger logger, DataCoreFactory dataCoreFactory, ServiceRegistry classRegistry) {
         this.runner = taskRunner;
         this.simpleLogger = logger;
         this.dataCoreFactory = dataCoreFactory;
         this.classRegistry = classRegistry;
-        this.commandRegistry = commandRegistry;
     }
 
     public TaskRunner getTaskRunner() {
@@ -38,7 +36,4 @@ public class DefaultBeetle implements Beetle {
         return classRegistry;
     }
 
-    public CommandRegistry getCommandRegistry() {
-        return commandRegistry;
-    }
 }

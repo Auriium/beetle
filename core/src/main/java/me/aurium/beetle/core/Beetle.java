@@ -14,6 +14,5 @@ public interface Beetle {
     DataCoreFactory getDatacoreFactory();
 
     ServiceRegistry getServiceRegistry();
-    CommandRegistry getCommandRegistry();
 
 }

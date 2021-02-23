@@ -9,7 +9,7 @@ import java.util.stream.Collector;
 /**
  * Static math utilities taken straight from AUtils
  */
-public class BeetleMath {
+public class MathUtils {
 
     public static final float nanoToSec = 1 / 1000000000f;
 
@@ -103,7 +103,7 @@ public class BeetleMath {
         final Random RANDOM = new Random();
         return Collector.of(ArrayList::new,
                 List::add,
-                BeetleMath::union,
+                MathUtils::union,
                 list -> list.isEmpty() ? null : list.get(RANDOM.nextInt(list.size())));
     }
 

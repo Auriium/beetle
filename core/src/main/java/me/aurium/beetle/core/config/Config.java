@@ -1,4 +1,5 @@
 package me.aurium.beetle.core.config;
 
-public interface ConfigFactory {
+public interface Config {
+
 }
