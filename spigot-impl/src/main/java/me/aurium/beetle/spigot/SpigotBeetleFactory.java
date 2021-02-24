@@ -2,6 +2,7 @@ package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.core.Beetle;
 import me.aurium.beetle.core.DefaultBeetle;
+import me.aurium.beetle.core.config.FileProvider;
 import me.aurium.beetle.core.datacore.CommonDatacoreFactory;
 import me.aurium.beetle.core.datacore.DataCoreFactory;
 import me.aurium.beetle.core.logger.SLFLoggerHelper;
@@ -57,10 +58,11 @@ public class SpigotBeetleFactory {
         SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();
         ServiceRegistry serviceRegistry = new SimpleRegistry();
         DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(runner);
+        FileProvider fileProvider = new SpigotFileProvider(plugin);
 
         serviceRegistry.registerService(SpigotCommandRegistry.class,new SpigotCMDHelper(plugin).produceRegistry());
 
-        return new DefaultBeetle(runner,logger,dataCoreFactory,serviceRegistry,isDebug);
+        return new DefaultBeetle(runner,logger,dataCoreFactory,serviceRegistry,fileProvider,isDebug);
     }
 
 }
