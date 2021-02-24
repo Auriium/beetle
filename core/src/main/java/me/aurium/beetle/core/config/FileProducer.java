@@ -1,6 +1,7 @@
 package me.aurium.beetle.core.config;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Interface for something that can produce a dataholder implementation from a file
@@ -8,6 +9,6 @@ import java.io.File;
  */
 public interface FileProducer<T extends DataHolder> {
 
-    T produce(File file);
+    T produce(File file) throws IOException;
 
 }

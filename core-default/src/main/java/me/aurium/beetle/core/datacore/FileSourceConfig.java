@@ -1,8 +1,10 @@
 package me.aurium.beetle.core.datacore;
 
+import me.aurium.beetle.core.config.DataHolder;
+
 import java.io.File;
 
-public final class FileSourceConfig {
+public final class FileSourceConfig implements DataHolder {
 
     private final File file;
     private final String username;

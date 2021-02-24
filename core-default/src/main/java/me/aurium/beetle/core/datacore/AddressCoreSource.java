@@ -1,10 +1,12 @@
 package me.aurium.beetle.core.datacore;
 
+import me.aurium.beetle.core.config.DataHolder;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class AddressCoreSource implements CoreSource {
+public class AddressCoreSource implements CoreSource, DataHolder {
 
     private final String address;
     private String username;
