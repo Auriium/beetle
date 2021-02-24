@@ -21,7 +21,7 @@ public class GenericBeetleFactory implements BeetleFactory {
 
     @Override
     public Beetle build() {
-        SimpleLogger logger = new SLFLoggerHelper().buildLogger(isDebug);
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug);
         TaskRunner runner = new GenericTaskRunner();
 
         return build(runner,logger);
@@ -29,7 +29,7 @@ public class GenericBeetleFactory implements BeetleFactory {
 
     @Override
     public Beetle build(TaskRunner runner) {
-        SimpleLogger logger = new SLFLoggerHelper().buildLogger(isDebug);
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug);
 
         return build(runner,logger);
     }
