@@ -7,24 +7,15 @@
         <groupId>me.aurium</groupId>
         <version>0.2.0</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>beetle-core</artifactId>
+    <version>0.1.0</version>
 
-    <version>0.2.1</version>
+    <artifactId>beetle-generic-impl</artifactId>
 
     <properties>
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
         <maven.compiler.target>${compiler.version}</maven.compiler.target>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${logger.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>

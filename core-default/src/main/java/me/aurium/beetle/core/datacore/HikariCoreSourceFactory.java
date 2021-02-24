@@ -3,12 +3,13 @@ package me.aurium.beetle.core.datacore;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+//TODO: make this not mysql specific: e.g. mariadb, postgretard
 public class HikariCoreSourceFactory implements CoreSourceFactory {
 
-    private final SourceConfig config;
+    private final WebSourceConfig config;
     private final boolean useSSL;
 
-    public HikariCoreSourceFactory(SourceConfig config, boolean useSSL) {
+    public HikariCoreSourceFactory(WebSourceConfig config, boolean useSSL) {
         this.config = config;
         this.useSSL = useSSL;
     }

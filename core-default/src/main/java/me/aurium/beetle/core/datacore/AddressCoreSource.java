@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class AddressCoreSource implements CoreSource {
 
     private final String address;
-    private final String username;
-    private final String password;
+    private String username;
+    private String password;
 
     AddressCoreSource(String address, String username, String password) {
         this.address = address;

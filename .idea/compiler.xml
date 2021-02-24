@@ -8,10 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core-branch" />
         <module name="core" />
-        <module name="core-omniscient" />
-        <module name="core-default" />
         <module name="velo-impl" />
         <module name="spigot-impl" />
+        <module name="generic-impl" />
+        <module name="core-omniscient" />
+        <module name="core-default" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

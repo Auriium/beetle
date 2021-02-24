@@ -3,7 +3,7 @@ package me.aurium.beetle.core.datacore;
 /**
  * If only java 11 supported records...
  */
-public final class SourceConfig {
+public final class WebSourceConfig {
 
     private final String pluginName;
     private final String databaseName;
@@ -13,7 +13,7 @@ public final class SourceConfig {
     private final int databasePort;
 
 
-    public SourceConfig(String pluginName, String databaseName, String databaseUser, String databasePassword, String databaseHostLocation, int databasePort) {
+    public WebSourceConfig(String pluginName, String databaseName, String databaseUser, String databasePassword, String databaseHostLocation, int databasePort) {
         this.pluginName = pluginName;
         this.databaseName = databaseName;
         this.databaseUser = databaseUser;
@@ -94,8 +94,8 @@ public final class SourceConfig {
             return this;
         }
 
-        public SourceConfig build() {
-            return new SourceConfig(pluginName,databaseName,databaseUser,databasePassword,databaseHostLocation,databasePort);
+        public WebSourceConfig build() {
+            return new WebSourceConfig(pluginName,databaseName,databaseUser,databasePassword,databaseHostLocation,databasePort);
         }
 
     }
