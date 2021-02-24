@@ -32,7 +32,7 @@ public class SpigotBeetleFactory {
     public Beetle build() {
         //produce dependencies
 
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,SpigotBeetleFactory.class);
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,plugin.getName());
         TaskRunner runner = new SpigotTaskRunner(plugin);
 
 
@@ -40,7 +40,7 @@ public class SpigotBeetleFactory {
     }
 
     public Beetle build(TaskRunner runner) {
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,SpigotBeetleFactory.class);
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,plugin.getName());
 
 
         return build(runner,logger);

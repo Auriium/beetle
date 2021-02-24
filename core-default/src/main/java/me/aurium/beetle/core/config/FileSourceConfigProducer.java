@@ -18,6 +18,8 @@ public class FileSourceConfigProducer implements FileProducer<FileSourceConfig> 
     @Override
     public FileSourceConfig produce(File file) throws IOException {
 
+        System.out.println(file.getAbsolutePath());
+
         if (!file.exists()) {
             file.createNewFile();
         }

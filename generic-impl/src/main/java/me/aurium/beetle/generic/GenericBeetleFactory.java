@@ -18,15 +18,22 @@ public class GenericBeetleFactory implements BeetleFactory {
 
     private final Boolean isDebug;
     private final File baseFolder;
+    private final String appName;
 
-    public GenericBeetleFactory(File baseFolder, boolean isDebug) {
+    /**
+     * Create a new generic beetle factory
+     * @param baseFolder where file is the FOLDER that is the base
+     * @param isDebug whether it is in debug mode or not
+     */
+    public GenericBeetleFactory(String appName, File baseFolder, boolean isDebug) {
         this.isDebug = isDebug;
         this.baseFolder = baseFolder;
+        this.appName = appName;
     }
 
     @Override
     public Beetle build() {
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug);
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,appName);
         TaskRunner runner = new GenericTaskRunner();
 
         return build(runner,logger);
@@ -34,7 +41,7 @@ public class GenericBeetleFactory implements BeetleFactory {
 
     @Override
     public Beetle build(TaskRunner runner) {
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug);
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,appName);
 
         return build(runner,logger);
     }

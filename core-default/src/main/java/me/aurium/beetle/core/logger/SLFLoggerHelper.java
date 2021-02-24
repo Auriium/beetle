@@ -6,12 +6,12 @@ public class SLFLoggerHelper {
 
     public SLFLoggerHelper() {}
 
-    public static SLFLogger buildLogger(boolean debug) {
+    public static SLFLogger buildLogger(boolean debug, Class<?> pluginClass) {
         return new SLFLogger(LoggerFactory.getLogger(SLFLoggerHelper.class),debug);
     }
 
-    public static SLFLogger buildLogger(boolean debug, Class<?> clazz) {
-        return new SLFLogger(LoggerFactory.getLogger(clazz),debug);
+    public static SLFLogger buildLogger(boolean debug, String pluginName) {
+        return new SLFLogger(LoggerFactory.getLogger(pluginName),debug);
     }
 
 }
