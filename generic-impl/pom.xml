@@ -11,6 +11,19 @@
 
     <version>0.1.0</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-core</artifactId>
+            <version>${core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-core-default</artifactId>
+            <version>${default.version}</version>
+        </dependency>
+    </dependencies>
+
     <artifactId>beetle-generic-impl</artifactId>
 
     <properties>

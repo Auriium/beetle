@@ -6,8 +6,12 @@ public class SLFLoggerHelper {
 
     public SLFLoggerHelper() {}
 
-    public SLFLogger buildLogger(boolean debug) {
+    public static SLFLogger buildLogger(boolean debug) {
         return new SLFLogger(LoggerFactory.getLogger(SLFLoggerHelper.class),debug);
+    }
+
+    public static SLFLogger buildLogger(boolean debug, Class<?> clazz) {
+        return new SLFLogger(LoggerFactory.getLogger(clazz),debug);
     }
 
 }
