@@ -13,7 +13,7 @@ public interface ServiceRegistry {
      * @param clazz the type to register the service to
      * @param object The service
      * @param <T> Type of the service
-     * @throws me.aurium.beetle.core.utility.exception.DuplicateServiceException if something already exists in that service's location.
+     * @throws DuplicateServiceException if something already exists in that service's location.
      */
     <T> void registerService(Class<T> clazz, T object);
 

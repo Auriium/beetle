@@ -1,4 +1,4 @@
-package me.aurium.beetle.core.utility.exception;
+package me.aurium.beetle.core.datacore;
 
 /**
  * SQLException, but unchecked.

@@ -4,6 +4,7 @@ import me.aurium.beetle.core.datacore.FileSourceConfig;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class FileSourceConfigProducer implements FileProducer<FileSourceConfig> {
 
@@ -16,9 +17,9 @@ public class FileSourceConfigProducer implements FileProducer<FileSourceConfig> 
     }
 
     @Override
-    public FileSourceConfig produce(File file) throws IOException {
+    public FileSourceConfig produce(Path path) throws IOException {
 
-        System.out.println(file.getAbsolutePath());
+        File file = path.toFile();
 
         if (!file.exists()) {
             file.createNewFile();

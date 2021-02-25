@@ -1,4 +1,4 @@
-package me.aurium.beetle.core.runner;
+package me.aurium.beetle.core.task;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;

@@ -27,15 +27,6 @@ public interface FileProvider {
     <T extends DataHolder> T getDataHolder(FileProducer<T> producer, String string);
 
     /**
-     * Creates a dataholder with the specified file
-     * @param producer a new wrapper class that will output a holder
-     * @param file the file
-     * @param <T> type of dataobject
-     * @return a dataholder
-     */
-    <T extends DataHolder> T getDataHolderFile(FileProducer<T> producer, File file);
-
-    /**
      * Tries to get a dataholder from a direct path
      * @param producer A file producer
      * @param path The direct path to a file

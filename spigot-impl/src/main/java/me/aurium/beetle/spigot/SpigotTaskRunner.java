@@ -1,17 +1,23 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.core.runner.TaskRunner;
+import me.aurium.beetle.core.task.TaskQueue;
+import me.aurium.beetle.core.task.TaskRunner;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
+/**
+ * TODO: let taskrunner use the queue
+ */
 public class SpigotTaskRunner implements TaskRunner {
 
     private final JavaPlugin plugin;
+    private final TaskQueue queue;
 
-    SpigotTaskRunner(JavaPlugin plugin) {
+    SpigotTaskRunner(JavaPlugin plugin, TaskQueue queue) {
         this.plugin = plugin;
+        this.queue = queue;
     }
 
     @Override

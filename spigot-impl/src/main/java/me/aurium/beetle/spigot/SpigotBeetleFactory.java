@@ -1,14 +1,13 @@
 package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.core.Beetle;
-import me.aurium.beetle.core.DefaultBeetle;
+import me.aurium.beetle.core.config.CommonFileProvider;
 import me.aurium.beetle.core.config.FileProvider;
 import me.aurium.beetle.core.datacore.CommonDatacoreFactory;
 import me.aurium.beetle.core.datacore.DataCoreFactory;
 import me.aurium.beetle.core.logger.SLFLoggerHelper;
 import me.aurium.beetle.core.logger.SimpleLogger;
-import me.aurium.beetle.core.registry.SimpleRegistry;
-import me.aurium.beetle.core.runner.TaskRunner;
+import me.aurium.beetle.core.registry.CommonRegistry;
 import me.aurium.beetle.core.service.ServiceRegistry;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,38 +30,19 @@ public class SpigotBeetleFactory {
      */
     public Beetle build() {
         //produce dependencies
+        SpigotTasker tasker = new SpigotTasker(plugin);
 
         SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,plugin.getName());
-        TaskRunner runner = new SpigotTaskRunner(plugin);
-
-
-        return build(runner,logger);
-    }
-
-    public Beetle build(TaskRunner runner) {
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,plugin.getName());
-
-
-        return build(runner,logger);
-    }
-
-    public Beetle build(SimpleLogger logger) {
-        TaskRunner runner = new SpigotTaskRunner(plugin);
-
-
-        return build(runner,logger);
-    }
-
-    public Beetle build(TaskRunner runner, SimpleLogger logger) {
-
         SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();
-        ServiceRegistry serviceRegistry = new SimpleRegistry();
-        DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(runner);
-        FileProvider fileProvider = new SpigotFileProvider(plugin);
+        ServiceRegistry serviceRegistry = new CommonRegistry();
+        DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(tasker.getRunner());
+        FileProvider fileProvider = new CommonFileProvider(plugin.getDataFolder().toPath());
+
 
         serviceRegistry.registerService(SpigotCommandRegistry.class,new SpigotCMDHelper(plugin).produceRegistry());
 
-        return new DefaultBeetle(runner,logger,dataCoreFactory,serviceRegistry,fileProvider,isDebug);
+        return new Beetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,isDebug);
     }
+
 
 }

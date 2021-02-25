@@ -1,4 +1,4 @@
-package me.aurium.beetle.core.utility.exception;
+package me.aurium.beetle.core.service;
 
 /**
  * Exception thrown when there is already a service registered to the ServiceRegistry

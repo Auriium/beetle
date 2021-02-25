@@ -2,6 +2,7 @@ package me.aurium.beetle.core.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class ImmutableConfigProducer<T extends ImmutableConfig> implements FileProducer<T> {
 
@@ -12,11 +13,7 @@ public class ImmutableConfigProducer<T extends ImmutableConfig> implements FileP
     }
 
     @Override
-    public T produce(File file) throws IOException {
-
-        //do reading
-        //Reader.read(clz.get(file));
-
+    public T produce(Path path) throws IOException {
         return null;
     }
 }

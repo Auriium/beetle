@@ -9,7 +9,7 @@ import java.util.stream.Collector;
 /**
  * Static math utilities taken straight from AUtils
  */
-public class MathUtils {
+public class CommonMathUtils {
 
     public static final float nanoToSec = 1 / 1000000000f;
 
@@ -103,7 +103,7 @@ public class MathUtils {
         final Random RANDOM = new Random();
         return Collector.of(ArrayList::new,
                 List::add,
-                MathUtils::union,
+                CommonMathUtils::union,
                 list -> list.isEmpty() ? null : list.get(RANDOM.nextInt(list.size())));
     }
 

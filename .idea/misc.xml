@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/core-database/pom.xml" />
         <option value="$PROJECT_DIR$/core-defaults/pom.xml" />
         <option value="$PROJECT_DIR$/core-implementation/pom.xml" />
+        <option value="$PROJECT_DIR$/core-omniscient/pom.xml" />
       </set>
     </option>
   </component>

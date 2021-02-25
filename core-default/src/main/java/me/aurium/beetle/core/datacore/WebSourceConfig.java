@@ -10,16 +10,22 @@ public final class WebSourceConfig {
     private final String databaseUser;
     private final String databasePassword;
     private final String databaseHostLocation;
+    private final String databaseDialect;
     private final int databasePort;
 
 
-    public WebSourceConfig(String pluginName, String databaseName, String databaseUser, String databasePassword, String databaseHostLocation, int databasePort) {
+    public WebSourceConfig(String pluginName, String databaseName, String databaseUser, String databasePassword, String databaseHostLocation, String databaseDialect, int databasePort) {
         this.pluginName = pluginName;
         this.databaseName = databaseName;
         this.databaseUser = databaseUser;
         this.databasePassword = databasePassword;
         this.databasePort = databasePort;
+        this.databaseDialect = databaseDialect;
         this.databaseHostLocation = databaseHostLocation;
+    }
+
+    public String getDatabaseDialect() {
+        return this.databaseDialect;
     }
 
     public String getPluginName() {
@@ -53,6 +59,7 @@ public final class WebSourceConfig {
         private String databaseUser;
         private String databasePassword;
         private String databaseHostLocation;
+        private String databaseDialect;
         private int databasePort;
 
         public Builder() {
@@ -62,6 +69,7 @@ public final class WebSourceConfig {
             databasePassword = "defaultDatabasePassword";
             databaseHostLocation = "defaultMyAdmin.panel.com";
             databasePort = 3306;
+            this.databaseDialect = "mysql";
         }
 
         public Builder setPluginName(String value) {
@@ -94,8 +102,13 @@ public final class WebSourceConfig {
             return this;
         }
 
+        public Builder setDialect(String dialect) {
+            this.databaseDialect = dialect;
+            return this;
+        }
+
         public WebSourceConfig build() {
-            return new WebSourceConfig(pluginName,databaseName,databaseUser,databasePassword,databaseHostLocation,databasePort);
+            return new WebSourceConfig(pluginName,databaseName,databaseUser,databasePassword,databaseHostLocation,databaseDialect,databasePort);
         }
 
     }

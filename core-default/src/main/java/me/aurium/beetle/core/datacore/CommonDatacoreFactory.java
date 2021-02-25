@@ -1,6 +1,6 @@
 package me.aurium.beetle.core.datacore;
 
-import me.aurium.beetle.core.runner.TaskRunner;
+import me.aurium.beetle.core.task.TaskRunner;
 
 public class CommonDatacoreFactory implements DataCoreFactory {
 

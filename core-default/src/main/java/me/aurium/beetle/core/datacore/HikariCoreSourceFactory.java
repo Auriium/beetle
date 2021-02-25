@@ -3,7 +3,6 @@ package me.aurium.beetle.core.datacore;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-//TODO: make this not mysql specific: e.g. mariadb, postgretard
 public class HikariCoreSourceFactory implements CoreSourceFactory {
 
     private final WebSourceConfig config;
@@ -18,7 +17,8 @@ public class HikariCoreSourceFactory implements CoreSourceFactory {
     public CoreSource getCoreSource() {
         HikariConfig hikari = new HikariConfig();
 
-        hikari.setJdbcUrl(String.format(useSSL ? "jdbc:mysql://%s:%d/%s" : "jdbc:mysql://%s:%d/%s?useSSL=false",
+        hikari.setJdbcUrl(String.format(useSSL ? "jdbc:%s://%s:%d/%s" : "jdbc:%s://%s:%d/%s?useSSL=false",
+                config.getDatabaseDialect(),
                 config.getDatabaseHostLocation(),
                 config.getDatabasePort(),
                 config.getDatabaseName()));

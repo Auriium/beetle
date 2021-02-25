@@ -2,22 +2,22 @@ package me.aurium.beetle.generic;
 
 import me.aurium.beetle.core.Beetle;
 import me.aurium.beetle.core.BeetleFactory;
-import me.aurium.beetle.core.DefaultBeetle;
+import me.aurium.beetle.core.config.CommonFileProvider;
 import me.aurium.beetle.core.config.FileProvider;
 import me.aurium.beetle.core.datacore.CommonDatacoreFactory;
 import me.aurium.beetle.core.datacore.DataCoreFactory;
 import me.aurium.beetle.core.logger.SLFLoggerHelper;
 import me.aurium.beetle.core.logger.SimpleLogger;
-import me.aurium.beetle.core.registry.SimpleRegistry;
-import me.aurium.beetle.core.runner.TaskRunner;
+import me.aurium.beetle.core.registry.CommonRegistry;
 import me.aurium.beetle.core.service.ServiceRegistry;
+import me.aurium.beetle.core.task.Tasker;
 
-import java.io.File;
+import java.nio.file.Path;
 
 public class GenericBeetleFactory implements BeetleFactory {
 
     private final Boolean isDebug;
-    private final File baseFolder;
+    private final Path baseFolder;
     private final String appName;
 
     /**
@@ -25,7 +25,7 @@ public class GenericBeetleFactory implements BeetleFactory {
      * @param baseFolder where file is the FOLDER that is the base
      * @param isDebug whether it is in debug mode or not
      */
-    public GenericBeetleFactory(String appName, File baseFolder, boolean isDebug) {
+    public GenericBeetleFactory(String appName, Path baseFolder, boolean isDebug) {
         this.isDebug = isDebug;
         this.baseFolder = baseFolder;
         this.appName = appName;
@@ -33,34 +33,16 @@ public class GenericBeetleFactory implements BeetleFactory {
 
     @Override
     public Beetle build() {
+        Tasker tasker = new GenericTasker();
+
+        tasker.launch();
+
         SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,appName);
-        TaskRunner runner = new GenericTaskRunner();
+        DataCoreFactory factory = new CommonDatacoreFactory(tasker.getRunner());
+        ServiceRegistry serviceRegistry = new CommonRegistry();
+        FileProvider fileProvider = new CommonFileProvider(baseFolder);
 
-        return build(runner,logger);
+        return new Beetle(tasker,logger,factory,serviceRegistry,fileProvider,isDebug);
     }
 
-    @Override
-    public Beetle build(TaskRunner runner) {
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,appName);
-
-        return build(runner,logger);
-    }
-
-    @Override
-    public Beetle build(SimpleLogger logger) {
-        TaskRunner runner = new GenericTaskRunner();
-
-        return build(runner,logger);
-    }
-
-    @Override
-    public Beetle build(TaskRunner runner, SimpleLogger logger) {
-
-        DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(runner);
-        ServiceRegistry serviceRegistry = new SimpleRegistry();
-        FileProvider provider = new GenericFileProvider(baseFolder);
-
-
-        return new DefaultBeetle(runner,logger,dataCoreFactory,serviceRegistry,provider,isDebug);
-    }
 }

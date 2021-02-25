@@ -1,39 +1,35 @@
 package me.aurium.beetle.generic;
 
-import me.aurium.beetle.core.runner.TaskRunner;
+import me.aurium.beetle.core.task.CommonTaskQueue;
+import me.aurium.beetle.core.task.TaskQueue;
+import me.aurium.beetle.core.task.TaskRunner;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.function.Supplier;
 
 public class GenericTaskRunner implements TaskRunner {
 
-    private final Executor executor;
+    private final ExecutorService service;
+    private final TaskQueue queue;
 
-    public GenericTaskRunner(Executor executor) {
-        this.executor = executor;
-    }
-
-    public GenericTaskRunner() {
-        this.executor = new CompletableFuture<>().defaultExecutor();
+    public GenericTaskRunner(TaskQueue queue, ExecutorService service) {
+        this.service = service;
+        this.queue = queue;
     }
 
     @Override
     public void runTaskSync(Runnable runnable) {
-        executor.execute(runnable);
+        queue.add(runnable);
     }
 
     @Override
     public void runTaskAsync(Runnable runnable) {
-        supplyAsync(() -> {
-            runnable.run();
-
-            return null;
-        });
+        service.submit(runnable);
     }
 
     @Override
     public <T> CompletableFuture<T> supplyAsync(Supplier<T> supplier) {
-        return CompletableFuture.supplyAsync(supplier, executor);
+        return CompletableFuture.supplyAsync(supplier,service);
     }
 }

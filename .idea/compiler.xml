@@ -11,7 +11,6 @@
         <module name="velo-impl" />
         <module name="spigot-impl" />
         <module name="generic-impl" />
-        <module name="core-omniscient" />
         <module name="core-default" />
       </profile>
     </annotationProcessing>
@@ -19,6 +18,7 @@
       <module name="core-database" target="11" />
       <module name="core-defaults" target="11" />
       <module name="core-implementation" target="11" />
+      <module name="core-omniscient" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
