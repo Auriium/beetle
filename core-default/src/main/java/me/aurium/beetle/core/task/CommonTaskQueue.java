@@ -13,8 +13,10 @@ public class CommonTaskQueue implements TaskQueue {
 
     @Override
     public void tick() {
-        while(!runnableQueue.isEmpty()) {
-            runnableQueue.poll().run();
+        Runnable task;
+
+        while ((task = runnableQueue.poll()) != null) {
+            task.run();
         }
     }
 }

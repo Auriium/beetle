@@ -1,6 +1,5 @@
 package me.aurium.beetle.generic;
 
-import me.aurium.beetle.core.task.CommonTaskQueue;
 import me.aurium.beetle.core.task.TaskQueue;
 import me.aurium.beetle.core.task.TaskRunner;
 
