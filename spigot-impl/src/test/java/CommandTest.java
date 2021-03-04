@@ -1,7 +1,7 @@
 import me.aurium.beetle.core.command.AbstractCommand;
-import me.aurium.beetle.spigot.command.SpigotSenderWrapper;
+import me.aurium.beetle.spigot.command.SpigotCommandData;
 
-public class CommandTest implements AbstractCommand<SpigotSenderWrapper> {
+public class CommandTest implements AbstractCommand<SpigotCommandData> {
 
 
     @Override
@@ -15,7 +15,7 @@ public class CommandTest implements AbstractCommand<SpigotSenderWrapper> {
     }
 
     @Override
-    public boolean execute(SpigotSenderWrapper wrapper, String[] args) {
+    public boolean execute(SpigotCommandData wrapper, String[] args) {
         wrapper.debugMessage("A debug message!");
 
         return false;

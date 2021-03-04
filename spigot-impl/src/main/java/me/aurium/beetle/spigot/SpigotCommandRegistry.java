@@ -4,17 +4,17 @@ import me.aurium.beetle.core.command.AbstractCommand;
 import me.aurium.beetle.core.command.CommandRegistry;
 import me.aurium.beetle.core.exception.IllegalCommandMapState;
 import me.aurium.beetle.spigot.command.SpigotCommandWrapper;
-import me.aurium.beetle.spigot.command.SpigotSenderWrapper;
+import me.aurium.beetle.spigot.command.SpigotCommandData;
 import org.bukkit.command.CommandMap;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SpigotCommandRegistry implements CommandRegistry<SpigotSenderWrapper> {
+public class SpigotCommandRegistry implements CommandRegistry<SpigotCommandData> {
 
     private final CommandMap commandMap;
-    private final Set<AbstractCommand<SpigotSenderWrapper>> abstractCommands;
+    private final Set<AbstractCommand<SpigotCommandData>> abstractCommands;
 
     SpigotCommandRegistry(CommandMap commandMap) {
         this.commandMap = commandMap;
@@ -22,7 +22,7 @@ public class SpigotCommandRegistry implements CommandRegistry<SpigotSenderWrappe
     }
 
     @Override
-    public void registerCommand(AbstractCommand<SpigotSenderWrapper> abstractCommand) {
+    public void registerCommand(AbstractCommand<SpigotCommandData> abstractCommand) {
         boolean success = commandMap.register(abstractCommand.getName(),new SpigotCommandWrapper(abstractCommand));
 
         if (!success) throw new IllegalCommandMapState("Tried to register command without success: " + abstractCommand.getName());
@@ -33,16 +33,16 @@ public class SpigotCommandRegistry implements CommandRegistry<SpigotSenderWrappe
 
 
     @Override
-    public void removeCommand(AbstractCommand<SpigotSenderWrapper> abstractCommand) {
+    public void removeCommand(AbstractCommand<SpigotCommandData> abstractCommand) {
 
     }
 
     @Override
-    public Collection<AbstractCommand<SpigotSenderWrapper>> getAllCommands() {
+    public Collection<AbstractCommand<SpigotCommandData>> getAllCommands() {
         return abstractCommands;
     }
 
-    void verifyCommand(AbstractCommand<SpigotSenderWrapper> abstractCommand) {
+    void verifyCommand(AbstractCommand<SpigotCommandData> abstractCommand) {
         assert abstractCommand.getName() != null;
         assert abstractCommand.getAliases() != null;
         assert abstractCommand.getPermission() != null;

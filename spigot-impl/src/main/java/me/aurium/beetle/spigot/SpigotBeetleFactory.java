@@ -1,6 +1,6 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.core.Beetle;
+import me.aurium.beetle.core.BeetleFactory;
 import me.aurium.beetle.core.config.CommonFileProvider;
 import me.aurium.beetle.core.config.FileProvider;
 import me.aurium.beetle.core.datacore.CommonDatacoreFactory;
@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * A Helper BeetleFactory based around the Spigot API.
  */
-public class SpigotBeetleFactory {
+public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
 
     private final JavaPlugin plugin;
     private final boolean isDebug;
@@ -28,7 +28,7 @@ public class SpigotBeetleFactory {
      * Build a new Spigot-Type Beetle from Spigot-Type defaults.
      * @return a new Beetle
      */
-    public Beetle build() {
+    public SpigotBeetle build() {
         //produce dependencies
         SpigotTasker tasker = new SpigotTasker(plugin);
 
@@ -38,10 +38,7 @@ public class SpigotBeetleFactory {
         DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(tasker.getRunner());
         FileProvider fileProvider = new CommonFileProvider(plugin.getDataFolder().toPath());
 
-
-        serviceRegistry.registerService(SpigotCommandRegistry.class,new SpigotCMDHelper(plugin).produceRegistry());
-
-        return new Beetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,isDebug);
+        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,isDebug);
     }
 
 

@@ -18,4 +18,30 @@
         <maven.compiler.target>${compiler.version}</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.velocitypowered</groupId>
+            <artifactId>velocity-api</artifactId>
+            <version>1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-core</artifactId>
+            <version>0.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-core-default</artifactId>
+            <version>0.2.7</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>velocity</id>
+            <url>https://nexus.velocitypowered.com/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
 </project>

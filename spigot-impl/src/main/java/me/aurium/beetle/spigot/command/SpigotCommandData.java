@@ -3,11 +3,11 @@ package me.aurium.beetle.spigot.command;
 import me.aurium.beetle.core.command.CommandData;
 import org.bukkit.command.CommandSender;
 
-public class SpigotSenderWrapper implements CommandData {
+public class SpigotCommandData implements CommandData {
 
     private final CommandSender sender;
 
-    public SpigotSenderWrapper(CommandSender sender) {
+    public SpigotCommandData(CommandSender sender) {
         this.sender = sender;
     }
 

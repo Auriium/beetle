@@ -1,7 +1,7 @@
 package me.aurium.beetle.generic;
 
-import me.aurium.beetle.core.Beetle;
 import me.aurium.beetle.core.BeetleFactory;
+import me.aurium.beetle.core.DefaultBeetle;
 import me.aurium.beetle.core.config.CommonFileProvider;
 import me.aurium.beetle.core.config.FileProvider;
 import me.aurium.beetle.core.datacore.CommonDatacoreFactory;
@@ -14,7 +14,7 @@ import me.aurium.beetle.core.task.Tasker;
 
 import java.nio.file.Path;
 
-public class GenericBeetleFactory implements BeetleFactory {
+public class GenericBeetleFactory implements BeetleFactory<DefaultBeetle> {
 
     private final Boolean isDebug;
     private final Path baseFolder;
@@ -32,7 +32,7 @@ public class GenericBeetleFactory implements BeetleFactory {
     }
 
     @Override
-    public Beetle build() {
+    public DefaultBeetle build() {
         Tasker tasker = new GenericTasker();
 
         tasker.launch();
@@ -42,7 +42,7 @@ public class GenericBeetleFactory implements BeetleFactory {
         ServiceRegistry serviceRegistry = new CommonRegistry();
         FileProvider fileProvider = new CommonFileProvider(baseFolder);
 
-        return new Beetle(tasker,logger,factory,serviceRegistry,fileProvider,isDebug);
+        return new DefaultBeetle(tasker,logger,factory,serviceRegistry,fileProvider,isDebug);
     }
 
 }
