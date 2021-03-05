@@ -11,7 +11,7 @@
         <module name="core-default" />
         <module name="velo-impl" />
         <module name="spigot-impl" />
-        <module name="generic-impl" />
+        <module name="discord-impl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +19,7 @@
       <module name="core-defaults" target="11" />
       <module name="core-implementation" target="11" />
       <module name="core-omniscient" target="11" />
+      <module name="generic-impl" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

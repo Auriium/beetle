@@ -7,24 +7,26 @@
         <groupId>me.aurium</groupId>
         <version>0.2.0</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>beetle-core</artifactId>
+    <artifactId>beetle-discord-impl</artifactId>
 
-    <version>0.3.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-core</artifactId>
+            <version>${core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-core-default</artifactId>
+            <version>${default.version}</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
         <maven.compiler.target>${compiler.version}</maven.compiler.target>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${logger.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>
