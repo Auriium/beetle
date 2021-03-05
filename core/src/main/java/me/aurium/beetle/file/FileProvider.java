@@ -28,6 +28,15 @@ public interface FileProvider {
     <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?,T> producer, T options, String path);
 
     /**
+     * Register a new producer with corresponding options into the provider using the home path
+     * @param producer the key. Recommended to use the key's static identifier method if it exists or instantiate one if it does not.
+     * @param options the options
+     * @param <T> the type of options that are required
+     * @throws ProducerAlreadyRegisteredException if the producer is already registered
+     */
+    <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?,T> producer, T options);
+
+    /**
      * Gets the producer corresponding to a key if possible
      * @param key the key
      * @param <T> the corresponding producer

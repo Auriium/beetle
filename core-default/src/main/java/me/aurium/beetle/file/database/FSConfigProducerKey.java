@@ -14,7 +14,7 @@ public class FSConfigProducerKey implements ProducerKey<FSConfigProducer, FSConf
 
     @Override
     public FSConfigProducer newProducer(FSConfigProducerOptions options, Path path) {
-        return new FSConfigProducer(path,options.getPassword(),options.getUser());
+        return new FSConfigProducer(path,options.getPassword(),options.getUser(),options.getDbname());
     }
 
     @Override

@@ -13,18 +13,20 @@ public class FSConfigProducer implements DataProducer<FileSourceConfig> {
 
     private final String password;
     private final String username;
+    private final String dbname;
     private final Path path;
 
-    FSConfigProducer(Path path, String password, String username) {
+    FSConfigProducer(Path path, String password, String username, String dbname) {
         this.password = password;
         this.username = username;
         this.path = path;
+        this.dbname = dbname;
     }
 
     @Override
     public FileSourceConfig produce() {
 
-        File file = path.toFile();
+        File file = path.resolve(dbname).toFile();
 
         if (!file.exists()) {
             try {
@@ -32,7 +34,6 @@ public class FSConfigProducer implements DataProducer<FileSourceConfig> {
             } catch (IOException e) {
                 throw new UncheckedIOException(e); //lovely thing checked exceptions are.
             }
-
         }
 
         return new FileSourceConfig(file,username,password);

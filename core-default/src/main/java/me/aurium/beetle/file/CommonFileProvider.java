@@ -34,6 +34,11 @@ public class CommonFileProvider implements FileProvider {
         registerNewFileProducer(producer,options,Path.of(path));
     }
 
+    @Override
+    public <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?, T> producer, T options) {
+        registerNewFileProducer(producer, options, localPath);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public <T extends DataProducer<?>> T getProducer(ProducerKey<T, ?> key) {
