@@ -1,10 +1,11 @@
 package me.aurium.beetle.file.ending;
 
 import me.aurium.beetle.file.WrongEndingTypeException;
+import me.aurium.beetle.file.extension.Extension;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Abstract producer
@@ -14,9 +15,11 @@ import java.util.Optional;
 public class CommonEndingProducer implements EndingProducer {
 
     private final String key;
+    private final Attributes attributes;
 
-    public CommonEndingProducer(String key) {
+    CommonEndingProducer(String key, Attributes attributes) {
         this.key = key;
+        this.attributes = attributes;
     }
 
     Optional<String> getStringEnding(String fileName) {
@@ -51,6 +54,34 @@ public class CommonEndingProducer implements EndingProducer {
 
     public EndingWrapper ofFile(File file) {
         return new CommonEndingWrapper(fromPath(file.toPath()),EndingType.INDIRECT);
+    }
+
+    public static class Builder {
+        private final String key;
+        private final Set<Class<? extends Extension>> attributes;
+
+        public Builder(String key) {
+            this.key = key;
+            this.attributes = new HashSet<>();
+        }
+
+        public Builder withAttributes(Collection<Class<? extends Extension>> iterable) {
+            attributes.addAll(iterable);
+
+            return this;
+        }
+
+        public Builder withAttribute(Class<? extends Extension> tribute) {
+            this.attributes.add(tribute);
+
+            return this;
+        }
+
+        public CommonEndingProducer build() {
+            return new CommonEndingProducer(key,new Attributes(attributes));
+        }
+
+
     }
 
 }

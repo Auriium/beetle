@@ -1,7 +1,7 @@
 package me.aurium.beetle;
 
-import me.aurium.beetle.file.mutableconfig.MutableConfKey;
-import me.aurium.beetle.file.mutableconfig.MutableConfOptions;
+import me.aurium.beetle.file.config.MutableConfKey;
+import me.aurium.beetle.file.config.MutableConfOptions;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpigotExamples extends JavaPlugin {

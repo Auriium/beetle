@@ -1,4 +1,4 @@
-package me.aurium.beetle.file.mutableconfig;
+package me.aurium.beetle.file.config;
 
 import me.aurium.beetle.file.producer.Producer;
 import me.aurium.beetle.file.producer.ProducerKey;
