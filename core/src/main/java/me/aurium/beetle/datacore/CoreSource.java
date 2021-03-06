@@ -1,6 +1,5 @@
 package me.aurium.beetle.datacore;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 

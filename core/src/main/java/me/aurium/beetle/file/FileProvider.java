@@ -1,5 +1,9 @@
 package me.aurium.beetle.file;
 
+import me.aurium.beetle.file.producer.Producer;
+import me.aurium.beetle.file.producer.ProducerKey;
+import me.aurium.beetle.file.producer.ProducerOptions;
+
 import java.nio.file.Path;
 
 /**
@@ -44,7 +48,7 @@ public interface FileProvider {
      * @throws NonexistentProducerException if there is no producer under that key
      * @throws ProducerAlreadyRegisteredException if another producer already exists under that key's identifier
      */
-    <T extends DataProducer<?>> T getProducer(ProducerKey<T,?> key);
+    <T extends Producer<?>> T getProducer(ProducerKey<T,?> key);
 
 
 }

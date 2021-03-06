@@ -1,4 +1,4 @@
-package me.aurium.beetle.file;
+package me.aurium.beetle.file.producer;
 
 import java.nio.file.Path;
 
@@ -7,10 +7,11 @@ import java.nio.file.Path;
  * @param <T> the type of dataproducer this corresponds to
  * @param <C> the type of options the producer needs to be created
  */
-public interface ProducerKey<T extends DataProducer<?>,C extends ProducerOptions> {
+public interface ProducerKey<T extends Producer,C extends ProducerOptions> {
 
     T newProducer(C options, Path path);
 
     String getIdentifier();
-    Class<T> getProducerClassType();
+
+    boolean isInstance(Producer producer);
 }

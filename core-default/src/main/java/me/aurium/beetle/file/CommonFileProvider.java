@@ -1,6 +1,8 @@
 package me.aurium.beetle.file;
 
-import me.aurium.beetle.file.*;
+import me.aurium.beetle.file.producer.Producer;
+import me.aurium.beetle.file.producer.ProducerKey;
+import me.aurium.beetle.file.producer.ProducerOptions;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -9,7 +11,7 @@ import java.util.Map;
 public class CommonFileProvider implements FileProvider {
 
     private final Path localPath;
-    private final Map<String, DataProducer<?>> internalMap;
+    private final Map<String, Producer> internalMap;
 
     public CommonFileProvider(Path localPath) {
         this.localPath = localPath;
@@ -25,7 +27,8 @@ public class CommonFileProvider implements FileProvider {
             throw new ProducerAlreadyRegisteredException(identifier);
         }
 
-        DataProducer<?> wonk = producer.newProducer(options,path);
+        Producer wonk = producer.newProducer(options,path);
+
         internalMap.put(identifier,wonk);
     }
 
@@ -41,15 +44,13 @@ public class CommonFileProvider implements FileProvider {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends DataProducer<?>> T getProducer(ProducerKey<T, ?> key) {
+    public <T extends Producer> T getProducer(ProducerKey<T, ?> key) {
 
-        DataProducer<?> producer = internalMap.get(key.getIdentifier());
+        Producer producer = internalMap.get(key.getIdentifier());
 
         if (producer == null) throw new NonexistentProducerException();
 
-        Class<T> expectedType = key.getProducerClassType();
-
-        if (!(producer.getClass() == expectedType)) throw new WrongProducerTypeException(expectedType);
+        if (!key.isInstance(producer)) throw new WrongProducerTypeException();
 
         return (T) producer;
 

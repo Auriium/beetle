@@ -7,8 +7,8 @@ package me.aurium.beetle.file;
  */
 public class WrongProducerTypeException extends RuntimeException{
 
-    public WrongProducerTypeException(Class<?> expectedType) {
-        super("Dataproducer was not of expected type " + expectedType + " in the ProducerMap");
+    public WrongProducerTypeException() {
+        super("Dataproducer was not of expected type in the ProducerMap");
     }
 
 }
