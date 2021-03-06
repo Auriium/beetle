@@ -27,15 +27,5 @@ public class FileCoreSourceFactory implements CoreSourceFactory {
         return new AddressCoreSource(address,file.getUsername(), file.getUsername());
     }
 
-    public static class H2 extends FileCoreSourceFactory {
-        public H2(FileSourceConfig databaseFile) {
-            super(databaseFile, "org.h2.Driver", "h2");
-        }
-    }
 
-    public static class SQLite extends FileCoreSourceFactory {
-        public SQLite(FileSourceConfig databaseFile) {
-            super(databaseFile,"org.sqlite.jdbc","sqlite");
-        }
-    }
 }

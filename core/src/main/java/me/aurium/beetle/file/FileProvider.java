@@ -48,7 +48,6 @@ public interface FileProvider {
      * @throws NonexistentProducerException if there is no producer under that key
      * @throws ProducerAlreadyRegisteredException if another producer already exists under that key's identifier
      */
-    <T extends Producer<?>> T getProducer(ProducerKey<T,?> key);
-
+    <T extends Producer> T getProducer(ProducerKey<T,?> key);
 
 }

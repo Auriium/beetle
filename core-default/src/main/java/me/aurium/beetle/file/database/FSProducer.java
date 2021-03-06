@@ -3,6 +3,7 @@ package me.aurium.beetle.file.database;
 import me.aurium.beetle.datacore.CoreSource;
 import me.aurium.beetle.datacore.FileCoreSourceFactory;
 import me.aurium.beetle.datacore.FileSourceConfig;
+import me.aurium.beetle.datacore.LocalDBType;
 import me.aurium.beetle.file.producer.Producer;
 import me.aurium.beetle.file.UncheckedIOException;
 
@@ -15,9 +16,9 @@ public class FSProducer implements Producer {
     private final Path filePathExact;
     private final String username;
     private final String password;
-    private final Type type;
+    private final LocalDBType type;
 
-    public FSProducer(Path filePathExact, String username, String password, Type type) {
+    public FSProducer(Path filePathExact, String username, String password, LocalDBType type) {
         this.filePathExact = filePathExact;
         this.username = username;
         this.password = password;
@@ -36,18 +37,7 @@ public class FSProducer implements Producer {
             throw new UncheckedIOException(e); //lovely thing checked exceptions are.
         }
 
-
-        switch(type) {
-            case H2:
-                return new FileCoreSourceFactory.H2(new FileSourceConfig(file,username,password)).getCoreSource();
-            case SQLite:
-                return new FileCoreSourceFactory.SQLite(new FileSourceConfig(file,username,password)).getCoreSource();
-            default:
-                throw new RuntimeException("Unknown database type!");
-        }
+        return type.asFactory(file,username,password).getCoreSource();
     }
 
-    public enum Type {
-        H2,SQLite
-    }
 }
