@@ -16,8 +16,13 @@ public class H2Extension implements LocalStorageExtension{
     }
 
     @Override
-    public Path pathPlease() {
+    public Path getSeveredPath() {
         return path;
+    }
+
+    @Override
+    public Path getCombinedPath(Path path) {
+        return path.resolve(this.path);
     }
 
     @Override
@@ -25,11 +30,11 @@ public class H2Extension implements LocalStorageExtension{
         return LocalDBType.H2;
     }
 
-    public static YMLExtension of(Path path) {
-        return new YMLExtension(ExtensionUtils.fromPath(path,KEY));
+    public static H2Extension of(Path path) {
+        return new H2Extension(ExtensionUtils.fromPath(path,KEY));
     }
 
-    public static YMLExtension of(String string) {
+    public static H2Extension of(String string) {
         return of(Path.of(string));
     }
 }

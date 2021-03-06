@@ -15,7 +15,7 @@ public class FSProducerKey implements ProducerKey<FSProducer,FSProducerOptions> 
 
     @Override
     public FSProducer newProducer(FSProducerOptions options, Path path) {
-        Path fullPath = path.resolve(options.getStorageExtension().pathPlease());
+        Path fullPath = path.resolve(options.getStorageExtension().getSeveredPath());
 
         return new FSProducer(path, options.getUsername(), options.getPassword(), options.getStorageExtension().getCorrespondingCoreSource());
     }

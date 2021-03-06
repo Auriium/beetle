@@ -14,8 +14,13 @@ public class YMLExtension implements ConfigurableExtension {
     }
 
     @Override
-    public Path pathPlease() {
+    public Path getSeveredPath() {
         return path;
+    }
+
+    @Override
+    public Path getCombinedPath(Path path) {
+        return path.resolve(this.path);
     }
 
     public static YMLExtension ofPath(Path path) {

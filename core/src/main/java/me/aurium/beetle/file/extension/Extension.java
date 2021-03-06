@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 public interface Extension {
 
-    Path pathPlease();
+    Path getSeveredPath();
+    Path getCombinedPath(Path basePath);
 
 }
