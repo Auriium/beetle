@@ -22,6 +22,7 @@
         <module>spigot-impl</module>
         <module>velo-impl</module>
         <module>discord-impl</module>
+        <module>examples</module>
 
     </modules>
 

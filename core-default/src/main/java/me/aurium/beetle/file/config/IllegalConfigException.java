@@ -1,4 +1,4 @@
-package me.aurium.beetle.file.configuration;
+package me.aurium.beetle.file.config;
 
 /**
  * Exception thrown when a configuration is loaded incorrectly

@@ -5,6 +5,9 @@ import me.aurium.beetle.file.WrongEndingTypeException;
 import java.nio.file.Path;
 import java.util.Optional;
 
+/**
+ * Extension utilities for the standard implementations. Probably can improve this in some way in the future
+ */
 public class ExtensionUtils {
 
     public static Optional<String> getStringEnding(String fileName) {
@@ -25,6 +28,5 @@ public class ExtensionUtils {
 
         return Path.of(internal);
     }
-
 
 }

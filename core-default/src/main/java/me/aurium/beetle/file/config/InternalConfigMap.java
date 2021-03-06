@@ -1,4 +1,4 @@
-package me.aurium.beetle.file.configuration;
+package me.aurium.beetle.file.config;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -7,7 +7,8 @@ import me.aurium.beetle.service.ServiceRegistry;
 import me.aurium.beetle.task.Tasker;
 
 /**
- * Internal Beetle interface
+ * Collection of unified subutilities. Keep in mind that the beetle simply unified the subutilities, if you want to use them
+ * elsewhere individually it is completely possible to do so (provided you pass them their dependencies)
  */
 public interface Beetle {
 

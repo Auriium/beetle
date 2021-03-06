@@ -2,7 +2,7 @@ package me.aurium.beetle.file.extension;
 
 import me.aurium.beetle.datacore.LocalDBType;
 
-public interface LocalDataExtension extends CustomExtension{
+public interface Sourceable {
 
     LocalDBType getType();
 

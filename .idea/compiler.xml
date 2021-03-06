@@ -8,9 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core-branch" />
         <module name="core" />
-        <module name="core-default" />
         <module name="velo-impl" />
         <module name="spigot-impl" />
+        <module name="examples" />
+        <module name="core-default" />
         <module name="discord-impl" />
       </profile>
     </annotationProcessing>
