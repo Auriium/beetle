@@ -8,7 +8,7 @@ import java.io.File;
  * I will not add microsoftsql
  * TODO add one of these for hikaricoresources
  */
-public enum LocalDBType {
+public enum LocalDBConstants implements LocalDB {
 
     SQLite("org.sqlite.jdbc","sqlite"),
     H2("org.h2.driver","h2");
@@ -16,23 +16,27 @@ public enum LocalDBType {
     private final String driverClasspath;
     private final String driverName;
 
-    LocalDBType(String driverClasspath, String driverName) {
+    LocalDBConstants(String driverClasspath, String driverName) {
         this.driverClasspath = driverClasspath;
         this.driverName = driverName;
     }
 
+    @Override
     public String getDriverName() {
         return driverName;
     }
 
+    @Override
     public String getDriverClasspath() {
         return driverClasspath;
     }
 
+    @Override
     public FileCoreSourceFactory asFactory(FileSourceConfig config) {
         return new FileCoreSourceFactory(config,driverClasspath,driverName);
     }
 
+    @Override
     public FileCoreSourceFactory asFactory(File file, String username, String password) {
         return new FileCoreSourceFactory(new FileSourceConfig(file, username, password),driverClasspath,driverName);
     }

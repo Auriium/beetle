@@ -1,6 +1,7 @@
 package me.aurium.beetle.defaults.file.database;
 
-import me.aurium.beetle.defaults.datacore.LocalDBType;
+import me.aurium.beetle.defaults.datacore.LocalDB;
+import me.aurium.beetle.defaults.datacore.LocalDBConstants;
 import me.aurium.beetle.api.file.WrongEndingTypeException;
 
 import java.nio.file.Path;
@@ -9,15 +10,15 @@ import java.util.Optional;
 /**
  * Collection of default implementations of SourceableExtension
  */
-public enum DBExtensions implements SourceableFileExtension {
+public enum DBExtensionConstants implements SourceableFileExtension {
 
-    H2(".h2", LocalDBType.H2),
-    DB(".db",LocalDBType.SQLite);
+    H2(".h2", LocalDBConstants.H2),
+    DB(".db", LocalDBConstants.SQLite);
 
     private final String key;
-    private final LocalDBType dbType;
+    private final LocalDB dbType;
 
-    DBExtensions(String key, LocalDBType dbType) {
+    DBExtensionConstants(String key, LocalDB dbType) {
         this.dbType = dbType;
         this.key = key;
     }
@@ -28,7 +29,7 @@ public enum DBExtensions implements SourceableFileExtension {
     }
 
     @Override
-    public LocalDBType getType() {
+    public LocalDB getType() {
         return dbType;
     }
 

@@ -1,7 +1,7 @@
 package me.aurium.beetle.defaults.file.database;
 
 import me.aurium.beetle.api.datacore.CoreSource;
-import me.aurium.beetle.defaults.datacore.LocalDBType;
+import me.aurium.beetle.defaults.datacore.LocalDB;
 import me.aurium.beetle.api.file.UncheckedIOException;
 import me.aurium.beetle.api.file.producer.Producer;
 
@@ -14,9 +14,9 @@ public class LocalSource implements Producer {
     private final Path filePathExact;
     private final String username;
     private final String password;
-    private final LocalDBType type;
+    private final LocalDB type;
 
-    public LocalSource(Path filePathExact, LocalDBType type, String username, String password) {
+    public LocalSource(Path filePathExact, LocalDB type, String username, String password) {
         this.filePathExact = filePathExact;
         this.username = username;
         this.password = password;
