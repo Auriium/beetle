@@ -1,5 +1,4 @@
 import me.aurium.beetle.command.AbstractCommand;
-import me.aurium.beetle.command.SpigotCommandData;
 
 public class CommandTest implements AbstractCommand<SpigotCommandData> {
 

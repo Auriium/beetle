@@ -7,7 +7,7 @@ import java.util.Collections;
  * Represents a command that can provide a specific type of data
  * @param <T> the type of data
  */
-public interface AbstractCommand<T extends CommandData> {
+public interface AbstractCommand<T> {
 
     String getName();
     String getPermission();
