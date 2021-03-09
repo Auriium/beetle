@@ -7,16 +7,21 @@
         <groupId>me.aurium</groupId>
         <version>0.2.0</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>beetle-core</artifactId>
-
-    <version>0.3.1</version>
+    <artifactId>beetle-examples</artifactId>
 
     <properties>
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
         <maven.compiler.target>${compiler.version}</maven.compiler.target>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-spigot-impl</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

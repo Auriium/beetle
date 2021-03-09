@@ -1,6 +1,7 @@
-import me.aurium.beetle.command.AbstractCommand;
+import me.aurium.beetle.api.command.AbstractCommand;
+import org.bukkit.command.CommandSender;
 
-public class CommandTest implements AbstractCommand<SpigotCommandData> {
+public class CommandTest implements AbstractCommand<CommandSender> {
 
 
     @Override
@@ -14,8 +15,8 @@ public class CommandTest implements AbstractCommand<SpigotCommandData> {
     }
 
     @Override
-    public boolean execute(SpigotCommandData wrapper, String[] args) {
-        wrapper.debugMessage("A debug message!");
+    public boolean execute(CommandSender wrapper, String[] args) {
+        wrapper.sendMessage("lah");
 
         return false;
     }

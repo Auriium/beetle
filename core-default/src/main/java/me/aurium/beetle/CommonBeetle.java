@@ -1,11 +1,11 @@
 package me.aurium.beetle;
 
-import me.aurium.beetle.Beetle;
-import me.aurium.beetle.datacore.DataCoreFactory;
-import me.aurium.beetle.file.FileProvider;
-import me.aurium.beetle.logger.SimpleLogger;
-import me.aurium.beetle.service.ServiceRegistry;
-import me.aurium.beetle.task.Tasker;
+import me.aurium.beetle.api.Beetle;
+import me.aurium.beetle.api.datacore.DataCoreFactory;
+import me.aurium.beetle.api.file.FileProvider;
+import me.aurium.beetle.api.logger.SimpleLogger;
+import me.aurium.beetle.api.service.ServiceRegistry;
+import me.aurium.beetle.api.task.Tasker;
 
 public class CommonBeetle implements Beetle {
 

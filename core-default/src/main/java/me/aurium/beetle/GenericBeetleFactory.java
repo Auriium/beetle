@@ -1,15 +1,16 @@
 package me.aurium.beetle;
 
-import me.aurium.beetle.datacore.CommonDatacoreFactory;
-import me.aurium.beetle.datacore.DataCoreFactory;
-import me.aurium.beetle.file.CommonFileProvider;
-import me.aurium.beetle.file.FileProvider;
-import me.aurium.beetle.logger.SLFLoggerHelper;
-import me.aurium.beetle.logger.SimpleLogger;
-import me.aurium.beetle.service.CommonRegistry;
-import me.aurium.beetle.service.ServiceRegistry;
-import me.aurium.beetle.task.GenericTasker;
-import me.aurium.beetle.task.Tasker;
+import me.aurium.beetle.api.BeetleFactory;
+import me.aurium.beetle.defaults.datacore.CommonDatacoreFactory;
+import me.aurium.beetle.api.datacore.DataCoreFactory;
+import me.aurium.beetle.defaults.file.CommonFileProvider;
+import me.aurium.beetle.api.file.FileProvider;
+import me.aurium.beetle.defaults.logger.SLFLoggerHelper;
+import me.aurium.beetle.api.logger.SimpleLogger;
+import me.aurium.beetle.defaults.service.CommonRegistry;
+import me.aurium.beetle.api.service.ServiceRegistry;
+import me.aurium.beetle.defaults.task.GenericTasker;
+import me.aurium.beetle.api.task.Tasker;
 
 import java.nio.file.Path;
 

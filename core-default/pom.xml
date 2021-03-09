@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <version>0.3.0</version>
+    <version>0.3.1</version>
 
     <artifactId>beetle-core-default</artifactId>
     <dependencies>
@@ -18,10 +18,19 @@
             <artifactId>beetle-core</artifactId>
             <version>${core.version}</version>
         </dependency>
+        <!-- this is provided because... only use hikari shit if you want it !-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- use slf4j if you want !-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${logger.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
