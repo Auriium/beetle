@@ -18,7 +18,6 @@ public interface BlockPath {
 
     BlockPath resolve(BlockPath path);
     BlockPath resolve(Block block);
-    BlockPath resolve(String string);
 
     /**
      * Returns an ordered set of blocks
@@ -26,6 +25,6 @@ public interface BlockPath {
      */
     List<Block> getAllBlocks();
 
-    String asString();
+    String toString();
 
 }
