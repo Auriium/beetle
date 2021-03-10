@@ -25,7 +25,7 @@ public class SpigotExamples extends JavaPlugin {
                 .setPermission("myplugin.permission")
                 .setUsage("usage")
                 .setAliases("hi","herro")
-                .setContext(context  -> {
+                .setContextHandler(context  -> {
                     context.getSender().sendMessage("sup");
                     return true;
                 });
