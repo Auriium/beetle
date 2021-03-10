@@ -19,13 +19,13 @@ public class SpigotCommandWrapper extends Command {
 
     @Override
     public boolean execute(CommandSender commandSender, String s, String[] strings) {
-        return command.execute(commandSender,strings);
+        return command.execute(commandSender,s,strings);
     }
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
         return List.copyOf(
-                command.tabComplete(sender,args)
+                command.tabComplete(sender,alias,args)
         );
     }
 }

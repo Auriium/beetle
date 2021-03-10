@@ -11,14 +11,14 @@ public interface AbstractCommand<T> {
 
     String getName();
     String getPermission();
-    boolean execute(T sender, String[] args);
+    boolean execute(T sender, String alias, String[] args);
 
 
     default Collection<String> getAliases() {
         return Collections.emptySet();
     }
 
-    default Collection<String> tabComplete(T sender, String[] args) {
+    default Collection<String> tabComplete(T sender, String alias, String[] args) {
         return Collections.emptySet();
     }
 

@@ -17,12 +17,12 @@
         <module name="core" />
         <module name="spigot-impl" />
         <module name="examples" />
-        <module name="beetle-core-branch" />
         <module name="discord-impl" />
         <module name="beetle-discord-impl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="beetle-core-branch" target="11" />
       <module name="core-database" target="11" />
       <module name="core-defaults" target="11" />
       <module name="core-implementation" target="11" />
