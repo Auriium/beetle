@@ -22,6 +22,11 @@
             <artifactId>beetle-spigot-impl</artifactId>
             <version>0.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
