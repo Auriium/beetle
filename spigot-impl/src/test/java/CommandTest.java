@@ -15,7 +15,7 @@ public class CommandTest implements AbstractCommand<CommandSender> {
     }
 
     @Override
-    public boolean execute(CommandSender wrapper, String[] args) {
+    public boolean execute(CommandSender wrapper, String alias, String[] args) {
         wrapper.sendMessage("lah");
 
         return false;
