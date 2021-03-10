@@ -1,6 +1,6 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.api.command.AbstractCommand;
+import me.aurium.beetle.api.command.Command;
 import me.aurium.beetle.api.command.CommandRegistry;
 import me.aurium.beetle.api.command.IllegalCommandMapState;
 import org.bukkit.command.CommandMap;
@@ -13,37 +13,37 @@ import java.util.Set;
 public class SpigotCommandRegistry implements CommandRegistry<CommandSender> {
 
     private final CommandMap commandMap;
-    private final Set<AbstractCommand<CommandSender>> abstractCommands;
+    private final Set<Command<CommandSender>> commands;
 
     SpigotCommandRegistry(CommandMap commandMap) {
         this.commandMap = commandMap;
-        this.abstractCommands = new HashSet<>();
+        this.commands = new HashSet<>();
     }
 
     @Override
-    public void registerCommand(AbstractCommand<CommandSender> abstractCommand) {
-        boolean success = commandMap.register(abstractCommand.getName(),new SpigotCommandWrapper(abstractCommand));
+    public void registerCommand(Command<CommandSender> command) {
+        boolean success = commandMap.register(command.getName(),new SpigotCommandWrapper(command));
 
-        if (!success) throw new IllegalCommandMapState("Tried to register command without success: " + abstractCommand.getName());
+        if (!success) throw new IllegalCommandMapState("Tried to register command without success: " + command.getName());
 
-        this.abstractCommands.add(abstractCommand);
+        this.commands.add(command);
     }
 
 
 
     @Override
-    public void removeCommand(AbstractCommand<CommandSender> abstractCommand) {
+    public void removeCommand(Command<CommandSender> command) {
 
     }
 
     @Override
-    public Collection<AbstractCommand<CommandSender>> getAllCommands() {
-        return abstractCommands;
+    public Collection<Command<CommandSender>> getAllCommands() {
+        return commands;
     }
 
-    void verifyCommand(AbstractCommand<CommandSender> abstractCommand) {
-        assert abstractCommand.getName() != null;
-        assert abstractCommand.getAliases() != null;
-        assert abstractCommand.getPermission() != null;
+    void verifyCommand(Command<CommandSender> command) {
+        assert command.getName() != null;
+        assert command.getAliases() != null;
+        assert command.getPermission() != null;
     }
 }

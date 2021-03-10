@@ -1,6 +1,6 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.CommonBeetle;
+import me.aurium.beetle.defaults.CommonBeetle;
 import me.aurium.beetle.api.CommandRegisterable;
 import me.aurium.beetle.api.command.CommandRegistry;
 import me.aurium.beetle.api.datacore.DataCoreFactory;

@@ -8,9 +8,9 @@ import java.util.Collection;
  */
 public interface CommandRegistry<T> {
 
-    void registerCommand(AbstractCommand<T> abstractCommand);
-    void removeCommand(AbstractCommand<T> abstractCommand);
+    void registerCommand(Command<T> command);
+    void removeCommand(Command<T> command);
 
-    Collection<AbstractCommand<T>> getAllCommands();
+    Collection<Command<T>> getAllCommands();
 
 }

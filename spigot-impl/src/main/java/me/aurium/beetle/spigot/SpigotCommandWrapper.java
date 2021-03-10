@@ -1,20 +1,19 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.api.command.AbstractCommand;
-import org.bukkit.command.Command;
+import me.aurium.beetle.api.command.Command;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
 
-public class SpigotCommandWrapper extends Command {
+public class SpigotCommandWrapper extends org.bukkit.command.Command {
 
-    protected final AbstractCommand<CommandSender> command;
+    protected final Command<CommandSender> command;
 
     //hacky code in the constructor because the alternative is verbose (lazy)
-    public SpigotCommandWrapper(AbstractCommand<CommandSender> abstractCommand) {
-        super(abstractCommand.getName(), abstractCommand.getDescription(), abstractCommand.getUsage(), List.copyOf(abstractCommand.getAliases()));
+    public SpigotCommandWrapper(Command<CommandSender> command) {
+        super(command.getName(), command.getDescription(), command.getUsage(), List.copyOf(command.getAliases()));
 
-        this.command = abstractCommand;
+        this.command = command;
     }
 
     @Override

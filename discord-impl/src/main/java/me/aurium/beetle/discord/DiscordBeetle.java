@@ -1,6 +1,6 @@
 package me.aurium.beetle.discord;
 
-import me.aurium.beetle.CommonBeetle;
+import me.aurium.beetle.defaults.CommonBeetle;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
 import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.logger.SimpleLogger;

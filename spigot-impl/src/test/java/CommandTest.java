@@ -1,7 +1,7 @@
-import me.aurium.beetle.api.command.AbstractCommand;
+import me.aurium.beetle.api.command.Command;
 import org.bukkit.command.CommandSender;
 
-public class CommandTest implements AbstractCommand<CommandSender> {
+public class CommandTest implements Command<CommandSender> {
 
 
     @Override

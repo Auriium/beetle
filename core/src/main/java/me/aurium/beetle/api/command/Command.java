@@ -5,9 +5,13 @@ import java.util.Collections;
 
 /**
  * Represents a command that can provide a specific type of data
+ *
+ * Use: You can either manually implement this or use the SimpleCommand builder.
+ * If you are using Branch alongside Beetle, you can use the builders that it provides.
+ *
  * @param <T> the type of data
  */
-public interface AbstractCommand<T> {
+public interface Command<T> {
 
     String getName();
     String getPermission();

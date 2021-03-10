@@ -1,4 +1,4 @@
-package me.aurium.beetle;
+package me.aurium.beetle.defaults;
 
 import me.aurium.beetle.api.BeetleFactory;
 import me.aurium.beetle.defaults.datacore.CommonDatacoreFactory;
