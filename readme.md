@@ -87,3 +87,22 @@ Make pull requests and I accept them. It's about that simple, just don't shitcod
 - EssentialsX replacement (No.)
 - Be a minecraft plugin (No- I mean you can stick it *in* a plugin, but unlike some other utilities you can leave this on the classpath or shade it in. It isn't a fucking minecraft plugin)
 - Fix all your problems magically
+
+# Repositories
+```
+    <dependencies>
+        <dependency>
+            <groupId>me.aurium</groupId>
+            <artifactId>beetle-spigot-impl</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+    </dependencies>
+```
+```
+    <repositories>
+        <repository>
+            <id>aurium</id>
+            <url>https://repo.repsy.io/mvn/elytraforce/default</url>
+        </repository>
+    </repositories>
+```
