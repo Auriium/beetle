@@ -20,7 +20,7 @@ public class ExamplePlugin extends JavaPlugin {
 
         prod.produce();*/
 
-        SimpleCommandBuilder<CommandSender> builder = SimpleCommandBuilder.of("hello", new SpigotContextSource())
+        beetle.getCommandRegistry().newCommandBuilder("hello")
                 .setDescription("desc")
                 .setPermission("example.permission")
                 .setUsage("usage")
@@ -28,9 +28,8 @@ public class ExamplePlugin extends JavaPlugin {
                 .setContextHandler(context  -> {
                     context.getSender().sendMessage("This is a command made using the builder!");
                     return true;
-                });
+                }).register();
 
-        beetle.getCommandRegistry().registerCommand(builder.build());
         beetle.getCommandRegistry().registerCommand(new ExampleCommand());
 
 

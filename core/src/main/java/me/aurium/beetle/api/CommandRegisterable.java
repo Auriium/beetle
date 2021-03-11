@@ -10,6 +10,5 @@ import me.aurium.beetle.api.command.ContextSource;
 public interface CommandRegisterable<T> {
 
     CommandRegistry<T> getCommandRegistry();
-    ContextSource<T> getCommandSource();
 
 }

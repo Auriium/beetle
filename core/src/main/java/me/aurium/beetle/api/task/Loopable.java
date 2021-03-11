@@ -1,0 +1,7 @@
+package me.aurium.beetle.api.task;
+
+public interface Loopable {
+
+    void tick(Loop loop);
+
+}

@@ -1,18 +1,16 @@
 package me.aurium.beetle.defaults.command;
 
-import me.aurium.beetle.api.command.ContextHandler;
-import me.aurium.beetle.api.command.ContextSource;
-import me.aurium.beetle.api.command.TabContextHandler;
+import me.aurium.beetle.api.command.*;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
-public class SimpleCommandBuilder<T> {
+public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
 
     private final String name;
-    private final ContextSource<T> contextSource;
+    private final CommandRegistry<T> registry;
 
     private ContextHandler<T> contextHandler;
     private TabContextHandler<T> tabContextHandler;
@@ -21,9 +19,8 @@ public class SimpleCommandBuilder<T> {
     private String description;
     private String usage;
 
-    public SimpleCommandBuilder(String commandName, ContextSource<T> source) {
+     public SimpleCommandBuilder(String commandName, CommandRegistry<T> registry) {
         this.name = commandName;
-        this.contextSource = source;
         this.contextHandler = consumed -> {
             consumed.debug("Context missing for command " + consumed.getAlias() + "! Please define a context.");
             return true;
@@ -32,6 +29,7 @@ public class SimpleCommandBuilder<T> {
         this.aliases = Collections.emptySet();
         this.description = "Default description for minecraft like platforms";
         this.usage = "Default usage for minecraft like platforms";
+        this.registry = registry;
     }
 
     public SimpleCommandBuilder<T> setContextHandler(ContextHandler<T> context) {
@@ -69,6 +67,11 @@ public class SimpleCommandBuilder<T> {
         return this;
     }
 
+    @Override
+    public void register() {
+        this.registry.registerCommand(build());
+    }
+
     public SimpleCommand<T> build() {
         Objects.requireNonNull(contextHandler);
         Objects.requireNonNull(tabContextHandler);
@@ -77,11 +80,7 @@ public class SimpleCommandBuilder<T> {
         Objects.requireNonNull(description);
         Objects.requireNonNull(usage);
 
-        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage,contextSource);
-    }
-
-    public static <T> SimpleCommandBuilder<T> of(String commandName, ContextSource<T> source) {
-        return new SimpleCommandBuilder<>(commandName, source);
+        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage, registry.getContextSource());
     }
 
 }

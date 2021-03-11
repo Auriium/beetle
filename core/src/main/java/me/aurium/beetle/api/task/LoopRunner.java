@@ -1,4 +1,7 @@
 package me.aurium.beetle.api.task;
 
-public interface TaskRunner {
+public interface LoopRunner {
+
+
+
 }

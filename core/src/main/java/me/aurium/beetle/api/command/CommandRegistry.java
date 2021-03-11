@@ -13,4 +13,7 @@ public interface CommandRegistry<T> {
 
     Collection<Command<T>> getAllCommands();
 
+    ContextSource<T> getContextSource();
+    CommandBuilder<T> newCommandBuilder(String command);
+
 }

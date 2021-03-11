@@ -39,9 +39,8 @@ public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
         ServiceRegistry serviceRegistry = new CommonRegistry();
         DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(tasker.getRunner());
         FileProvider fileProvider = new CommonFileProvider(plugin.getDataFolder().toPath());
-        ContextSource<CommandSender> sender = new SpigotContextSource();
 
-        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,sender,isDebug);
+        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,isDebug);
     }
 
 

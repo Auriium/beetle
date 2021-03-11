@@ -6,7 +6,7 @@ package me.aurium.beetle.api.task;
 public interface Tasker {
 
     TaskQueue getQueue();
-    TaskRunner getRunner();
+    Runner getRunner();
 
     void launch();
 
