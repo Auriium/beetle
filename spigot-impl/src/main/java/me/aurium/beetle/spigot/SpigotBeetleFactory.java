@@ -1,6 +1,7 @@
 package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.api.BeetleFactory;
+import me.aurium.beetle.api.command.ContextSource;
 import me.aurium.beetle.defaults.file.CommonFileProvider;
 import me.aurium.beetle.defaults.datacore.CommonDatacoreFactory;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
@@ -9,6 +10,7 @@ import me.aurium.beetle.defaults.logger.SLFLoggerHelper;
 import me.aurium.beetle.api.logger.SimpleLogger;
 import me.aurium.beetle.defaults.service.CommonRegistry;
 import me.aurium.beetle.api.service.ServiceRegistry;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -37,8 +39,9 @@ public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
         ServiceRegistry serviceRegistry = new CommonRegistry();
         DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(tasker.getRunner());
         FileProvider fileProvider = new CommonFileProvider(plugin.getDataFolder().toPath());
+        ContextSource<CommandSender> sender = new SpigotContextSource();
 
-        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,isDebug);
+        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,sender,isDebug);
     }
 
 

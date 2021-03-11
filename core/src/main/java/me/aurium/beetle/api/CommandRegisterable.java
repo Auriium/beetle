@@ -1,6 +1,7 @@
 package me.aurium.beetle.api;
 
 import me.aurium.beetle.api.command.CommandRegistry;
+import me.aurium.beetle.api.command.ContextSource;
 
 /**
  * Represents something that can have a commandRegistry produced from it, typically a beetle.
@@ -9,5 +10,6 @@ import me.aurium.beetle.api.command.CommandRegistry;
 public interface CommandRegisterable<T> {
 
     CommandRegistry<T> getCommandRegistry();
+    ContextSource<T> getCommandSource();
 
 }
