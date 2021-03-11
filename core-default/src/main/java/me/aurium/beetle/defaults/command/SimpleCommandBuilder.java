@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
-public abstract class SimpleCommandBuilder<T> {
+public class SimpleCommandBuilder<T> {
 
     private final String name;
     private final ContextSource<T> contextSource;
@@ -21,7 +21,7 @@ public abstract class SimpleCommandBuilder<T> {
     private String description;
     private String usage;
 
-    protected SimpleCommandBuilder(String commandName, ContextSource<T> source) {
+    public SimpleCommandBuilder(String commandName, ContextSource<T> source) {
         this.name = commandName;
         this.contextSource = source;
         this.contextHandler = consumed -> {
@@ -78,6 +78,10 @@ public abstract class SimpleCommandBuilder<T> {
         Objects.requireNonNull(usage);
 
         return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage,contextSource);
+    }
+
+    public static <T> SimpleCommandBuilder<T> of(String commandName, ContextSource<T> source) {
+        return new SimpleCommandBuilder<>(commandName, source);
     }
 
 }

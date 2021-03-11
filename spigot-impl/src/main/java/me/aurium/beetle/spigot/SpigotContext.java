@@ -9,7 +9,6 @@ public class SpigotContext extends AbstractContext<CommandSender> {
         super(sender, alias, args);
     }
 
-    @Override
     public void debug(String string) {
         getSender().sendMessage(string);
     }

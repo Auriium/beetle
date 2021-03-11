@@ -3,7 +3,7 @@ package me.aurium.beetle.examples;
 import me.aurium.beetle.defaults.command.SimpleCommandBuilder;
 import me.aurium.beetle.spigot.SpigotBeetle;
 import me.aurium.beetle.spigot.SpigotBeetleFactory;
-import me.aurium.beetle.spigot.SpigotCommandBuilder;
+import me.aurium.beetle.spigot.SpigotContextSource;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +20,7 @@ public class SpigotExamples extends JavaPlugin {
 
         prod.produce();*/
 
-        SimpleCommandBuilder<CommandSender> builder = SpigotCommandBuilder.of("hello")
+        SimpleCommandBuilder<CommandSender> builder = SimpleCommandBuilder.of("hello",new SpigotContextSource())
                 .setDescription("desc")
                 .setPermission("myplugin.permission")
                 .setUsage("usage")
@@ -29,6 +29,8 @@ public class SpigotExamples extends JavaPlugin {
                     context.getSender().sendMessage("sup");
                     return true;
                 });
+
+        SimpleCommandBuilder<CommandSender> builder2 = SimpleCommandBuilder.of("shit",new SpigotContextSource());
 
         beetle.getCommandRegistry().registerCommand(builder.build());
 
