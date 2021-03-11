@@ -25,4 +25,5 @@ public class SpigotBeetle extends CommonBeetle implements CommandRegisterable<Co
         return commandRegistry;
     }
 
+
 }

@@ -20,7 +20,7 @@ public class ExamplePlugin extends JavaPlugin {
 
         prod.produce();*/
 
-        Command<CommandSender> command = new SimpleCommandBuilder<CommandSender>("hello")
+        beetle.getCommandRegistry().newCommandBuilder("hello")
                 .setDescription("desc")
                 .setPermission("example.permission")
                 .setUsage("usage")
@@ -28,10 +28,8 @@ public class ExamplePlugin extends JavaPlugin {
                 .setContextHandler(context  -> {
                     context.getSender().sendMessage("HELLO WORLD!");
                     return true;
-                }).build();
+                }).register();
 
-
-        beetle.getCommandRegistry().registerCommand(command);
         beetle.getCommandRegistry().registerCommand(new ExampleCommand());
 
 

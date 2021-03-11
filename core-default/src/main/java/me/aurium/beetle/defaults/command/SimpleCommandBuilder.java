@@ -1,18 +1,19 @@
 package me.aurium.beetle.defaults.command;
 
-import me.aurium.beetle.api.command.Command;
-import me.aurium.beetle.api.command.ContextHandler;
-import me.aurium.beetle.api.command.NoHandlerException;
-import me.aurium.beetle.api.command.TabContextHandler;
+
+import me.aurium.beetle.api.command.*;
+
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
-public class SimpleCommandBuilder<T> {
+public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
 
     private final String name;
+    private final CommandRegistry<T> registry;
+
 
     private ContextHandler<T> contextHandler;
     private TabContextHandler<T> tabContextHandler;
@@ -21,7 +22,8 @@ public class SimpleCommandBuilder<T> {
     private String description;
     private String usage;
 
-    public SimpleCommandBuilder(String commandName) {
+    public SimpleCommandBuilder(String commandName, CommandRegistry<T> registry) {
+
         this.name = commandName;
         this.contextHandler = consumed -> {
             throw new NoHandlerException();
@@ -30,6 +32,7 @@ public class SimpleCommandBuilder<T> {
         this.aliases = Collections.emptySet();
         this.description = "Default description for minecraft like platforms";
         this.usage = "Default usage for minecraft like platforms";
+        this.registry = registry;
     }
 
     public SimpleCommandBuilder<T> setContextHandler(ContextHandler<T> context) {
@@ -67,15 +70,21 @@ public class SimpleCommandBuilder<T> {
         return this;
     }
 
-    public Command<T> build() {
+
+    @Override
+    public void register() {
+        this.registry.registerCommand(build());
+    }
+
+    public SimpleCommand<T> build() {
+
         Objects.requireNonNull(contextHandler);
         Objects.requireNonNull(tabContextHandler);
         Objects.requireNonNull(permission);
         Objects.requireNonNull(aliases);
         Objects.requireNonNull(description);
         Objects.requireNonNull(usage);
-
-        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage);
+        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage, registry.getContextSource());
     }
 
 

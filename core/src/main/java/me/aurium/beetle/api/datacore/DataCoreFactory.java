@@ -1,6 +1,6 @@
 package me.aurium.beetle.api.datacore;
 
-import me.aurium.beetle.api.task.TaskRunner;
+import me.aurium.beetle.api.task.Runner;
 
 /**
  * Something that can produce DataCores from CoreSources.
@@ -8,6 +8,6 @@ import me.aurium.beetle.api.task.TaskRunner;
 public interface DataCoreFactory {
 
     DataCore produceDatacore(CoreSource source);
-    DataCore produceDatacoreWithRunner(CoreSource source, TaskRunner runner);
+    DataCore produceDatacoreWithRunner(CoreSource source, Runner runner);
 
 }
