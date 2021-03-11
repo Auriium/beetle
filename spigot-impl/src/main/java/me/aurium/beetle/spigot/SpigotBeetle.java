@@ -1,6 +1,5 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.api.command.ContextSource;
 import me.aurium.beetle.defaults.CommonBeetle;
 import me.aurium.beetle.api.CommandRegisterable;
 import me.aurium.beetle.api.command.CommandRegistry;

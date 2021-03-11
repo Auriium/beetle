@@ -1,7 +1,6 @@
 package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.api.BeetleFactory;
-import me.aurium.beetle.api.command.ContextSource;
 import me.aurium.beetle.defaults.file.CommonFileProvider;
 import me.aurium.beetle.defaults.datacore.CommonDatacoreFactory;
 import me.aurium.beetle.api.datacore.DataCoreFactory;

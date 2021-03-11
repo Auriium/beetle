@@ -1,6 +1,8 @@
 package me.aurium.beetle.defaults.command;
 
+
 import me.aurium.beetle.api.command.*;
+
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,6 +14,7 @@ public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
     private final String name;
     private final CommandRegistry<T> registry;
 
+
     private ContextHandler<T> contextHandler;
     private TabContextHandler<T> tabContextHandler;
     private String permission;
@@ -19,11 +22,11 @@ public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
     private String description;
     private String usage;
 
-     public SimpleCommandBuilder(String commandName, CommandRegistry<T> registry) {
+    public SimpleCommandBuilder(String commandName, CommandRegistry<T> registry) {
+
         this.name = commandName;
         this.contextHandler = consumed -> {
-            consumed.debug("Context missing for command " + consumed.getAlias() + "! Please define a context.");
-            return true;
+            throw new NoHandlerException();
         };
         this.tabContextHandler = context -> Collections.emptySet();
         this.aliases = Collections.emptySet();
@@ -67,20 +70,22 @@ public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
         return this;
     }
 
+
     @Override
     public void register() {
         this.registry.registerCommand(build());
     }
 
     public SimpleCommand<T> build() {
+
         Objects.requireNonNull(contextHandler);
         Objects.requireNonNull(tabContextHandler);
         Objects.requireNonNull(permission);
         Objects.requireNonNull(aliases);
         Objects.requireNonNull(description);
         Objects.requireNonNull(usage);
-
         return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage, registry.getContextSource());
     }
+
 
 }
