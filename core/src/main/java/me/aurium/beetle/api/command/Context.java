@@ -6,6 +6,5 @@ public interface Context<T> {
     String getAlias();
     String[] getArgs();
 
-    void debug(String string);
 
 }

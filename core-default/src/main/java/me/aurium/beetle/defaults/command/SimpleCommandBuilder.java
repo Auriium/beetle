@@ -1,7 +1,8 @@
 package me.aurium.beetle.defaults.command;
 
+import me.aurium.beetle.api.command.Command;
 import me.aurium.beetle.api.command.ContextHandler;
-import me.aurium.beetle.api.command.ContextSource;
+import me.aurium.beetle.api.command.NoHandlerException;
 import me.aurium.beetle.api.command.TabContextHandler;
 
 import java.util.Arrays;
@@ -12,7 +13,6 @@ import java.util.Objects;
 public class SimpleCommandBuilder<T> {
 
     private final String name;
-    private final ContextSource<T> contextSource;
 
     private ContextHandler<T> contextHandler;
     private TabContextHandler<T> tabContextHandler;
@@ -21,12 +21,10 @@ public class SimpleCommandBuilder<T> {
     private String description;
     private String usage;
 
-    public SimpleCommandBuilder(String commandName, ContextSource<T> source) {
+    public SimpleCommandBuilder(String commandName) {
         this.name = commandName;
-        this.contextSource = source;
         this.contextHandler = consumed -> {
-            consumed.debug("Context missing for command " + consumed.getAlias() + "! Please define a context.");
-            return true;
+            throw new NoHandlerException();
         };
         this.tabContextHandler = context -> Collections.emptySet();
         this.aliases = Collections.emptySet();
@@ -69,7 +67,7 @@ public class SimpleCommandBuilder<T> {
         return this;
     }
 
-    public SimpleCommand<T> build() {
+    public Command<T> build() {
         Objects.requireNonNull(contextHandler);
         Objects.requireNonNull(tabContextHandler);
         Objects.requireNonNull(permission);
@@ -77,11 +75,8 @@ public class SimpleCommandBuilder<T> {
         Objects.requireNonNull(description);
         Objects.requireNonNull(usage);
 
-        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage,contextSource);
+        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage);
     }
 
-    public static <T> SimpleCommandBuilder<T> of(String commandName, ContextSource<T> source) {
-        return new SimpleCommandBuilder<>(commandName, source);
-    }
 
 }

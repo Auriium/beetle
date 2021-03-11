@@ -2,13 +2,9 @@ package me.aurium.beetle.defaults.command;
 
 import me.aurium.beetle.api.command.Command;
 import me.aurium.beetle.api.command.ContextHandler;
-import me.aurium.beetle.api.command.ContextSource;
 import me.aurium.beetle.api.command.TabContextHandler;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Objects;
 
 /**
  * Represents a command as an object. It is better to use this class than manually implement command
@@ -24,10 +20,9 @@ public class SimpleCommand<T> implements Command<T> {
     private final Collection<String> aliases;
     private final String description;
     private final String usage;
-    private final ContextSource<T> source;
 
 
-    public SimpleCommand(ContextHandler<T> contextHandler, TabContextHandler<T> tabContextHandler, String name, String permission, Collection<String> aliases, String description, String usage, ContextSource<T> contextSource) {
+    public SimpleCommand(ContextHandler<T> contextHandler, TabContextHandler<T> tabContextHandler, String name, String permission, Collection<String> aliases, String description, String usage) {
         this.contextHandler = contextHandler;
         this.tabContextHandler = tabContextHandler;
         this.name = name;
@@ -35,7 +30,6 @@ public class SimpleCommand<T> implements Command<T> {
         this.aliases = aliases;
         this.description = description;
         this.usage = usage;
-        this.source = contextSource;
     }
 
     @Override
@@ -50,12 +44,12 @@ public class SimpleCommand<T> implements Command<T> {
 
     @Override
     public boolean execute(T sender, String alias, String[] args) {
-        return contextHandler.handle(source.context(sender, alias, args));
+        return contextHandler.handle(new CommonContext<>(sender, alias, args));
     }
 
     @Override
     public Collection<String> tabComplete(T sender, String alias, String[] args) {
-        return tabContextHandler.handle(source.context(sender, alias, args));
+        return tabContextHandler.handle(new CommonContext<>(sender, alias, args));
     }
 
     @Override

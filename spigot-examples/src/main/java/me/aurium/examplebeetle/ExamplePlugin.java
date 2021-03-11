@@ -1,9 +1,9 @@
 package me.aurium.examplebeetle;
 
+import me.aurium.beetle.api.command.Command;
 import me.aurium.beetle.defaults.command.SimpleCommandBuilder;
 import me.aurium.beetle.spigot.SpigotBeetle;
 import me.aurium.beetle.spigot.SpigotBeetleFactory;
-import me.aurium.beetle.spigot.SpigotContextSource;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,17 +20,18 @@ public class ExamplePlugin extends JavaPlugin {
 
         prod.produce();*/
 
-        SimpleCommandBuilder<CommandSender> builder = SimpleCommandBuilder.of("hello", new SpigotContextSource())
+        Command<CommandSender> command = new SimpleCommandBuilder<CommandSender>("hello")
                 .setDescription("desc")
                 .setPermission("example.permission")
                 .setUsage("usage")
                 .setAliases("hi","herro")
                 .setContextHandler(context  -> {
-                    context.getSender().sendMessage("This is a command made using the builder!");
+                    context.getSender().sendMessage("HELLO WORLD!");
                     return true;
-                });
+                }).build();
 
-        beetle.getCommandRegistry().registerCommand(builder.build());
+
+        beetle.getCommandRegistry().registerCommand(command);
         beetle.getCommandRegistry().registerCommand(new ExampleCommand());
 
 
