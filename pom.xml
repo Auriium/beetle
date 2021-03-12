@@ -41,11 +41,4 @@
         <maven.compiler.target>${compiler.version}</maven.compiler.target>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>repsy</id>
-            <url>https://repo.repsy.io/mvn/elytraforce/default</url>
-        </repository>
-    </repositories>
-
 </project>
