@@ -6,5 +6,7 @@ public interface Context<T> {
     String getAlias();
     String[] getArgs();
 
+    void debugString(String string);
+    boolean equals(Object object);
 
 }

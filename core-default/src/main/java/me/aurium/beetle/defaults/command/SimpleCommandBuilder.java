@@ -14,7 +14,6 @@ public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
     private final String name;
     private final CommandRegistry<T> registry;
 
-
     private ContextHandler<T> contextHandler;
     private TabContextHandler<T> tabContextHandler;
     private String permission;
