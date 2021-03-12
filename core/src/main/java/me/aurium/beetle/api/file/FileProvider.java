@@ -8,6 +8,9 @@ import java.nio.file.Path;
 
 /**
  * Represents something that can get a custom producer from a key, or have a key registered alongside it's options
+ *
+ * fixme: Redo all of this because right now there really isnt a point to just carrying around a producer for no reason
+ * Maybe we need a keyprovider?
  */
 public interface FileProvider {
 
