@@ -7,11 +7,11 @@ import java.nio.file.Path;
  * @param <T> the type of dataproducer this corresponds to
  * @param <C> the type of options the producer needs to be created
  */
-public interface ProducerKey<T extends Producer,C extends ProducerOptions> {
+public interface FileDataKey<T extends FileData,C extends FileDataOptions> {
 
     T newProducer(C options, Path path);
 
     String getIdentifier();
 
-    boolean isInstance(Producer producer);
+    boolean isInstance(FileData fileData);
 }

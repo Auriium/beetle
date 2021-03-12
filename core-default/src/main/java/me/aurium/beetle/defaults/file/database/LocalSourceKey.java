@@ -1,11 +1,11 @@
 package me.aurium.beetle.defaults.file.database;
 
-import me.aurium.beetle.api.file.producer.Producer;
-import me.aurium.beetle.api.file.producer.ProducerKey;
+import me.aurium.beetle.api.file.producer.FileData;
+import me.aurium.beetle.api.file.producer.FileDataKey;
 
 import java.nio.file.Path;
 
-public class LocalSourceKey implements ProducerKey<LocalSource,LocalSourceOptions> {
+public class LocalSourceKey implements FileDataKey<LocalSource,LocalSourceOptions> {
 
     private final String identifier;
 
@@ -34,7 +34,7 @@ public class LocalSourceKey implements ProducerKey<LocalSource,LocalSourceOption
     }
 
     @Override
-    public boolean isInstance(Producer producer) {
-        return producer instanceof LocalSource;
+    public boolean isInstance(FileData fileData) {
+        return fileData instanceof LocalSource;
     }
 }

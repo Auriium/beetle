@@ -1,12 +1,12 @@
 package me.aurium.beetle.defaults.file;
 
 import me.aurium.beetle.api.file.FileProvider;
-import me.aurium.beetle.api.file.NonexistentProducerException;
-import me.aurium.beetle.api.file.ProducerAlreadyRegisteredException;
+import me.aurium.beetle.api.file.NonexistentDataException;
+import me.aurium.beetle.api.file.DataAlreadyRegisteredException;
 import me.aurium.beetle.api.file.WrongProducerTypeException;
-import me.aurium.beetle.api.file.producer.Producer;
-import me.aurium.beetle.api.file.producer.ProducerKey;
-import me.aurium.beetle.api.file.producer.ProducerOptions;
+import me.aurium.beetle.api.file.producer.FileData;
+import me.aurium.beetle.api.file.producer.FileDataKey;
+import me.aurium.beetle.api.file.producer.FileDataOptions;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class CommonFileProvider implements FileProvider {
 
     private final Path localPath;
-    private final Map<String, Producer> internalMap;
+    private final Map<String, FileData> internalMap;
 
     public CommonFileProvider(Path localPath) {
         this.localPath = localPath;
@@ -24,39 +24,41 @@ public class CommonFileProvider implements FileProvider {
 
 
     @Override
-    public <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?, T> producer, T options, Path path) {
+    public <T extends FileDataOptions, C extends FileData> C registerNewData(FileDataKey<C, T> producer, T options, Path path) {
         String identifier = producer.getIdentifier();
 
         if (internalMap.containsKey(identifier)) {
-            throw new ProducerAlreadyRegisteredException(identifier);
+            throw new DataAlreadyRegisteredException(identifier);
         }
 
-        Producer wonk = producer.newProducer(options,path);
+        C wonk = producer.newProducer(options,path);
 
         internalMap.put(identifier,wonk);
+
+        return wonk;
     }
 
     @Override
-    public <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?, T> producer, T options, String path) {
-        registerNewFileProducer(producer,options,Path.of(path));
+    public <T extends FileDataOptions, C extends FileData> C registerNewData(FileDataKey<C, T> producer, T options, String path) {
+        return registerNewData(producer,options,Path.of(path));
     }
 
     @Override
-    public <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?, T> producer, T options) {
-        registerNewFileProducer(producer, options, localPath);
+    public <T extends FileDataOptions, C extends FileData> C registerNewData(FileDataKey<C, T> producer, T options) {
+        return registerNewData(producer, options, localPath);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends Producer> T getProducer(ProducerKey<T, ?> key) {
+    public <T extends FileData> T getData(FileDataKey<T, ?> key) {
 
-        Producer producer = internalMap.get(key.getIdentifier());
+        FileData fileData = internalMap.get(key.getIdentifier());
 
-        if (producer == null) throw new NonexistentProducerException();
+        if (fileData == null) throw new NonexistentDataException();
 
-        if (!key.isInstance(producer)) throw new WrongProducerTypeException();
+        if (!key.isInstance(fileData)) throw new WrongProducerTypeException();
 
-        return (T) producer;
+        return (T) fileData;
 
     }
 }

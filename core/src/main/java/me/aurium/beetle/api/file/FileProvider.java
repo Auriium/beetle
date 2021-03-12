@@ -1,8 +1,8 @@
 package me.aurium.beetle.api.file;
 
-import me.aurium.beetle.api.file.producer.Producer;
-import me.aurium.beetle.api.file.producer.ProducerKey;
-import me.aurium.beetle.api.file.producer.ProducerOptions;
+import me.aurium.beetle.api.file.producer.FileData;
+import me.aurium.beetle.api.file.producer.FileDataKey;
+import me.aurium.beetle.api.file.producer.FileDataOptions;
 
 import java.nio.file.Path;
 
@@ -20,9 +20,9 @@ public interface FileProvider {
      * @param options the options
      * @param path the path to the file that should be registered
      * @param <T> the type of options that are required
-     * @throws ProducerAlreadyRegisteredException if the producer is already registered
+     * @throws DataAlreadyRegisteredException if the producer is already registered
      */
-    <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?,T> producer, T options, Path path);
+    <T extends FileDataOptions, C extends FileData> C registerNewData(FileDataKey<C,T> producer, T options, Path path);
 
     /**
      * Register a new producer with corresponding options into the provider
@@ -30,27 +30,28 @@ public interface FileProvider {
      * @param options the options
      * @param path the path to the file that should be registered
      * @param <T> the type of options that are required
-     * @throws ProducerAlreadyRegisteredException if the producer is already registered
+     * @throws DataAlreadyRegisteredException if the producer is already registered
      */
-    <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?,T> producer, T options, String path);
+    <T extends FileDataOptions, C extends FileData> C registerNewData(FileDataKey<C,T> producer, T options, String path);
 
     /**
      * Register a new producer with corresponding options into the provider using the home path
      * @param producer the key. Recommended to use the key's static identifier method if it exists or instantiate one if it does not.
      * @param options the options
      * @param <T> the type of options that are required
-     * @throws ProducerAlreadyRegisteredException if the producer is already registered
+     * @throws DataAlreadyRegisteredException if the producer is already registered
      */
-    <T extends ProducerOptions> void registerNewFileProducer(ProducerKey<?,T> producer, T options);
+    <T extends FileDataOptions, C extends FileData> C registerNewData(FileDataKey<C,T> producer, T options);
 
     /**
      * Gets the producer corresponding to a key if possible
      * @param key the key
      * @param <T> the corresponding producer
      * @return the producer if possible
-     * @throws NonexistentProducerException if there is no producer under that key
-     * @throws ProducerAlreadyRegisteredException if another producer already exists under that key's identifier
+     * @throws NonexistentDataException if there is no producer under that key
+     * @throws DataAlreadyRegisteredException if another producer already exists under that key's identifier
      */
-    <T extends Producer> T getProducer(ProducerKey<T,?> key);
+    <T extends FileData> T getData(FileDataKey<T,?> key);
+
 
 }

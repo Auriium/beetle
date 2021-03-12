@@ -1,11 +1,11 @@
 package me.aurium.beetle.defaults.file.database;
 
-import me.aurium.beetle.api.file.producer.ProducerOptions;
+import me.aurium.beetle.api.file.producer.FileDataOptions;
 
 import java.nio.file.Path;
 import java.util.Optional;
 
-public class LocalSourceOptions implements ProducerOptions {
+public class LocalSourceOptions implements FileDataOptions {
 
     private final SourceableFileExtension extension;
     private final String username;

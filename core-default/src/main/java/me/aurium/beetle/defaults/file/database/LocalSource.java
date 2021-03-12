@@ -3,13 +3,13 @@ package me.aurium.beetle.defaults.file.database;
 import me.aurium.beetle.api.datacore.CoreSource;
 import me.aurium.beetle.defaults.datacore.LocalDB;
 import me.aurium.beetle.api.file.UncheckedIOException;
-import me.aurium.beetle.api.file.producer.Producer;
+import me.aurium.beetle.api.file.producer.FileData;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class LocalSource implements Producer {
+public class LocalSource implements FileData {
 
     private final Path filePathExact;
     private final String username;
