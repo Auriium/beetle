@@ -25,6 +25,13 @@ public class LocalSourceOptions implements ProducerOptions {
         this.path = Path.of(path);
     }
 
+    public LocalSourceOptions(String username, String password, SourceableFileExtension extension) {
+        this.username = username;
+        this.password = password;
+        this.extension = extension;
+        this.path = null;
+    }
+
     public SourceableFileExtension getExtension() {
         return extension;
     }

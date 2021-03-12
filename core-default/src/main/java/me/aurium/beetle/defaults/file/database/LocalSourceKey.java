@@ -16,7 +16,14 @@ public class LocalSourceKey implements ProducerKey<LocalSource,LocalSourceOption
     @Override
     public LocalSource newProducer(LocalSourceOptions options, Path path) {
         SourceableFileExtension extension = options.getExtension();
-        Path combined = path.resolve(extension.of(options.getPath()));
+
+        Path combined;
+
+        if (options.getPath() == null) {
+            combined = path.resolve(extension.of(Path.of(identifier)));
+        } else {
+            combined = path.resolve(extension.of(options.getPath()));
+        }
 
         return new LocalSource(combined,extension.getType(), options.getUsername(), options.getPassword());
     }

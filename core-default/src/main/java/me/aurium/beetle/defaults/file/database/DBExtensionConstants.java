@@ -12,8 +12,7 @@ import java.util.Optional;
  */
 public enum DBExtensionConstants implements SourceableFileExtension {
 
-    H2(".h2", LocalDBConstants.H2),
-    DB(".db", LocalDBConstants.SQLite);
+    H2(".db", LocalDBConstants.H2);
 
     private final String key;
     private final LocalDB dbType;
