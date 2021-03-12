@@ -3,6 +3,7 @@ package me.aurium.beetle.defaults.file.database;
 import me.aurium.beetle.api.file.producer.ProducerOptions;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 public class LocalSourceOptions implements ProducerOptions {
 
@@ -44,8 +45,8 @@ public class LocalSourceOptions implements ProducerOptions {
         return password;
     }
 
-    public Path getPath() {
-        return path;
+    public Optional<Path> getPath() {
+        return Optional.ofNullable(path);
     }
 
 

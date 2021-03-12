@@ -19,10 +19,10 @@ public class LocalSourceKey implements ProducerKey<LocalSource,LocalSourceOption
 
         Path combined;
 
-        if (options.getPath() == null) {
+        if (options.getPath().isEmpty()) {
             combined = path.resolve(extension.of(Path.of(identifier)));
         } else {
-            combined = path.resolve(extension.of(options.getPath()));
+            combined = path.resolve(extension.of(options.getPath().get()));
         }
 
         return new LocalSource(combined,extension.getType(), options.getUsername(), options.getPassword());
