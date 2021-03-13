@@ -11,12 +11,14 @@ public class LocalSourceOptions implements FileDataOptions {
     private final String username;
     private final String password;
     private final Path path;
+    private final int timeout;
 
     public LocalSourceOptions(String username, String password, SourceableFileExtension extension, Path path) {
         this.username = username;
         this.password = password;
         this.extension = extension;
         this.path = path;
+        this.timeout = 60;
     }
 
     public LocalSourceOptions(String username, String password, SourceableFileExtension extension, String path) {
@@ -24,6 +26,15 @@ public class LocalSourceOptions implements FileDataOptions {
         this.password = password;
         this.extension = extension;
         this.path = Path.of(path);
+        this.timeout = 60;
+    }
+
+    public LocalSourceOptions(String username, String password, SourceableFileExtension extension, String path, int timeout) {
+        this.username = username;
+        this.password = password;
+        this.extension = extension;
+        this.path = Path.of(path);
+        this.timeout = timeout;
     }
 
     public LocalSourceOptions(String username, String password, SourceableFileExtension extension) {
@@ -31,6 +42,7 @@ public class LocalSourceOptions implements FileDataOptions {
         this.password = password;
         this.extension = extension;
         this.path = null;
+        this.timeout = 60;
     }
 
     public SourceableFileExtension getExtension() {
@@ -47,6 +59,10 @@ public class LocalSourceOptions implements FileDataOptions {
 
     public Optional<Path> getPath() {
         return Optional.ofNullable(path);
+    }
+
+    public int getTimeout() {
+        return timeout;
     }
 
 

@@ -15,12 +15,14 @@ public class LocalSource implements FileData {
     private final String username;
     private final String password;
     private final LocalDB type;
+    private final int timeout;
 
-    public LocalSource(Path filePathExact, LocalDB type, String username, String password) {
+    public LocalSource(Path filePathExact, LocalDB type, String username, String password, int timeout) {
         this.filePathExact = filePathExact;
         this.username = username;
         this.password = password;
         this.type = type;
+        this.timeout = timeout;
     }
 
     public CoreSource produce() {
@@ -35,7 +37,7 @@ public class LocalSource implements FileData {
             throw new UncheckedIOException(e); //lovely thing checked exceptions are.
         }
 
-        return type.asFactory(file,username,password).getCoreSource();
+        return type.asFactory(file,username,password,timeout).getCoreSource();
     }
 
 }

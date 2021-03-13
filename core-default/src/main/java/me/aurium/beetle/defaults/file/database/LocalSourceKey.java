@@ -25,7 +25,7 @@ public class LocalSourceKey implements FileDataKey<LocalSource,LocalSourceOption
             combined = path.resolve(extension.of(options.getPath().get()));
         }
 
-        return new LocalSource(combined,extension.getType(), options.getUsername(), options.getPassword());
+        return new LocalSource(combined,extension.getType(), options.getUsername(), options.getPassword(),options.getTimeout());
     }
 
     @Override
