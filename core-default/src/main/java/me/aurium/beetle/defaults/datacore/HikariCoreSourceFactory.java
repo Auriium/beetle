@@ -5,6 +5,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import me.aurium.beetle.api.datacore.CoreSource;
 import me.aurium.beetle.api.datacore.CoreSourceFactory;
 
+import javax.sql.DataSource;
+
 public class HikariCoreSourceFactory implements CoreSourceFactory {
 
     private final WebSourceConfig config;

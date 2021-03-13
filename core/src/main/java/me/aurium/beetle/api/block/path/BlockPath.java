@@ -1,6 +1,5 @@
-package me.aurium.beetle.api.nodes.path;
+package me.aurium.beetle.api.block.path;
 
-import java.util.Collection;
 import java.util.List;
 
 /**

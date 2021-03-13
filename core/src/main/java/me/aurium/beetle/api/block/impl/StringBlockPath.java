@@ -1,7 +1,7 @@
-package me.aurium.beetle.api.nodes.impl;
+package me.aurium.beetle.api.block.impl;
 
-import me.aurium.beetle.api.nodes.path.Block;
-import me.aurium.beetle.api.nodes.path.BlockPath;
+import me.aurium.beetle.api.block.path.Block;
+import me.aurium.beetle.api.block.path.BlockPath;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class StringBlockPath implements BlockPath {
 
-    public final static String COMMON_SPLITTER = "\\.";
+    public final static String COMMON_SPLITTER = "-";
 
     private final BlockPath root;
     private final BlockPath parent;
@@ -104,6 +104,8 @@ public class StringBlockPath implements BlockPath {
             base.append(splitter).append(block.getIdentifier());
         }
 
+
+        //TODO: fix this:
         return base.toString();
     }
 
@@ -123,6 +125,7 @@ public class StringBlockPath implements BlockPath {
 
     public static BlockPath of(String string, String splitter) {
         String[] subparts = string.split(splitter);
+
         return of(subparts,splitter);
     }
 

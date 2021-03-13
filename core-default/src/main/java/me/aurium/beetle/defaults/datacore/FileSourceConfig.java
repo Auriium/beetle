@@ -7,11 +7,13 @@ public final class FileSourceConfig {
     private final File file;
     private final String username;
     private final String password;
+    private final int timeout;
 
-    public FileSourceConfig(File file, String username, String password) {
+    public FileSourceConfig(File file, String username, String password, int timeout) {
         this.file = file;
         this.username = username;
         this.password = password;
+        this.timeout = timeout;
     }
 
     public File getFile() {
@@ -26,16 +28,22 @@ public final class FileSourceConfig {
         return password;
     }
 
+    public int getTimeout() {
+        return timeout;
+    }
+
     public final static class Builder {
 
         private final File file;
         private String username;
         private String password;
+        private int timeout;
 
         public Builder(File file) {
             this.file = file;
             this.username = "username";
             this.password = "password";
+            this.timeout = 60;
         }
 
         public Builder password(String password) {
@@ -50,8 +58,14 @@ public final class FileSourceConfig {
             return this;
         }
 
+        public Builder timeout(int timeout) {
+            this.timeout = timeout;
+
+            return this;
+        }
+
         public FileSourceConfig build() {
-            return new FileSourceConfig(file,username,password);
+            return new FileSourceConfig(file,username,password,timeout);
         }
     }
 

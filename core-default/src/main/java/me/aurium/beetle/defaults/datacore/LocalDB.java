@@ -8,6 +8,7 @@ public interface LocalDB {
     String getDriverClasspath();
 
     FileCoreSourceFactory asFactory(FileSourceConfig config);
+    FileCoreSourceFactory asFactory(File file, String username, String password, int timeout);
     FileCoreSourceFactory asFactory(File file, String username, String password);
 
 }

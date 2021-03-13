@@ -1,5 +1,6 @@
 package me.aurium.beetle.api.datacore;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -9,5 +10,7 @@ import java.sql.SQLException;
 public interface CoreSource {
 
     Connection getConnection() throws SQLException;
+
+    DataSource getAdapter();
 
 }

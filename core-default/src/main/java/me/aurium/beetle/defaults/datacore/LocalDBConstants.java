@@ -37,8 +37,13 @@ public enum LocalDBConstants implements LocalDB {
     }
 
     @Override
+    public FileCoreSourceFactory asFactory(File file, String username, String password, int timeout) {
+        return new FileCoreSourceFactory(new FileSourceConfig(file, username, password, timeout),driverClasspath,driverName);
+    }
+
+    @Override
     public FileCoreSourceFactory asFactory(File file, String username, String password) {
-        return new FileCoreSourceFactory(new FileSourceConfig(file, username, password),driverClasspath,driverName);
+        return asFactory(file, username, password, 60);
     }
 
 }

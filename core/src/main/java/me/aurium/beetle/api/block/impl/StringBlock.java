@@ -1,7 +1,7 @@
-package me.aurium.beetle.api.nodes.impl;
+package me.aurium.beetle.api.block.impl;
 
-import me.aurium.beetle.api.nodes.path.Block;
-import me.aurium.beetle.api.nodes.path.BlockPath;
+import me.aurium.beetle.api.block.path.Block;
+import me.aurium.beetle.api.block.path.BlockPath;
 
 public class StringBlock implements Block {
 

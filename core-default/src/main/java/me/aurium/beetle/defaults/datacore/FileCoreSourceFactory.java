@@ -27,7 +27,7 @@ public class FileCoreSourceFactory implements CoreSourceFactory {
 
         String address = String.format("jdbc:%s:" + file.getFile(), driverName);
 
-        return new AddressCoreSource(address,file.getUsername(), file.getUsername());
+        return new DatasourceCoreSource(new AddressDataSource(address, file.getUsername(), file.getPassword(), file.getTimeout()));
     }
 
 

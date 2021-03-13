@@ -18,4 +18,9 @@ public class DatasourceCoreSource implements CoreSource {
     public Connection getConnection() throws SQLException {
         return source.getConnection();
     }
+
+    @Override
+    public DataSource getAdapter() {
+        return source;
+    }
 }
