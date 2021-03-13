@@ -9,4 +9,6 @@ public interface Transact extends AutoCloseable {
 
     Connection getConnection();
 
+    <T> T getProperty(Class<T> tClass);
+
 }

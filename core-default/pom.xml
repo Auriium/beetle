@@ -32,6 +32,13 @@
             <version>${logger.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>3.14.4</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
