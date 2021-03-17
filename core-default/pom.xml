@@ -16,13 +16,13 @@
         <dependency>
             <groupId>me.aurium</groupId>
             <artifactId>beetle-core</artifactId>
-            <version>0.4.0</version>
+            <version>0.4.1</version>
         </dependency>
         <!-- this is provided because... only use hikari shit if you want it !-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>4.0.1</version>
+            <version>4.0.3</version>
             <scope>provided</scope>
         </dependency>
         <!-- use slf4j if you want !-->
