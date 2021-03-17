@@ -11,9 +11,11 @@ public interface CommandRegistry<T> {
     void registerCommand(Command<T> command);
     void removeCommand(Command<T> command);
 
+    void removeCommand(String string);
+    void registerBuilder(CommandRegisterer<T> registerer);
+
     Collection<Command<T>> getAllCommands();
 
     ContextSource<T> getContextSource();
-    CommandBuilder<T> newCommandBuilder(String command);
 
 }

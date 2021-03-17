@@ -1,7 +1,8 @@
 package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.api.command.*;
-import me.aurium.beetle.defaults.command.SimpleCommandBuilder;
+import me.aurium.beetle.api.util.NotImplementedException;
+import me.aurium.beetle.defaults.command.SimpleRegisterer;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 
@@ -32,7 +33,17 @@ public class SpigotCommandRegistry implements CommandRegistry<CommandSender> {
 
     @Override
     public void removeCommand(Command<CommandSender> command) {
-        //to implement
+        throw new NotImplementedException("Spigot cannot unregister command!");
+    }
+
+    @Override
+    public void removeCommand(String string) {
+        throw new NotImplementedException("Spigot cannot unregister command!");
+    }
+
+    @Override
+    public void registerBuilder(CommandRegisterer<CommandSender> registerer) {
+        registerer.register(this);
     }
 
     @Override
@@ -43,11 +54,6 @@ public class SpigotCommandRegistry implements CommandRegistry<CommandSender> {
     @Override
     public ContextSource<CommandSender> getContextSource() {
         return contextSource;
-    }
-
-    @Override
-    public CommandBuilder<CommandSender> newCommandBuilder(String string) {
-        return new SimpleCommandBuilder<>(string,this);
     }
 
     void verifyCommand(Command<CommandSender> command) {

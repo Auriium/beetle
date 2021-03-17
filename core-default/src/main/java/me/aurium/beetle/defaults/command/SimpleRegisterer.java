@@ -9,10 +9,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
-public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
+public class SimpleRegisterer<T> implements CommandRegisterer<T> {
 
     private final String name;
-    private final CommandRegistry<T> registry;
 
     private ContextHandler<T> contextHandler;
     private TabContextHandler<T> tabContextHandler;
@@ -21,7 +20,7 @@ public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
     private String description;
     private String usage;
 
-    public SimpleCommandBuilder(String commandName, CommandRegistry<T> registry) {
+    public SimpleRegisterer(String commandName) {
 
         this.name = commandName;
         this.contextHandler = consumed -> {
@@ -31,60 +30,57 @@ public class SimpleCommandBuilder<T> implements CommandBuilder<T> {
         this.aliases = Collections.emptySet();
         this.description = "Default description for minecraft like platforms";
         this.usage = "Default usage for minecraft like platforms";
-        this.registry = registry;
+        this.permission = null;
     }
 
-    public SimpleCommandBuilder<T> setContextHandler(ContextHandler<T> context) {
+    public SimpleRegisterer<T> setContextHandler(ContextHandler<T> context) {
         this.contextHandler = context;
         return this;
     }
 
-    public SimpleCommandBuilder<T> setTabContextHandler(TabContextHandler<T> context) {
+    public SimpleRegisterer<T> setTabContextHandler(TabContextHandler<T> context) {
         this.tabContextHandler = context;
         return this;
     }
 
-    public SimpleCommandBuilder<T> setPermission(String permission) {
+    public SimpleRegisterer<T> setPermission(String permission) {
         this.permission = permission;
         return this;
     }
 
-    public SimpleCommandBuilder<T> setUsage(String usage) {
+    public SimpleRegisterer<T> setUsage(String usage) {
         this.usage = usage;
         return this;
     }
 
-    public SimpleCommandBuilder<T> setDescription(String description) {
+    public SimpleRegisterer<T> setDescription(String description) {
         this.permission = description;
         return this;
     }
 
-    public SimpleCommandBuilder<T> setAliases(Collection<String> aliases) {
+    public SimpleRegisterer<T> setAliases(Collection<String> aliases) {
         this.aliases = aliases;
         return this;
     }
 
-    public SimpleCommandBuilder<T> setAliases(String... aliases) {
+    public SimpleRegisterer<T> setAliases(String... aliases) {
         this.aliases = Arrays.asList(aliases);
         return this;
     }
 
 
     @Override
-    public void register() {
-        this.registry.registerCommand(build());
-    }
-
-    public SimpleCommand<T> build() {
-
+    public void register(CommandRegistry<T> registry) {
         Objects.requireNonNull(contextHandler);
         Objects.requireNonNull(tabContextHandler);
         Objects.requireNonNull(permission);
         Objects.requireNonNull(aliases);
         Objects.requireNonNull(description);
         Objects.requireNonNull(usage);
-        return new SimpleCommand<>(contextHandler,tabContextHandler,name,permission,aliases,description,usage, registry.getContextSource());
-    }
 
+        Command<T> command = new SimpleCommand<T>(contextHandler,tabContextHandler,name,permission,aliases,description,usage, registry.getContextSource());
+
+        registry.registerCommand(command);
+    }
 
 }

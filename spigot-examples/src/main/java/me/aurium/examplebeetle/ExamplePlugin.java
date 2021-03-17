@@ -1,7 +1,6 @@
 package me.aurium.examplebeetle;
 
-import me.aurium.beetle.api.command.Command;
-import me.aurium.beetle.defaults.command.SimpleCommandBuilder;
+import me.aurium.beetle.defaults.command.SimpleRegisterer;
 import me.aurium.beetle.spigot.SpigotBeetle;
 import me.aurium.beetle.spigot.SpigotBeetleFactory;
 import org.bukkit.command.CommandSender;
@@ -20,7 +19,8 @@ public class ExamplePlugin extends JavaPlugin {
 
         prod.produce();*/
 
-        beetle.getCommandRegistry().newCommandBuilder("hello")
+
+        beetle.getCommandRegistry().registerBuilder(new SimpleRegisterer<CommandSender>("hello")
                 .setDescription("desc")
                 .setPermission("example.permission")
                 .setUsage("usage")
@@ -28,7 +28,8 @@ public class ExamplePlugin extends JavaPlugin {
                 .setContextHandler(context  -> {
                     context.getSender().sendMessage("HELLO WORLD!");
                     return true;
-                }).register();
+                }));
+
 
         beetle.getCommandRegistry().registerCommand(new ExampleCommand());
 
