@@ -19,13 +19,11 @@
             <groupId>me.aurium</groupId>
             <artifactId>beetle-core</artifactId>
             <version>${core.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>me.aurium</groupId>
             <artifactId>beetle-core-default</artifactId>
             <version>${default.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
