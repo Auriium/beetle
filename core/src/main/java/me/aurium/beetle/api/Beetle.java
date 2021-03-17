@@ -2,6 +2,7 @@ package me.aurium.beetle.api;
 
 import me.aurium.beetle.api.datacore.DataCoreFactory;
 import me.aurium.beetle.api.file.FileProvider;
+import me.aurium.beetle.api.initializer.Initializer;
 import me.aurium.beetle.api.logger.SimpleLogger;
 import me.aurium.beetle.api.service.ServiceRegistry;
 import me.aurium.beetle.api.task.Tasker;
