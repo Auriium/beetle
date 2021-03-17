@@ -1,10 +1,9 @@
 package me.aurium.beetle.velocity;
 
 import com.velocitypowered.api.command.RawCommand;
-import me.aurium.beetle.core.command.CommandData;
 import net.kyori.adventure.text.Component;
 
-public class VelocityCommandData implements CommandData {
+public class VelocityCommandData {
 
     private RawCommand.Invocation invocation;
 
@@ -12,8 +11,4 @@ public class VelocityCommandData implements CommandData {
         this.invocation = invocation;
     }
 
-    @Override
-    public void debugMessage(String string) {
-        invocation.source().sendMessage(Component.text(string));
-    }
 }

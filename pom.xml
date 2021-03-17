@@ -22,16 +22,11 @@
         <module>velo-impl</module>
         <module>discord-impl</module>
         <module>spigot-examples</module>
-
     </modules>
 
+
+
     <properties>
-
-        <beetle.version>0.2.0</beetle.version>
-
-        <core.version>0.3.3</core.version>
-        <default.version>0.3.3</default.version>
-
         <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
         <logger.version>1.7.25</logger.version>
 
