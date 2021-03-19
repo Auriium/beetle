@@ -12,7 +12,7 @@
 
     <artifactId>beetle-core</artifactId>
 
-    <version>0.4.1-SNAPSHOT</version>
+    <version>0.4.1</version>
 
     <properties>
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
