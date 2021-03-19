@@ -17,7 +17,7 @@ import java.nio.file.Path;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class GenericBeetleFactory implements BeetleFactory<CommonBeetle> {
+public class GenericBeetleFactory implements BeetleFactory<CommonBeetle,GenericOptions> {
 
     private final Boolean isDebug;
     private final Path baseFolder;
@@ -35,8 +35,8 @@ public class GenericBeetleFactory implements BeetleFactory<CommonBeetle> {
     }
 
     @Override
-    public CommonBeetle build() {
-        Tasker tasker = new GenericTasker(Executors.newFixedThreadPool(10000));
+    public CommonBeetle build(GenericOptions options) {
+        Tasker tasker = new GenericTasker(options.getUtilizedService());
 
         tasker.launch();
 

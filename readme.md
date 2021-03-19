@@ -16,8 +16,6 @@ Beetle is a decentralized software, so multiple applications will each have thei
 - A centralized logger with the Beetle name that simply delegates to the platform, or slf4j
 - A centralized service registry
 - A semicentralized transactional data interaction system for SQL dialects
-- A collection of decentralized utility classes for collections
-- A collection of decentralized exceptions for specific purposes
 
 # What platforms does Beetle operate on?
 

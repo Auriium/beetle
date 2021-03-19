@@ -1,6 +1,7 @@
 package me.aurium.beetle.defaults.task;
 
 import me.aurium.beetle.api.task.SyncQueue;
+import me.aurium.beetle.api.task.TaskFutureException;
 import me.aurium.beetle.api.task.TaskRunner;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,6 +24,10 @@ public class CommonTaskRunner implements TaskRunner {
             runnable.run();
 
             return null;
+        }).whenComplete((ignored,exception) -> {
+            if (exception != null) {
+                throw new TaskFutureException(exception);
+            }
         });
     }
 
@@ -32,6 +37,10 @@ public class CommonTaskRunner implements TaskRunner {
             runnable.run();
 
             return null;
+        }).whenComplete((ignored,exception) -> {
+            if (exception != null) {
+                throw new TaskFutureException(exception);
+            }
         });
     }
 

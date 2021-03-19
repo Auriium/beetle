@@ -9,13 +9,13 @@ import java.util.concurrent.*;
 public abstract class AbstractTasker implements Tasker {
 
     private final SyncQueue syncQueue;
-    private final ExecutorService asyncQueue;
+    private final Executor asyncQueue;
 
     private final TaskRunner taskRunner;
 
-    protected AbstractTasker(ExecutorService service) {
+    protected AbstractTasker(Executor asyncQueue) {
         this.syncQueue = new CommonSyncQueue();
-        this.asyncQueue = service;
+        this.asyncQueue = asyncQueue;
 
         this.taskRunner = new CommonTaskRunner(syncQueue,asyncQueue);
     }

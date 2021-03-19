@@ -14,7 +14,7 @@ public class SpigotTasker extends AbstractTasker {
 
 
     private final JavaPlugin plugin;
-    public SpigotTasker(ExecutorService service, JavaPlugin plugin) {
+    public SpigotTasker(Executor service, JavaPlugin plugin) {
         super(service);
 
         this.plugin = plugin;

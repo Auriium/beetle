@@ -12,37 +12,41 @@ import me.aurium.beetle.api.service.ServiceRegistry;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
  * A Helper BeetleFactory based around the Spigot API.
  */
-public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
+public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle, SpigotOptions> {
 
     private final JavaPlugin plugin;
-    private final boolean isDebug;
 
-    public SpigotBeetleFactory(JavaPlugin plugin, boolean isDebug) {
+    public SpigotBeetleFactory(JavaPlugin plugin) {
         this.plugin = plugin;
-        this.isDebug = isDebug;
     }
 
     /**
      * Build a new Spigot-Type Beetle from Spigot-Type defaults.
      * @return a new Beetle
      */
-    public SpigotBeetle build() {
+    public SpigotBeetle build(SpigotOptions options) {
         //produce dependencies
-        SpigotTasker tasker = new SpigotTasker(Executors.newFixedThreadPool(10000), plugin);
+
+        Executor platformExecutor = (runnable) -> {
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin,runnable);
+        };
+
+        SpigotTasker tasker = new SpigotTasker(platformExecutor, plugin);
         //eventually if PR is ever merged, switch this to getting a executor from the Bukkit caached thread pool
 
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,plugin.getName());
+        SimpleLogger logger = SLFLoggerHelper.buildLogger(options.isDebug(), plugin.getName());
         SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();
         ServiceRegistry serviceRegistry = new CommonRegistry();
         DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(tasker.getRunner());
         FileProvider fileProvider = new CommonFileProvider(plugin.getDataFolder().toPath());
 
-        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,isDebug);
+        return new SpigotBeetle(tasker,logger,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,options.isDebug());
     }
 
 
