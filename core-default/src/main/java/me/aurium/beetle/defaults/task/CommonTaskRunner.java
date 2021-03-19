@@ -24,10 +24,8 @@ public class CommonTaskRunner implements TaskRunner {
             runnable.run();
 
             return null;
-        }).whenComplete((ignored,exception) -> {
-            if (exception != null) {
-                throw new TaskFutureException(exception);
-            }
+        }).exceptionally(exception -> {
+           throw new TaskFutureException(exception);
         });
     }
 
@@ -37,10 +35,8 @@ public class CommonTaskRunner implements TaskRunner {
             runnable.run();
 
             return null;
-        }).whenComplete((ignored,exception) -> {
-            if (exception != null) {
-                throw new TaskFutureException(exception);
-            }
+        }).exceptionally(exception -> {
+            throw new TaskFutureException(exception);
         });
     }
 
