@@ -12,6 +12,8 @@ import me.aurium.beetle.api.service.ServiceRegistry;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.Executors;
+
 /**
  * A Helper BeetleFactory based around the Spigot API.
  */
@@ -31,7 +33,8 @@ public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle> {
      */
     public SpigotBeetle build() {
         //produce dependencies
-        SpigotTasker tasker = new SpigotTasker(plugin);
+        SpigotTasker tasker = new SpigotTasker(Executors.newFixedThreadPool(10000), plugin);
+        //eventually if PR is ever merged, switch this to getting a executor from the Bukkit caached thread pool
 
         SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,plugin.getName());
         SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();

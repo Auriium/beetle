@@ -1,35 +1,27 @@
 package me.aurium.beetle.spigot;
 
-import me.aurium.beetle.defaults.task.CommonTaskQueue;
-import me.aurium.beetle.api.task.TaskQueue;
-import me.aurium.beetle.api.task.Runner;
+import me.aurium.beetle.defaults.task.AbstractTasker;
+import me.aurium.beetle.defaults.task.CommonSyncQueue;
+import me.aurium.beetle.api.task.SyncQueue;
+import me.aurium.beetle.api.task.TaskRunner;
 import me.aurium.beetle.api.task.Tasker;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class SpigotTasker implements Tasker {
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
-    private final TaskQueue queue;
-    private final Runner runner;
+public class SpigotTasker extends AbstractTasker {
+
+
     private final JavaPlugin plugin;
+    public SpigotTasker(ExecutorService service, JavaPlugin plugin) {
+        super(service);
 
-    SpigotTasker(JavaPlugin plugin) {
         this.plugin = plugin;
-        this.queue = new CommonTaskQueue();
-        this.runner = new SpigotRunner(plugin,queue);
-    }
-
-    @Override
-    public TaskQueue getQueue() {
-        return queue;
-    }
-
-    @Override
-    public Runner getRunner() {
-        return runner;
     }
 
     @Override
     public void launch() {
-        plugin.getServer().getScheduler().runTaskTimer(plugin,queue::tick,0L,1L);
+        plugin.getServer().getScheduler().runTaskTimer(plugin, asQueue()::tick,0L,1L);
     }
 }

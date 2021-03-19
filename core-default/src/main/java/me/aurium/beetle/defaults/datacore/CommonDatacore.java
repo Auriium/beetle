@@ -4,7 +4,7 @@ import me.aurium.beetle.api.datacore.CoreSource;
 import me.aurium.beetle.api.datacore.DataCore;
 import me.aurium.beetle.api.datacore.TransactConsumer;
 import me.aurium.beetle.api.datacore.UncheckedSQLException;
-import me.aurium.beetle.api.task.Runner;
+import me.aurium.beetle.api.task.TaskRunner;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -13,18 +13,18 @@ import java.util.concurrent.CompletableFuture;
 public class CommonDatacore implements DataCore {
 
     private final CoreSource source;
-    private final Runner runner;
+    private final TaskRunner taskRunner;
 
-    CommonDatacore(CoreSource source, Runner runner) {
+    CommonDatacore(CoreSource source, TaskRunner taskRunner) {
         this.source = source;
-        this.runner = runner;
+        this.taskRunner = taskRunner;
     }
 
 
 
     @Override
     public <R> CompletableFuture<R> runConsumer(TransactConsumer<R> consumer) {
-        return runner.supplyAsync(() -> {
+        return taskRunner.supplyAsync(() -> {
             try (Connection connection = source.getConnection()) {
                 SQLTransact transaction = new SQLTransact(connection);
 

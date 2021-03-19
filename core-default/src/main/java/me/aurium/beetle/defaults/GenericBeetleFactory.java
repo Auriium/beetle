@@ -9,10 +9,13 @@ import me.aurium.beetle.defaults.logger.SLFLoggerHelper;
 import me.aurium.beetle.api.logger.SimpleLogger;
 import me.aurium.beetle.defaults.service.CommonRegistry;
 import me.aurium.beetle.api.service.ServiceRegistry;
-import me.aurium.beetle.defaults.task.GenericTasker;
+import me.aurium.beetle.defaults.task.AbstractTasker;
 import me.aurium.beetle.api.task.Tasker;
+import me.aurium.beetle.defaults.task.GenericTasker;
 
 import java.nio.file.Path;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class GenericBeetleFactory implements BeetleFactory<CommonBeetle> {
 
@@ -33,7 +36,7 @@ public class GenericBeetleFactory implements BeetleFactory<CommonBeetle> {
 
     @Override
     public CommonBeetle build() {
-        Tasker tasker = new GenericTasker();
+        Tasker tasker = new GenericTasker(Executors.newFixedThreadPool(10000));
 
         tasker.launch();
 

@@ -3,24 +3,24 @@ package me.aurium.beetle.defaults.datacore;
 import me.aurium.beetle.api.datacore.CoreSource;
 import me.aurium.beetle.api.datacore.DataCore;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
-import me.aurium.beetle.api.task.Runner;
+import me.aurium.beetle.api.task.TaskRunner;
 
 public class CommonDatacoreFactory implements DataCoreFactory {
 
-    private final Runner runner;
+    private final TaskRunner taskRunner;
 
-    public CommonDatacoreFactory(Runner runner) {
-        this.runner = runner;
+    public CommonDatacoreFactory(TaskRunner taskRunner) {
+        this.taskRunner = taskRunner;
     }
 
     @Override
     public DataCore produceDatacore(CoreSource source) {
-        return new CommonDatacore(source,runner);
+        return new CommonDatacore(source, taskRunner);
     }
 
     @Override
-    public DataCore produceDatacoreWithRunner(CoreSource source, Runner runner) {
-        return new CommonDatacore(source, runner);
+    public DataCore produceDatacoreWithRunner(CoreSource source, TaskRunner taskRunner) {
+        return new CommonDatacore(source, taskRunner);
     }
 
 

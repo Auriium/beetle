@@ -1,17 +1,12 @@
 package me.aurium.beetle.defaults.task;
 
-import me.aurium.beetle.api.task.TaskQueue;
+import me.aurium.beetle.api.task.SyncQueue;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class CommonTaskQueue implements TaskQueue {
+public class CommonSyncQueue implements SyncQueue {
 
     ConcurrentLinkedQueue<Runnable> runnableQueue = new ConcurrentLinkedQueue<>();
-
-    @Override
-    public void add(Runnable runnable) {
-        runnableQueue.offer(runnable);
-    }
 
     @Override
     public void tick() {
@@ -20,5 +15,10 @@ public class CommonTaskQueue implements TaskQueue {
         while ((task = runnableQueue.poll()) != null) {
             task.run();
         }
+    }
+
+    @Override
+    public void execute(Runnable command) {
+        runnableQueue.offer(command);
     }
 }
