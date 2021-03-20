@@ -31,7 +31,7 @@ public class SpigotContext implements Context<CommandSender> {
     }
 
     @Override
-    public void debugString(String string) {
+    public void messageSender(String string) {
         sender.sendMessage(string);
     }
 
