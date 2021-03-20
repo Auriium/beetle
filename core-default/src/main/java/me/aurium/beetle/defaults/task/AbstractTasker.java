@@ -6,6 +6,7 @@ import me.aurium.beetle.api.task.Tasker;
 
 import java.util.concurrent.*;
 
+//tasker for platforms with a main thread
 public abstract class AbstractTasker implements Tasker {
 
     private final SyncQueue syncQueue;

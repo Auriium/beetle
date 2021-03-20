@@ -5,17 +5,12 @@ import me.aurium.beetle.defaults.datacore.CommonDatacoreFactory;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
 import me.aurium.beetle.defaults.file.CommonFileProvider;
 import me.aurium.beetle.api.file.FileProvider;
-import me.aurium.beetle.defaults.logger.SLFLoggerHelper;
-import me.aurium.beetle.api.logger.SimpleLogger;
 import me.aurium.beetle.defaults.service.CommonRegistry;
 import me.aurium.beetle.api.service.ServiceRegistry;
-import me.aurium.beetle.defaults.task.AbstractTasker;
 import me.aurium.beetle.api.task.Tasker;
-import me.aurium.beetle.defaults.task.GenericTasker;
+import me.aurium.beetle.defaults.task.MainThreadlessTasker;
 
 import java.nio.file.Path;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class GenericBeetleFactory implements BeetleFactory<CommonBeetle,GenericOptions> {
 
@@ -36,16 +31,15 @@ public class GenericBeetleFactory implements BeetleFactory<CommonBeetle,GenericO
 
     @Override
     public CommonBeetle build(GenericOptions options) {
-        Tasker tasker = new GenericTasker(options.getUtilizedService());
+        Tasker tasker = new MainThreadlessTasker(options.getUtilizedService());
 
         tasker.launch();
 
-        SimpleLogger logger = SLFLoggerHelper.buildLogger(isDebug,appName);
         DataCoreFactory factory = new CommonDatacoreFactory(tasker.getRunner());
         ServiceRegistry serviceRegistry = new CommonRegistry();
         FileProvider fileProvider = new CommonFileProvider(baseFolder);
 
-        return new CommonBeetle(tasker,logger,factory,serviceRegistry,fileProvider,isDebug);
+        return new CommonBeetle(tasker,factory,serviceRegistry,fileProvider,isDebug);
     }
 
 }

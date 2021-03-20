@@ -2,8 +2,6 @@ package me.aurium.beetle.api;
 
 import me.aurium.beetle.api.datacore.DataCoreFactory;
 import me.aurium.beetle.api.file.FileProvider;
-import me.aurium.beetle.api.initializer.Initializer;
-import me.aurium.beetle.api.logger.SimpleLogger;
 import me.aurium.beetle.api.service.ServiceRegistry;
 import me.aurium.beetle.api.task.Tasker;
 
@@ -14,7 +12,6 @@ import me.aurium.beetle.api.task.Tasker;
 public interface Beetle {
 
     Tasker getTasker();
-    SimpleLogger getLogger();
     DataCoreFactory getDataCoreFactory();
     ServiceRegistry getServiceRegistry();
     FileProvider getFileProvider();
