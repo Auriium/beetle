@@ -73,10 +73,6 @@
             <id>repsy</id>
             <url>https://repo.repsy.io/mvn/elytraforce/default</url>
         </repository>
-        <repository>
-            <id>snapshots</id>
-            <url>https://repo.repsy.io/mvn/elytraforce/snapshots</url>
-        </repository>
     </repositories>
 
 </project>

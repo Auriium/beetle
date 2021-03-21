@@ -1,18 +1,21 @@
 package me.aurium.beetle.defaults;
 
 import me.aurium.beetle.api.BeetleOptions;
+import me.aurium.beetle.api.task.sync.BlockingBehavior;
 
 import java.util.concurrent.ExecutorService;
 
 public class GenericOptions implements BeetleOptions {
 
-    public ExecutorService getUtilizedService() {
-        return utilizedService;
+    private final ExecutorService utilizedService;
+    private final BlockingBehavior behavior;
+
+    public GenericOptions(ExecutorService utilizedService, BlockingBehavior behavior) {
+        this.utilizedService = utilizedService;
+        this.behavior = behavior;
     }
 
-    private final ExecutorService utilizedService;
-
-    public GenericOptions(ExecutorService utilizedService) {
-        this.utilizedService = utilizedService;
+    public ExecutorService getUtilizedService() {
+        return utilizedService;
     }
 }

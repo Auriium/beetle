@@ -1,4 +1,4 @@
-package me.aurium.beetle.api;
+package me.aurium.beetle.api.capability;
 
 import me.aurium.beetle.api.command.CommandRegistry;
 

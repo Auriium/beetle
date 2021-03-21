@@ -1,4 +1,4 @@
-package me.aurium.beetle.api.task;
+package me.aurium.beetle.api.task.sync;
 
 import java.util.concurrent.Executor;
 
@@ -7,9 +7,10 @@ import java.util.concurrent.Executor;
  */
 public interface SyncQueue extends Executor {
 
+
     /**
      * Runs all existing runnables
      */
-    void tick();
+    void pulseQueue();
 
 }

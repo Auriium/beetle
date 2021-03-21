@@ -1,17 +1,25 @@
 package me.aurium.beetle.api.task;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-
 /**
- * Represents a tickable thing that can be launched that ticks it's taskqueue once launched
+ * Something that can provide a runner (lol)
+ *
+ * eventually all of this stuff will be due for an update / rework to provide functionality like resyncing to main thread
+ * with the SyncFuture, which would mean making everything adjusted to return a super class of SyncFuture, and having a
+ * another implementation SynclesFuture with NotImplementedExceptions (gross) but until then, Tasker will have
+ * to do :)
  */
 public interface Tasker {
 
-    Executor getSyncExecutor();
-    Executor getAsyncExecutor();
-
     TaskRunner getRunner();
-    void launch();
+
+    /**
+     * WARNING: READ THIS:
+     *
+     * This isn't called getExecutors for a reason. You should only use these if you know what you are doing.
+     * If you are on the bukkit platforms you should read pr: #TODO a248 link it here please
+     *
+     * @return the executorProvider
+     */
+    ExecutorProvider exposeExecutors();
 
 }

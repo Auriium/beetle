@@ -6,26 +6,18 @@ import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.service.ServiceRegistry;
 import me.aurium.beetle.api.task.Tasker;
 
-public class CommonBeetle implements Beetle {
+public abstract class AbstractBeetle implements Beetle {
 
-    private final Tasker tasker;
     private final DataCoreFactory factory;
     private final ServiceRegistry serviceRegistry;
     private final FileProvider fileProvider;
     private final boolean isDebug;
 
-    public CommonBeetle(Tasker tasker, DataCoreFactory factory, ServiceRegistry serviceRegistry, FileProvider fileProvider, boolean isDebug) {
-        this.tasker = tasker;
+    public AbstractBeetle(DataCoreFactory factory, ServiceRegistry serviceRegistry, FileProvider fileProvider, boolean isDebug) {
         this.serviceRegistry = serviceRegistry;
         this.fileProvider = fileProvider;
         this.factory = factory;
         this.isDebug = isDebug;
-    }
-
-
-    @Override
-    public Tasker getTasker() {
-        return tasker;
     }
 
     @Override

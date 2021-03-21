@@ -8,11 +8,11 @@ import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.defaults.service.CommonRegistry;
 import me.aurium.beetle.api.service.ServiceRegistry;
 import me.aurium.beetle.api.task.Tasker;
-import me.aurium.beetle.defaults.task.MainThreadlessTasker;
+import me.aurium.beetle.defaults.task.syncless.SynclessTasker;
 
 import java.nio.file.Path;
 
-public class GenericBeetleFactory implements BeetleFactory<CommonBeetle,GenericOptions> {
+public class GenericBeetleFactory implements BeetleFactory<GenericBeetle,GenericOptions> {
 
     private final Boolean isDebug;
     private final Path baseFolder;
@@ -29,17 +29,14 @@ public class GenericBeetleFactory implements BeetleFactory<CommonBeetle,GenericO
         this.appName = appName;
     }
 
-    @Override
-    public CommonBeetle build(GenericOptions options) {
-        Tasker tasker = new MainThreadlessTasker(options.getUtilizedService());
-
-        tasker.launch();
+    public GenericBeetle build(GenericOptions options) {
+        Tasker tasker = new SynclessTasker(options.getUtilizedService());
 
         DataCoreFactory factory = new CommonDatacoreFactory(tasker.getRunner());
         ServiceRegistry serviceRegistry = new CommonRegistry();
         FileProvider fileProvider = new CommonFileProvider(baseFolder);
 
-        return new CommonBeetle(tasker,factory,serviceRegistry,fileProvider,isDebug);
+        return new GenericBeetle(factory,serviceRegistry,fileProvider,tasker,isDebug);
     }
 
 }

@@ -10,7 +10,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ExamplePlugin extends JavaPlugin {
 
 
-    private final SpigotBeetle beetle = new SpigotBeetleFactory(this).build(new SpigotOptions(false));
+    private final SpigotBeetle beetle = new SpigotBeetleFactory(this).build(
+            new SpigotOptions.Builder().isDebug(true).build()
+    );
 
     public void onEnable() {
 

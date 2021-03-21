@@ -29,11 +29,7 @@ public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle, SpigotOp
     public SpigotBeetle build(SpigotOptions options) {
         //produce dependencies
 
-        Executor platformExecutor = (runnable) -> {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin,runnable);
-        };
-
-        SpigotTasker tasker = new SpigotTasker(platformExecutor, plugin);
+        SpigotTasker tasker = new SpigotTasker(options.getMainThread(), options.getPlatformExecutor(), options.getBlockingBehavior(), plugin);
         //eventually if PR is ever merged, switch this to getting a executor from the Bukkit caached thread pool
 
         SpigotCommandRegistry commandRegistry = new SpigotCMDHelper(plugin).produceRegistry();
@@ -41,7 +37,7 @@ public class SpigotBeetleFactory implements BeetleFactory<SpigotBeetle, SpigotOp
         DataCoreFactory dataCoreFactory = new CommonDatacoreFactory(tasker.getRunner());
         FileProvider fileProvider = new CommonFileProvider(plugin.getDataFolder().toPath());
 
-        return new SpigotBeetle(tasker,dataCoreFactory,serviceRegistry,fileProvider,commandRegistry,options.isDebug());
+        return new SpigotBeetle(commandRegistry,dataCoreFactory,serviceRegistry,fileProvider, tasker,options.isDebug());
     }
 
 

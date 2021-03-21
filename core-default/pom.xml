@@ -9,14 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <version>0.4.1</version>
+    <version>0.4.2-SNAPSHOT</version>
 
     <artifactId>beetle-core-default</artifactId>
     <dependencies>
         <dependency>
             <groupId>me.aurium</groupId>
             <artifactId>beetle-core</artifactId>
-            <version>0.4.1</version>
+            <version>0.4.2-SNAPSHOT</version>
         </dependency>
         <!-- this is provided because... only use hikari shit if you want it !-->
         <dependency>

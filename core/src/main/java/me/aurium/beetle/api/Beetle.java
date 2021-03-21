@@ -3,7 +3,6 @@ package me.aurium.beetle.api;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
 import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.service.ServiceRegistry;
-import me.aurium.beetle.api.task.Tasker;
 
 /**
  * Collection of unified subutilities. Keep in mind that the beetle simply unified the subutilities, if you want to use them
@@ -11,7 +10,6 @@ import me.aurium.beetle.api.task.Tasker;
  */
 public interface Beetle {
 
-    Tasker getTasker();
     DataCoreFactory getDataCoreFactory();
     ServiceRegistry getServiceRegistry();
     FileProvider getFileProvider();
