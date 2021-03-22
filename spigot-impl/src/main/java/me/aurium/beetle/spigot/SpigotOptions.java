@@ -80,7 +80,7 @@ public class SpigotOptions implements BeetleOptions {
             return this;
         }
 
-        public Builder withMainThread(Thread e) {
+        public Builder withMainThread(Thread mainThread) {
             Objects.requireNonNull(e);
 
             this.mainThread = e;
