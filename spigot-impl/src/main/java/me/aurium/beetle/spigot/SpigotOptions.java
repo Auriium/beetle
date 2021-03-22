@@ -71,7 +71,7 @@ public class SpigotOptions implements BeetleOptions {
             return this;
         }
 
-        public Builder withPlatformExecutor(Executor e) {
+        public Builder withPlatformExecutor(Executor executor) {
             Objects.requireNonNull(e);
 
             this.platformExecutor = e;
