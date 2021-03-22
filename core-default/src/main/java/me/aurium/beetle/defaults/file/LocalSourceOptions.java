@@ -1,11 +1,11 @@
-package me.aurium.beetle.defaults.file.newfile;
+package me.aurium.beetle.defaults.file;
 
 import me.aurium.beetle.api.file.producer.CreationOptions;
 import me.aurium.beetle.defaults.file.database.SourceableFileExtension;
 
 import java.nio.file.Path;
 
-public class LocalSourceOptions implements CreationOptions<LocalProducer> {
+public class LocalSourceOptions implements CreationOptions<LocalProvisioner> {
 
     private final SourceableFileExtension extensionType;
     private final String username;
@@ -46,9 +46,9 @@ public class LocalSourceOptions implements CreationOptions<LocalProducer> {
     }
 
     @Override
-    public LocalProducer newProducer(Path basePath) {
+    public LocalProvisioner newProducer(Path basePath) {
         Path finalPath = basePath.resolve(extensionType.of(fileShortName));
 
-        return new LocalProducer(finalPath,this);
+        return new LocalProvisioner(finalPath,this);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Optional;
  * @param <T> accessor
  * @param <C> provisioner
  */
-public interface FileProducer<T, C extends ProvisionAccessor> {
+public interface FileProvisioner<T, C extends ProvisionAccessor> {
 
     Optional<T> access();
     C getProvisioner();

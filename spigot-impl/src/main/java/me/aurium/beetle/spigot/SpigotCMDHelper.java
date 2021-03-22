@@ -12,7 +12,7 @@ public class SpigotCMDHelper {
 
     private final JavaPlugin plugin;
 
-    SpigotCMDHelper(JavaPlugin plugin) {
+    public SpigotCMDHelper(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 

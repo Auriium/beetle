@@ -2,7 +2,6 @@ package me.aurium.beetle.defaults.datacore;
 
 import me.aurium.beetle.api.datacore.CoreSource;
 import me.aurium.beetle.api.datacore.DataCore;
-import me.aurium.beetle.api.datacore.DataCoreFactory;
 import me.aurium.beetle.api.task.TaskRunner;
 
 public class CommonDatacoreFactory implements DataCoreFactory {

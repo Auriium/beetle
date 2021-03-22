@@ -1,9 +1,8 @@
-package me.aurium.beetle.defaults.file.newfile;
+package me.aurium.beetle.defaults.file;
 
 import me.aurium.beetle.api.datacore.CoreSource;
 import me.aurium.beetle.api.file.UncheckedIOException;
 import me.aurium.beetle.api.file.producer.ProvisionAccessor;
-import me.aurium.beetle.defaults.file.StateHolder;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,9 +1,6 @@
 package me.aurium.examplebeetle;
 
 import me.aurium.beetle.defaults.command.SimpleRegisterer;
-import me.aurium.beetle.spigot.SpigotBeetle;
-import me.aurium.beetle.spigot.SpigotBeetleFactory;
-import me.aurium.beetle.spigot.SpigotOptions;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
