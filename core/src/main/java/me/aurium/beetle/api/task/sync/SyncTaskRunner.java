@@ -17,7 +17,7 @@ public interface SyncTaskRunner extends TaskRunner {
      * Supplies a CompletableFuture asynchronously using the platform's default executor
      * @param supplier the supplier
      * @param <T> type of object to return
-     * @return a completablefuture containin the type
+     * @return a completable future containing the type
      */
     @Override
     <T> SyncFuture<T> supplyAsync(Supplier<T> supplier);

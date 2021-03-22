@@ -10,7 +10,7 @@ public interface SyncTasker extends Tasker {
     @Override
     SyncExecutorProvider exposeExecutors();
 
-    java.lang.Thread getMainThread();
+    Thread getMainThread();
 
     void launch();
 
