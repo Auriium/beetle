@@ -65,7 +65,7 @@ public class SpigotOptions implements BeetleOptions {
             blockingBehavior = new TimerSleepBehavior();
         }
 
-        public Builder isDebug(boolean e) {
+        public Builder isDebug(boolean isDebug) {
             this.isDebug = e;
 
             return this;
