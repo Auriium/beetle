@@ -89,7 +89,7 @@ public class SpigotOptions implements BeetleOptions {
             return this;
         }
 
-        public Builder withBlockingBehavior(BlockingBehavior e) {
+        public Builder withBlockingBehavior(BlockingBehavior blockingBehavior) {
             Objects.requireNonNull(e);
 
             this.blockingBehavior = e;
