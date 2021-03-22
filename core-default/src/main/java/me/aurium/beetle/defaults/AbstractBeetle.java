@@ -2,9 +2,7 @@ package me.aurium.beetle.defaults;
 
 import me.aurium.beetle.api.Beetle;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
-import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.service.ServiceRegistry;
-import me.aurium.beetle.api.task.Tasker;
 
 public abstract class AbstractBeetle implements Beetle {
 

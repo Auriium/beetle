@@ -11,7 +11,7 @@ public abstract class MainThreadTasker implements SyncTasker {
     private final SyncTaskRunner taskRunner;
     private final SyncQueue queue;
 
-    protected MainThreadTasker(Thread mainThread, Executor asyncExecutor, BlockingBehavior behavior) {
+    protected MainThreadTasker(Thread mainThread, Executor asyncExecutor, TaskCoordinator behavior) {
         this.mainThread = mainThread;
 
         this.queue = new CommonSyncQueue();

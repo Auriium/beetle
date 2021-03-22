@@ -5,7 +5,7 @@ import java.util.concurrent.Executor;
 /**
  * Represents a synchronous infinitely looping queue that can have things added to it
  */
-public interface SyncQueue extends Executor {
+public interface SyncQueue {
 
 
     /**

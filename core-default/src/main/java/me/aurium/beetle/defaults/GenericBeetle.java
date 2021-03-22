@@ -2,7 +2,6 @@ package me.aurium.beetle.defaults;
 
 import me.aurium.beetle.api.capability.Taskable;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
-import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.service.ServiceRegistry;
 import me.aurium.beetle.api.task.Tasker;
 

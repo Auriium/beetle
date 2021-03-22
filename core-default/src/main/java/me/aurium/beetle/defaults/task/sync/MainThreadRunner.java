@@ -1,9 +1,6 @@
 package me.aurium.beetle.defaults.task.sync;
 
-import me.aurium.beetle.api.task.sync.BlockingBehavior;
-import me.aurium.beetle.api.task.sync.SyncFuture;
-import me.aurium.beetle.api.task.sync.SyncQueue;
-import me.aurium.beetle.api.task.sync.SyncTaskRunner;
+import me.aurium.beetle.api.task.sync.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,14 +9,14 @@ import java.util.function.Supplier;
 
 public class MainThreadRunner implements SyncTaskRunner {
 
-    private final BlockingBehavior behavior;
+    private final TaskCoordinator behavior;
     private final SyncQueue queue;
     private final Executor asyncExecutor;
     private final Thread mainThread;
 
     private final static Logger logger = LoggerFactory.getLogger(MainThreadRunner.class);
 
-    public MainThreadRunner(BlockingBehavior behavior, SyncQueue queue, Executor asyncExecutor, Thread mainThread) {
+    public MainThreadRunner(TaskCoordinator behavior, SyncQueue queue, Executor asyncExecutor, Thread mainThread) {
         this.behavior = behavior;
         this.queue = queue;
         this.asyncExecutor = asyncExecutor;
@@ -41,8 +38,7 @@ public class MainThreadRunner implements SyncTaskRunner {
 
     @Override
     public <T> SyncFuture<T> supplyAsync(Supplier<T> supplier) {
-        //please check this over a248. I do believe it is correct but i just want to make sure.
-        return (SyncFuture<T>) new SyncFuture<T>(mainThread,queue,behavior).completeAsync(supplier,asyncExecutor);
+        return (SyncFuture<T>) new SyncFuture<T>(behavior).completeAsync(supplier,asyncExecutor);
     }
 
     @Override
@@ -61,6 +57,6 @@ public class MainThreadRunner implements SyncTaskRunner {
     @Override
     public <T> SyncFuture<T> supplySync(Supplier<T> supplier) { //TODO let syncfuture, or it's parent taskfuture,
         //TODO implement CompletionStage and override completeAsync so we can have a type guarantee
-        return (SyncFuture<T>) new SyncFuture<T>(mainThread,queue,behavior).completeAsync(supplier,queue);
+        return (SyncFuture<T>) new SyncFuture<T>(behavior).completeAsync(supplier,queue);
     }
 }

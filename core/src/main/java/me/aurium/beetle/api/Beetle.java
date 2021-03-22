@@ -1,7 +1,6 @@
 package me.aurium.beetle.api;
 
 import me.aurium.beetle.api.datacore.DataCoreFactory;
-import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.service.ServiceRegistry;
 
 /**
@@ -12,7 +11,6 @@ public interface Beetle {
 
     DataCoreFactory getDataCoreFactory();
     ServiceRegistry getServiceRegistry();
-    FileProvider getFileProvider();
 
     boolean isDebug();
 

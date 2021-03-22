@@ -2,14 +2,10 @@ package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.api.BeetleFactory;
 import me.aurium.beetle.api.datacore.DataCoreFactory;
-import me.aurium.beetle.api.file.FileProvider;
 import me.aurium.beetle.api.service.ServiceRegistry;
 import me.aurium.beetle.defaults.datacore.CommonDatacoreFactory;
-import me.aurium.beetle.defaults.file.CommonFileProvider;
 import me.aurium.beetle.defaults.service.CommonRegistry;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.concurrent.Executor;
 
 /**
  * A Helper BeetleFactory based around the Spigot API.
