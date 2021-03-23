@@ -16,6 +16,4 @@ public interface CommandRegistry<T> {
 
     Collection<Command<T>> getAllCommands();
 
-    ContextSource<T> getContextSource();
-
 }

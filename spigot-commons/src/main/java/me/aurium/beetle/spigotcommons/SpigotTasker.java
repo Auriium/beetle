@@ -1,4 +1,4 @@
-package me.aurium.beetle.spigot;
+package me.aurium.beetle.spigotcommons;
 
 import me.aurium.beetle.api.task.sync.TaskCoordinator;
 import me.aurium.beetle.defaults.task.sync.MainThreadTasker;
@@ -10,7 +10,7 @@ public class SpigotTasker extends MainThreadTasker {
 
     private final JavaPlugin plugin;
 
-    protected SpigotTasker(Thread thread, Executor asyncExecutor, TaskCoordinator behavior, JavaPlugin plugin) {
+    public SpigotTasker(Thread thread, Executor asyncExecutor, TaskCoordinator behavior, JavaPlugin plugin) {
         super(thread, asyncExecutor, behavior);
 
         this.plugin = plugin;

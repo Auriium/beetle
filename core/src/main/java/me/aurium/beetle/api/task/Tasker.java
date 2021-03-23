@@ -16,7 +16,7 @@ public interface Tasker {
      * WARNING: READ THIS:
      *
      * This isn't called getExecutors for a reason. You should only use these if you know what you are doing.
-     * If you are on the bukkit platforms you should read pr: #TODO a248 link it here please
+     * If you are on the bukkit platforms you should read pr: 4064
      *
      * @return the executorProvider
      */

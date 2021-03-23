@@ -1,8 +1,7 @@
-package me.aurium.beetle.spigot;
+package me.aurium.beetle.spigotcommons;
 
 import me.aurium.beetle.api.command.*;
 import me.aurium.beetle.api.util.NotImplementedException;
-import me.aurium.beetle.defaults.command.SimpleRegisterer;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 
@@ -14,9 +13,8 @@ public class SpigotCommandRegistry implements CommandRegistry<CommandSender> {
 
     private final CommandMap commandMap;
     private final Set<Command<CommandSender>> commands;
-    private final SpigotContextSource contextSource = new SpigotContextSource();
 
-    SpigotCommandRegistry(CommandMap commandMap) {
+    public SpigotCommandRegistry(CommandMap commandMap) {
         this.commandMap = commandMap;
         this.commands = new HashSet<>();
     }
@@ -49,11 +47,6 @@ public class SpigotCommandRegistry implements CommandRegistry<CommandSender> {
     @Override
     public Collection<Command<CommandSender>> getAllCommands() {
         return commands;
-    }
-
-    @Override
-    public ContextSource<CommandSender> getContextSource() {
-        return contextSource;
     }
 
     void verifyCommand(Command<CommandSender> command) {

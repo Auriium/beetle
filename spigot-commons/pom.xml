@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>beetle-velo-impl</artifactId>
+    <version>0.4.2-SNAPSHOT</version>
 
-    <version>0.4.0</version>
+    <artifactId>beetle-spigot-commons</artifactId>
 
     <properties>
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
@@ -20,27 +20,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.velocitypowered</groupId>
-            <artifactId>velocity-api</artifactId>
-            <version>1.1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>me.aurium</groupId>
-            <artifactId>beetle-core</artifactId>
-            <version>0.4.1</version>
-        </dependency>
-        <dependency>
             <groupId>me.aurium</groupId>
             <artifactId>beetle-core-default</artifactId>
-            <version>0.4.1</version>
+            <version>0.4.2-SNAPSHOT</version>
         </dependency>
-    </dependencies>
 
-    <repositories>
-        <repository>
-            <id>velocity</id>
-            <url>https://nexus.velocitypowered.com/repository/maven-public/</url>
-        </repository>
-    </repositories>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

@@ -27,13 +27,26 @@ public class SyncFuture<T> extends TaskFuture<T> {
 
     @Override
     public T get(long amount, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException {
+        if (coordinator.isMainThread()) {
+            if (super.getNow(null) != null) {
+                return super.getNow(null);
+            }
 
-        return super.get(amount, unit);
+            return coordinator.waitFor(this,unit,amount);
+        }
+
+        return super.get(amount,unit);
     }
 
     @Override
     public T get() throws ExecutionException, InterruptedException {
+        if (coordinator.isMainThread()) {
+            if (super.getNow(null) != null) {
+                return super.getNow(null);
+            }
 
+            return coordinator.waitFor(this);
+        }
 
         return super.get();
     }
@@ -42,14 +55,14 @@ public class SyncFuture<T> extends TaskFuture<T> {
     public T join() {
 
         if (coordinator.isMainThread()) {
-            return 
+            if (super.getNow(null) != null) {
+                return super.getNow(null);
+            }
+
+            return coordinator.waitFor(this);
         }
 
         return super.join();
     }
 
-    @Override
-    public boolean isOnMainThread() {
-        return mainThread.equals(Thread.currentThread());
-    }
 }

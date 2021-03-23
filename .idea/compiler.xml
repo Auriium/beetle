@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="beetle-core-default" />
-        <module name="beetle-examples" />
         <module name="velo-impl" />
         <module name="beetle-spigot-impl" />
         <module name="core-default" />
@@ -15,6 +14,7 @@
         <module name="core-branch" />
         <module name="beetle-core" />
         <module name="core" />
+        <module name="spigot-commons" />
         <module name="spigot-impl" />
         <module name="examples" />
         <module name="discord-impl" />
@@ -23,6 +23,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="beetle-core-branch" target="11" />
+      <module name="beetle-examples" target="11" />
       <module name="core-database" target="11" />
       <module name="core-defaults" target="11" />
       <module name="core-implementation" target="11" />

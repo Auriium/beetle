@@ -1,6 +1,7 @@
 package me.aurium.beetle.spigot;
 
 import me.aurium.beetle.api.command.IllegalCommandMapState;
+import me.aurium.beetle.spigotcommons.SpigotCommandRegistry;
 import org.apache.commons.lang.reflect.FieldUtils;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.PluginManager;
