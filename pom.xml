@@ -22,6 +22,7 @@
         <module>velo-impl</module>
         <module>discord-impl</module>
         <module>spigot-commons</module>
+        <module>paper-impl</module>
     </modules>
 
     <build>

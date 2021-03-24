@@ -17,7 +17,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class SyncFuture<T> extends TaskFuture<T> {
 
-
     private final TaskCoordinator coordinator;
 
     public SyncFuture(TaskCoordinator coordinator) {
@@ -28,7 +27,7 @@ public class SyncFuture<T> extends TaskFuture<T> {
     @Override
     public T get(long amount, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException {
         if (coordinator.isMainThread()) {
-            if (super.getNow(null) != null) {
+            if (!super.getNow(SyncConstants.CONSTANT()).equals(SyncConstants.CONSTANT())) {
                 return super.getNow(null);
             }
 
@@ -41,7 +40,7 @@ public class SyncFuture<T> extends TaskFuture<T> {
     @Override
     public T get() throws ExecutionException, InterruptedException {
         if (coordinator.isMainThread()) {
-            if (super.getNow(null) != null) {
+            if (!super.getNow(SyncConstants.CONSTANT()).equals(SyncConstants.CONSTANT())) {
                 return super.getNow(null);
             }
 
@@ -55,7 +54,7 @@ public class SyncFuture<T> extends TaskFuture<T> {
     public T join() {
 
         if (coordinator.isMainThread()) {
-            if (super.getNow(null) != null) {
+            if (!super.getNow(SyncConstants.CONSTANT()).equals(SyncConstants.CONSTANT())) {
                 return super.getNow(null);
             }
 

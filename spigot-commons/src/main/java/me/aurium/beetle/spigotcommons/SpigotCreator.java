@@ -17,7 +17,7 @@ public class SpigotCreator implements FileCreator {
     }
 
     @Override
-    public <T extends FileProvisioner<?, ?>> T create(CreationOptions<T> options) {
+    public <T extends FileProvisioner<?, ?>> T createAndLoad(CreationOptions<T> options) {
         return options.newProducer(plugin.getDataFolder().toPath());
     }
 }

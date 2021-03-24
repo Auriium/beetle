@@ -1,7 +1,6 @@
-package me.aurium.beetle.defaults.file;
+package me.aurium.beetle.defaults.file.database;
 
 import me.aurium.beetle.api.file.producer.CreationOptions;
-import me.aurium.beetle.defaults.file.database.SourceableFileExtension;
 
 import java.nio.file.Path;
 

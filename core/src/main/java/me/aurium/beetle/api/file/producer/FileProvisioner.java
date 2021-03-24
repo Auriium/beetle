@@ -9,7 +9,7 @@ import java.util.Optional;
  */
 public interface FileProvisioner<T, C extends ProvisionAccessor> {
 
-    Optional<T> access();
-    C getProvisioner();
+    T access();
+    C getAccessor();
 
 }

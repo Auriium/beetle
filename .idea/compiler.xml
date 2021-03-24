@@ -17,6 +17,7 @@
         <module name="spigot-commons" />
         <module name="spigot-impl" />
         <module name="examples" />
+        <module name="paper-impl" />
         <module name="discord-impl" />
         <module name="beetle-discord-impl" />
       </profile>
