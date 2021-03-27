@@ -10,8 +10,6 @@ package me.aurium.beetle.api.task;
  */
 public interface Tasker {
 
-    TaskRunner getRunner();
-
     /**
      * WARNING: READ THIS:
      *
@@ -21,5 +19,7 @@ public interface Tasker {
      * @return the executorProvider
      */
     ExecutorProvider exposeExecutors();
+
+    TaskRunner getRunner();
 
 }

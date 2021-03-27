@@ -1,4 +1,4 @@
-package me.aurium.beetle.defaults.task.sync;
+package me.aurium.beetle.defaults.task.sync.util;
 
 import me.aurium.beetle.api.task.sync.SyncQueue;
 
@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CommonSyncQueue implements SyncQueue {
 
-    ConcurrentLinkedQueue<Runnable> runnableQueue = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<Runnable> runnableQueue = new ConcurrentLinkedQueue<>();
 
     @Override
     public void pulseQueue() {

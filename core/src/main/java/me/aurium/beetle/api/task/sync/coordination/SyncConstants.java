@@ -1,4 +1,4 @@
-package me.aurium.beetle.api.task.sync;
+package me.aurium.beetle.api.task.sync.coordination;
 
 public class SyncConstants {
 
@@ -7,5 +7,6 @@ public class SyncConstants {
     public static <T> T CONSTANT() {
         return (T) EMPTY;
     }
+
 
 }

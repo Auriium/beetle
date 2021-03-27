@@ -2,6 +2,7 @@ package me.aurium.beetle.defaults.task.syncless;
 
 import me.aurium.beetle.api.task.ExecutorProvider;
 import me.aurium.beetle.api.task.TaskRunner;
+import me.aurium.beetle.api.task.futures.TaskFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,12 +11,12 @@ import java.util.function.Supplier;
 
 public class SynclessTaskRunner implements TaskRunner {
 
-    private final ExecutorProvider executors;
+    private final ExecutorProvider executorProvider;
 
-    private static final Logger logger = LoggerFactory.getLogger(SynclessTaskRunner.class);
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public SynclessTaskRunner(ExecutorProvider executors) {
-        this.executors = executors;
+    public SynclessTaskRunner(ExecutorProvider executorProvider) {
+        this.executorProvider = executorProvider;
     }
 
     @Override
@@ -32,7 +33,7 @@ public class SynclessTaskRunner implements TaskRunner {
     }
 
     @Override
-    public <T> CompletableFuture<T> supplyAsync(Supplier<T> supplier) {
-        return CompletableFuture.supplyAsync(supplier,executors.getAsyncExecutor());
+    public <T> TaskFuture<T> supplyAsync(Supplier<T> supplier) {
+        return new TaskFuture<T>(executorProvider).completeAsync(supplier);
     }
 }

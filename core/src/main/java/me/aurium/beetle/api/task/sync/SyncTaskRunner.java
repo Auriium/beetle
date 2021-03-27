@@ -1,7 +1,9 @@
 package me.aurium.beetle.api.task.sync;
 
 import me.aurium.beetle.api.task.TaskRunner;
+import me.aurium.beetle.api.task.futures.SyncTaskerFuture;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 public interface SyncTaskRunner extends TaskRunner {
@@ -20,7 +22,7 @@ public interface SyncTaskRunner extends TaskRunner {
      * @return a completable future containing the type
      */
     @Override
-    <T> SyncFuture<T> supplyAsync(Supplier<T> supplier);
+    <T> SyncTaskerFuture<T> supplyAsync(Supplier<T> supplier);
 
     /**
      * Runs a task on the main thread based on the platform's default executor
@@ -34,5 +36,5 @@ public interface SyncTaskRunner extends TaskRunner {
      * @param <T> object to return
      * @return a completablefuture wi the type
      */
-    <T> SyncFuture<T> supplySync(Supplier<T> supplier);
+    <T> SyncTaskerFuture<T> supplySync(Supplier<T> supplier);
 }

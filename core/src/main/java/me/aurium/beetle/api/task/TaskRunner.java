@@ -1,11 +1,13 @@
 package me.aurium.beetle.api.task;
 
+import me.aurium.beetle.api.task.futures.TaskFuture;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Supplier;
 
 /**
- * Marker interface that represents something that can run tasks overlaid onto the core.
+ * Acts as both a centralized runnable runner and taskfuture provider
  */
 public interface TaskRunner {
 
@@ -21,6 +23,6 @@ public interface TaskRunner {
      * @param <T> type of object to return
      * @return a completablefuture containin the type
      */
-    <T> CompletableFuture<T> supplyAsync(Supplier<T> supplier);
+    <T> TaskFuture<T> supplyAsync(Supplier<T> supplier);
 
 }
