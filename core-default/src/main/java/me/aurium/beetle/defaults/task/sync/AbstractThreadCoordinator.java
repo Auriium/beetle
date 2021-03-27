@@ -6,7 +6,9 @@ import me.aurium.beetle.api.task.sync.coordination.BlockingBehavior;
 import me.aurium.beetle.api.task.sync.coordination.TaskCoordinator;
 import me.aurium.beetle.defaults.task.sync.util.CommonSyncPulser;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public abstract class AbstractThreadCoordinator implements TaskCoordinator {
 
@@ -16,19 +18,24 @@ public abstract class AbstractThreadCoordinator implements TaskCoordinator {
     private final BlockingBehavior behavior;
     private final CommonSyncPulser pulser;
 
-    public AbstractThreadCoordinator(BlockingBehavior behavior, SyncExecutorProvider provider) {
+    protected AbstractThreadCoordinator(BlockingBehavior behavior, SyncExecutorProvider provider) {
         this.behavior = behavior;
 
         this.pulser = new CommonSyncPulser(provider.getSyncExecutor());
     }
 
     @Override
-    public <T> T waitFor(SyncTaskerFuture<T> future) {
-        return behavior.waitFor(future,pulser);
+    public <T> T waitForJoin(SyncTaskerFuture<T> future) {
+        return behavior.waitForJoin(future,pulser);
     }
 
     @Override
-    public <T> T waitFor(SyncTaskerFuture<T> future, TimeUnit unit, long amount) {
-        return behavior.waitFor(future,pulser,unit,amount);
+    public <T> T waitForGet(SyncTaskerFuture<T> future) throws InterruptedException, ExecutionException {
+        return behavior.waitForGet(future,pulser);
+    }
+
+    @Override
+    public <T> T waitForTimer(SyncTaskerFuture<T> future, TimeUnit waitType, long waitDuration) throws InterruptedException, TimeoutException, ExecutionException {
+        return behavior.waitForTimer(future,pulser,waitType,waitDuration);
     }
 }

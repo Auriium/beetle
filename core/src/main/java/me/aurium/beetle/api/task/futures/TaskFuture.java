@@ -17,15 +17,20 @@ import java.util.function.*;
 @SuppressWarnings("unchecked")
 public class TaskFuture<T> extends CompletableFuture<T> {
 
-    private final Executor asyncExecutor;
+    private final ExecutorProvider asyncExecutor;
 
     public TaskFuture(ExecutorProvider executorProvider) {
-        this.asyncExecutor = executorProvider.getAsyncExecutor();
+        this.asyncExecutor = executorProvider;
     }
 
     @Override
     public Executor defaultExecutor() {
-        return asyncExecutor;
+        return asyncExecutor.getAsyncExecutor();
+    }
+
+    @Override
+    public <U> CompletableFuture<U> newIncompleteFuture() {
+        return new TaskFuture<>(asyncExecutor);
     }
 
     @Override

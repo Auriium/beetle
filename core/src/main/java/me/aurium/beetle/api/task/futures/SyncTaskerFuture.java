@@ -10,14 +10,21 @@ import java.util.function.*;
 @SuppressWarnings("unchecked")
 public class SyncTaskerFuture<T> extends TaskFuture<T> {
 
+    private final SyncExecutorProvider provider;
     private final Executor syncExecutor;
     private final TaskCoordinator coordinator;
 
     public SyncTaskerFuture(SyncExecutorProvider provider, TaskCoordinator coordinator) {
         super(provider);
 
+        this.provider = provider;
         this.syncExecutor = provider.getSyncExecutor();
         this.coordinator = coordinator;
+    }
+
+    @Override
+    public <U> CompletableFuture<U> newIncompleteFuture() {
+        return new SyncTaskerFuture<>(provider,coordinator);
     }
 
     public SyncTaskerFuture<T> completeSync(Supplier<? extends T> supplier) {
@@ -284,10 +291,10 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
 
             T returned;
             if (!(returned = super.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
-                return super.getNow(returned);
+                return returned;
             }
 
-            return coordinator.waitFor(this,unit,amount);
+            return coordinator.waitForTimer(this,unit,amount);
         }
 
         if (amount <= 0L) {
@@ -303,10 +310,10 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
 
             T returned;
             if (!(returned = super.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
-                return super.getNow(returned);
+                return returned;
             }
 
-            return coordinator.waitFor(this);
+            return coordinator.waitForGet(this);
         }
 
         return super.get();
@@ -319,10 +326,10 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
 
             T returned;
             if (!(returned = super.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
-                return super.getNow(returned);
+                return returned;
             }
 
-            return coordinator.waitFor(this);
+            return coordinator.waitForJoin(this);
         }
 
         return super.join();
