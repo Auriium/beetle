@@ -297,10 +297,6 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
             return coordinator.waitForTimer(this,unit,amount);
         }
 
-        if (amount <= 0L) {
-            throw new TimeoutException();
-        }
-
         return super.get(amount,unit);
     }
 

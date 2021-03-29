@@ -29,7 +29,7 @@ public class TimerSleepBehavior implements BlockingBehavior {
             pulser.pulse();
 
             T result;
-            if (!(result = future.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
+            if ((result = future.getNow(SyncConstants.CONSTANT())) != SyncConstants.CONSTANT()) {
                 return result;
             }
 
@@ -47,7 +47,7 @@ public class TimerSleepBehavior implements BlockingBehavior {
             pulser.pulse();
 
             T result;
-            if (!(result = future.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
+            if ((result = future.getNow(SyncConstants.CONSTANT())) != SyncConstants.CONSTANT()) {
                 return result;
             }
 
@@ -68,13 +68,14 @@ public class TimerSleepBehavior implements BlockingBehavior {
             pulser.pulse();
 
             T result;
-            if (!(result = future.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
+            if ((result = future.getNow(SyncConstants.CONSTANT())) != SyncConstants.CONSTANT()) {
                 return result;
             }
 
             //copy this shit from managedwaitstrategies because couldn't figure it out after a few hours of testing
 
             long delay = deadline - System.nanoTime();
+
             if (delay <= 0) {
                 throw new TimeoutException();
             }
