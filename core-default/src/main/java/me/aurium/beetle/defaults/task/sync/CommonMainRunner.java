@@ -48,7 +48,7 @@ public class CommonMainRunner implements SyncTaskRunner {
             return null;
         }).whenComplete((ignored,throwable) -> {
             if (throwable != null) {
-                logger.error("Exception while executing async!",throwable);
+                logger.error("Exception while executing sync", throwable);
             }
         });
     }
