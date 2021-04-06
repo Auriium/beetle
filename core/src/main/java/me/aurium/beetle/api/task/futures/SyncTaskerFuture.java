@@ -1,7 +1,7 @@
 package me.aurium.beetle.api.task.futures;
 
+import me.aurium.beetle.api.task.Comparisons;
 import me.aurium.beetle.api.task.sync.SyncExecutorProvider;
-import me.aurium.beetle.api.task.sync.coordination.SyncConstants;
 import me.aurium.beetle.api.task.sync.coordination.TaskCoordinator;
 
 import java.util.concurrent.*;
@@ -290,7 +290,7 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         if (coordinator.isMainThread()) {
 
             T returned;
-            if (!(returned = super.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
+            if (!(returned = Comparisons.reportGet(this)).equals(Comparisons.CONSTANT)) {
                 return returned;
             }
 
@@ -305,7 +305,7 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         if (coordinator.isMainThread()) {
 
             T returned;
-            if (!(returned = super.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
+            if (!(returned = Comparisons.reportGet(this)).equals(Comparisons.CONSTANT)) {
                 return returned;
             }
 
@@ -321,7 +321,7 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         if (coordinator.isMainThread()) {
 
             T returned;
-            if (!(returned = super.getNow(SyncConstants.CONSTANT())).equals(SyncConstants.CONSTANT())) {
+            if (!(returned = Comparisons.reportJoin(this)).equals(Comparisons.CONSTANT)) {
                 return returned;
             }
 

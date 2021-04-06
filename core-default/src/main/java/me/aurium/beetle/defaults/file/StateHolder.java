@@ -18,4 +18,10 @@ public class StateHolder<T> {
         this.held = newHeld;
     }
 
+    @Override
+    public String toString() {
+        return "StateHolder{" +
+                "held=" + held +
+                '}';
+    }
 }

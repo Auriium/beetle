@@ -10,7 +10,6 @@ public class CommonMainTasker implements SyncTasker {
     private final SyncExecutorProvider provider;
     private final TaskCoordinator coordinator;
 
-
     private final SyncTaskRunner runner;
 
     public CommonMainTasker(SyncExecutorProvider provider, TaskCoordinator coordinator) {
@@ -36,5 +35,8 @@ public class CommonMainTasker implements SyncTasker {
         return coordinator;
     }
 
-
+    @Override
+    public void close() throws Exception {
+        provider.close();
+    }
 }

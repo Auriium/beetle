@@ -4,6 +4,7 @@ import me.aurium.beetle.api.task.sync.SyncExecutorProvider;
 import me.aurium.beetle.api.task.sync.SyncQueue;
 import me.aurium.beetle.defaults.task.sync.util.CommonSyncQueue;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.concurrent.Executor;
 
@@ -13,6 +14,8 @@ public class SpigotExecutorProvider implements SyncExecutorProvider {
 
     private final JavaPlugin plugin;
     private final Executor asyncExecutor;
+
+    private BukkitTask cancellable;
 
     public SpigotExecutorProvider(JavaPlugin plugin, Executor asyncExecutor) {
         this.plugin = plugin;
@@ -31,8 +34,13 @@ public class SpigotExecutorProvider implements SyncExecutorProvider {
 
     @Override
     public void launch() {
-        plugin.getServer().getScheduler().runTaskTimer(plugin, queue::pulseQueue, 20L, 20L);
+        cancellable = plugin.getServer().getScheduler().runTaskTimer(plugin, queue::pulseQueue, 20L, 20L);
     }
 
-
+    @Override
+    public void close() throws Exception {
+        queue.execute(() -> {
+            cancellable.cancel();
+        });
+    }
 }

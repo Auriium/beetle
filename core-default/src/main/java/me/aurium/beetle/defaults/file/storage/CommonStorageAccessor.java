@@ -25,9 +25,7 @@ public class CommonStorageAccessor<T> implements StorageUnitAccessor<T> {
         File file = fullPath.toFile();
 
         try {
-            if (!file.exists()) {
-                boolean ignored = file.createNewFile();
-            }
+            boolean ignored = file.createNewFile();
         } catch (IOException e) {
             throw new UncheckedIOException(e); //lovely thing checked exceptions are.
         }

@@ -20,7 +20,7 @@ public class CommonDatacore implements DataCore {
         this.taskRunner = taskRunner;
     }
 
-
+    //TODO TransactProvider interface, separate class out a bit more, make ease of access system
 
     @Override
     public <R> CompletableFuture<R> runConsumer(TransactConsumer<R> consumer) {

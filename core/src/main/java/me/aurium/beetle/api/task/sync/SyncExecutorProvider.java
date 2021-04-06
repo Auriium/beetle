@@ -7,7 +7,7 @@ import java.util.concurrent.Executor;
 /**
  * lol
  */
-public interface SyncExecutorProvider extends ExecutorProvider {
+public interface SyncExecutorProvider extends ExecutorProvider, AutoCloseable {
 
     /**
      * gets executor for the main thread. Since this is syncExecutorProvider it's a given there is a main thread.
