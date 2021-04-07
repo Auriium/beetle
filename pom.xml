@@ -93,7 +93,7 @@
 
     <repositories>
         <repository>
-            <id>central</id>
+            <id>jfrog</id>
             <name>a0phrw82hnl4g-artifactory-primary-0-releases</name>
             <url>https://aurium.jfrog.io/artifactory/aurium-libs-release-local</url>
         </repository>
