@@ -14,10 +14,10 @@
         <module name="core-branch" />
         <module name="beetle-core" />
         <module name="core" />
-        <module name="spigot-commons" />
+        <module name="beetle-spigot-commons" />
+        <module name="beetle-paper-impl" />
         <module name="spigot-impl" />
         <module name="examples" />
-        <module name="paper-impl" />
         <module name="discord-impl" />
         <module name="beetle-discord-impl" />
       </profile>
@@ -30,6 +30,8 @@
       <module name="core-implementation" target="11" />
       <module name="core-omniscient" target="11" />
       <module name="generic-impl" target="11" />
+      <module name="paper-impl" target="11" />
+      <module name="spigot-commons" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
