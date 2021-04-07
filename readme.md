@@ -5,6 +5,16 @@ An easy to use, powerful and modular utility system meant to be the replacement 
 
 Beetle has a large focus on being object oriented and scalable.
 
+# What does Beetle offer?
+
+- Service registry
+- File management and configuration
+- Flexible data storage with transactional-style handling, abstracted between multiple layers of interfaces.
+- Runner / taskfutures, a mashup of completablefutures with features like taskchain
+- Basic command binding system for platforms that support commands (Check out Branch!)
+- Randomizers
+- (soon) Data messaging channels
+
 # What platforms does Beetle operate on?
 
 - Spigot
