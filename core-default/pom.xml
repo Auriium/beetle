@@ -16,27 +16,24 @@
             <artifactId>beetle-core</artifactId>
         </dependency>
 
-        <!-- this is provided because... only use hikari shit if you want it !-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>4.0.3</version>
-            <scope>provided</scope>
         </dependency>
-        <!-- use slf4j if you want !-->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${logger.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
             <version>3.14.4</version>
-            <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
     <properties>

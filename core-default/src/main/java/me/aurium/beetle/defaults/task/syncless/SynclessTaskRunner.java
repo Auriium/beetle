@@ -13,6 +13,7 @@ public class SynclessTaskRunner implements TaskRunner {
 
     private final ExecutorProvider executorProvider;
 
+    //TODO remove dependency on logger
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public SynclessTaskRunner(ExecutorProvider executorProvider) {

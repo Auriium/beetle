@@ -290,7 +290,7 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         if (coordinator.isMainThread()) {
 
             T returned;
-            if (!(returned = Comparisons.reportGet(this)).equals(Comparisons.CONSTANT)) {
+            if ((returned = Comparisons.reportGet(this)) != Comparisons.CONSTANT) {
                 return returned;
             }
 
@@ -305,7 +305,7 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         if (coordinator.isMainThread()) {
 
             T returned;
-            if (!(returned = Comparisons.reportGet(this)).equals(Comparisons.CONSTANT)) {
+            if ((returned = Comparisons.reportGet(this)) != Comparisons.CONSTANT) {
                 return returned;
             }
 
@@ -321,7 +321,7 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         if (coordinator.isMainThread()) {
 
             T returned;
-            if (!(returned = Comparisons.reportJoin(this)).equals(Comparisons.CONSTANT)) {
+            if ((returned = Comparisons.reportJoin(this)) != Comparisons.CONSTANT) {
                 return returned;
             }
 

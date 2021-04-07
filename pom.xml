@@ -19,8 +19,6 @@
         <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
         <logger.version>1.7.25</logger.version>
 
-        <junit.version>4.10</junit.version>
-
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
         <maven.compiler.target>${compiler.version}</maven.compiler.target>
     </properties>

@@ -1,9 +1,8 @@
 package me.aurium.beetle.defaults.task.sync;
 
+import me.aurium.beetle.api.task.Comparisons;
 import me.aurium.beetle.api.task.futures.SyncTaskerFuture;
-import me.aurium.beetle.api.task.futures.TaskFuture;
 import me.aurium.beetle.api.task.sync.coordination.BlockingBehavior;
-import me.aurium.beetle.api.task.sync.coordination.SyncConstants;
 import me.aurium.beetle.api.task.sync.SyncPulser;
 
 import java.util.concurrent.ExecutionException;
@@ -29,7 +28,7 @@ public class TimerSleepBehavior implements BlockingBehavior {
             pulser.pulse();
 
             T result;
-            if ((result = future.getNow(SyncConstants.CONSTANT())) != SyncConstants.CONSTANT()) {
+            if ((result = Comparisons.reportJoin(future)) != Comparisons.CONSTANT) {
                 return result;
             }
 
@@ -47,7 +46,7 @@ public class TimerSleepBehavior implements BlockingBehavior {
             pulser.pulse();
 
             T result;
-            if ((result = future.getNow(SyncConstants.CONSTANT())) != SyncConstants.CONSTANT()) {
+            if ((result = Comparisons.reportGet(future)) != Comparisons.CONSTANT) {
                 return result;
             }
 
@@ -56,7 +55,7 @@ public class TimerSleepBehavior implements BlockingBehavior {
     }
 
     @Override
-    public <T> T waitForTimer(SyncTaskerFuture<T> future, SyncPulser pulser, TimeUnit waitType, long waitDuration) throws InterruptedException, TimeoutException {
+    public <T> T waitForTimer(SyncTaskerFuture<T> future, SyncPulser pulser, TimeUnit waitType, long waitDuration) throws InterruptedException, TimeoutException, ExecutionException {
         long deadline = System.nanoTime() + waitType.toNanos(waitDuration);
 
         while (true) {
@@ -68,11 +67,9 @@ public class TimerSleepBehavior implements BlockingBehavior {
             pulser.pulse();
 
             T result;
-            if ((result = future.getNow(SyncConstants.CONSTANT())) != SyncConstants.CONSTANT()) {
+            if ((result = Comparisons.reportGet(future)) != Comparisons.CONSTANT) {
                 return result;
             }
-
-            //copy this shit from managedwaitstrategies because couldn't figure it out after a few hours of testing
 
             long delay = deadline - System.nanoTime();
 
