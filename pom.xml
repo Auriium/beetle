@@ -14,7 +14,6 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
         <logger.version>1.7.25</logger.version>
 
         <maven.compiler.source>${compiler.version}</maven.compiler.source>
@@ -23,7 +22,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Auriium/Beetle.git</developerConnection>
-        <tag>1.1.1</tag>
+        <tag>1.1.2</tag>
     </scm>
 
     <build>
