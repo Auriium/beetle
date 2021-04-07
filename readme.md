@@ -6,16 +6,16 @@ _A collection of semicentralized utilities for Java development_
 An easy to use, powerful and modular utility system meant to be the replacement and killer for ElytraForce's old aUtils system.
 Beetle has a large focus on being object oriented and scalable.
 
-# What does it provide?
 
-Beetle is a decentralized software, so multiple applications will each have their own Beetle to work with (no sharing!)
+# What does Beetle offer?
 
-- A centralized source for safe sync/async runnable execution
-- A centralized file registration and loading system
-- A centralized command management and registration system (+ super modular node commands with Branch)
-- A centralized logger with the Beetle name that simply delegates to the platform, or slf4j
-- A centralized service registry
-- A semicentralized transactional data interaction system for SQL dialects
+- Service registry
+- File management and configuration
+- Flexible data storage with transactional-style handling, abstracted between multiple layers of interfaces.
+- Runner / taskfutures, a mashup of completablefutures with features like taskchain
+- Basic command binding system for platforms that support commands (Check out Branch!)
+- Randomizers
+- (soon) Data messaging channels
 
 # What platforms does Beetle operate on?
 
