@@ -1,8 +1,0 @@
-main: me.aurium.examplebeetle.ExamplePlugin
-
-authors:
-  - Aurium
-
-version: 1.0
-
-name: ExampleBeetlePlugin

@@ -7,8 +7,10 @@
     <file url="file://$PROJECT_DIR$/core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discord-impl/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discord-impl/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spigot-examples/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/spigot-examples/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paper-impl/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/paper-impl/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spigot-commons/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spigot-commons/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spigot-impl/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spigot-impl/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/velo-impl/src/main/java" charset="UTF-8" />

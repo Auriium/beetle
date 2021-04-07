@@ -1,19 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>beetle</artifactId>
-    <packaging>pom</packaging>
-
-    <version>0.2.0</version>
 
     <parent>
         <artifactId>insect</artifactId>
         <groupId>me.aurium</groupId>
-        <version>0.2.0</version>
+        <version>0.2.1</version>
     </parent>
+
+    <artifactId>beetle</artifactId>
+    <version>1.1.2-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <logger.version>1.7.25</logger.version>
+
+        <maven.compiler.source>${compiler.version}</maven.compiler.source>
+        <maven.compiler.target>${compiler.version}</maven.compiler.target>
+    </properties>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/Auriium/Beetle.git</developerConnection>
+        <tag>1.1.2</tag>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <configuration>
+                    <includes>
+                        <include>me.aurium:*</include>
+                    </includes>
+                </configuration>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+                <executions>
+                    <execution>
+                        <id>initialize the dependencies</id>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <excludeReactor>false</excludeReactor>
+                        </configuration>
+                        <goals>
+                            <goal>use-latest-releases</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>update the children</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>update-child-modules</goal>
+                        </goals>
+                        <configuration>
+                            <allowSnapshots>true</allowSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <modules>
         <module>core</module>
@@ -21,30 +68,31 @@
         <module>spigot-impl</module>
         <module>velo-impl</module>
         <module>discord-impl</module>
-        <module>spigot-examples</module>
-
+        <module>spigot-commons</module>
+        <module>paper-impl</module>
     </modules>
 
-    <properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>me.aurium</groupId>
+                <artifactId>beetle-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>me.aurium</groupId>
+                <artifactId>beetle-core-default</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
 
-        <beetle.version>0.2.0</beetle.version>
-
-        <core.version>0.3.3</core.version>
-        <default.version>0.3.3</default.version>
-
-        <spigot.version>1.16.5-R0.1-SNAPSHOT</spigot.version>
-        <logger.version>1.7.25</logger.version>
-
-        <junit.version>4.10</junit.version>
-
-        <maven.compiler.source>${compiler.version}</maven.compiler.source>
-        <maven.compiler.target>${compiler.version}</maven.compiler.target>
-    </properties>
+    </dependencyManagement>
 
     <repositories>
         <repository>
-            <id>repsy</id>
-            <url>https://repo.repsy.io/mvn/elytraforce/default</url>
+            <id>jfrog</id>
+            <name>a0phrw82hnl4g-artifactory-primary-0-releases</name>
+            <url>https://aurium.jfrog.io/artifactory/aurium-libs-release-local</url>
         </repository>
     </repositories>
 

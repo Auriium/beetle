@@ -1,0 +1,5 @@
+package me.aurium.beetle.defaults.datacore;
+
+public class Simplification {
+
+}

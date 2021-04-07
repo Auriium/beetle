@@ -1,9 +1,11 @@
 # **Beetle**
-A beetle is tough, resilient, hard to kill, and rises above everyone else on an elytra
+_A collection of semicentralized utilities for Java development_
+
+**please review this readme a248**
 
 An easy to use, powerful and modular utility system meant to be the replacement and killer for ElytraForce's old aUtils system.
-
 Beetle has a large focus on being object oriented and scalable.
+
 
 # What does Beetle offer?
 
@@ -31,7 +33,7 @@ DM **Aesthetik#9784** on discord!
 
 # Contributing
 
-Make pull requests and I accept them. It's about that simple, just don't shitcode.
+Make pull requests that arent bad and I accept them. It's about that simple!
 
 # Repositories
 ```
