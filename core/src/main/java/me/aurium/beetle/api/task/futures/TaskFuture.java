@@ -5,6 +5,8 @@ import me.aurium.beetle.api.task.ExecutorProvider;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
 import java.util.function.*;
 
 /**
@@ -226,6 +228,38 @@ public class TaskFuture<T> extends CompletableFuture<T> {
     @Override
     public TaskFuture<T> exceptionally(Function<Throwable, ? extends T> fn) {
         return (TaskFuture<T>) super.exceptionally(fn);
+    }
+
+    /**
+     * This does exactly what you think it does. If you have a main thread, don't call this. (Although if you have a main thread,
+     * you should be using {@link SyncTaskerFuture} instead.
+     *
+     * @param unit time unit
+     * @param amount amount of time units to sleep for
+     * @return itself
+     */
+    public TaskFuture<T> thenSleep(TimeUnit unit, long amount) {
+
+        LockSupport.parkUntil(unit.toNanos(amount));
+
+        return this.thenApply(s -> s); //is there a point to this or should i just return ""this""
+
+        //i want to be able to
+        //somefuture
+        //.thenSleep(TimeUnit.MINUTES, 1)
+        //.thenRun(() -> { //something })
+        //.thenSleep(TimeUnits.MINUTES, 1)
+        //.thenRunSync(() -> { //something})
+
+
+    }
+
+    public TaskFuture<T> thenWaitAsync(TimeUnit unit, long amount) {
+        return this.thenApplyAsync((s) -> s ,CompletableFuture.delayedExecutor(amount,unit,defaultExecutor()));
+    }
+
+    public TaskFuture<T> thenWaitAsync(TimeUnit unit, long amount, Executor executor) {
+        return this.thenApplyAsync((s) -> s ,CompletableFuture.delayedExecutor(amount,unit,executor));
     }
 
     @Override

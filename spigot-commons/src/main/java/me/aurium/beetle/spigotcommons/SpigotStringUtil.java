@@ -1,4 +1,4 @@
-package me.aurium.beetle.spigot;
+package me.aurium.beetle.spigotcommons;
 
 import org.bukkit.ChatColor;
 

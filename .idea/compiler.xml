@@ -8,23 +8,23 @@
         <outputRelativeToContentRoot value="true" />
         <module name="beetle-core-default" />
         <module name="velo-impl" />
-        <module name="beetle-spigot-impl" />
         <module name="core-default" />
-        <module name="beetle-velo-impl" />
         <module name="core-branch" />
         <module name="beetle-core" />
         <module name="core" />
         <module name="beetle-spigot-commons" />
-        <module name="beetle-paper-impl" />
         <module name="spigot-impl" />
         <module name="examples" />
         <module name="discord-impl" />
-        <module name="beetle-discord-impl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="beetle-core-branch" target="11" />
+      <module name="beetle-discord-impl" target="11" />
       <module name="beetle-examples" target="11" />
+      <module name="beetle-paper-impl" target="11" />
+      <module name="beetle-spigot-impl" target="11" />
+      <module name="beetle-velo-impl" target="11" />
       <module name="core-database" target="11" />
       <module name="core-defaults" target="11" />
       <module name="core-implementation" target="11" />
