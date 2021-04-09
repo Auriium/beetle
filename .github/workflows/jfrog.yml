@@ -15,7 +15,13 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      
+      - name: test
+        shell: bash
+        env:
+          SUPER_SECRET: ${{ secrets.JFROG_TOKEN }}
+        run: echo "$env:SUPER_SECRET"
+        
+        
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v1.1.1
         env:
