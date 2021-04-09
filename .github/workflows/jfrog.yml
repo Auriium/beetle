@@ -19,7 +19,7 @@ jobs:
         shell: bash
         env:
           SUPER_SECRET: ${{ secrets.JFROG_TOKEN }}
-        run: echo "$env:SUPER_SECRET"
+        run: echo "$JFROG_TOKEN"
         
         
       - name: Setup JFrog CLI
