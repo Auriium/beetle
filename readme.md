@@ -1,8 +1,6 @@
 # **Beetle**
 _A collection of semicentralized utilities for Java development_
 
-**please review this readme a248**
-
 An easy to use, powerful and modular utility system meant to be the replacement and killer for ElytraForce's old aUtils system.
 Beetle has a large focus on being object oriented and scalable.
 
