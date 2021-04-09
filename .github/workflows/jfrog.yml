@@ -18,10 +18,10 @@ jobs:
       
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v1.1.1
-      - name: Relay to JFrog Build
         env:
           JF_ARTIFACTORY_1: ${{ secrets.JFROG_TOKEN }}
-        run: |
+      - name: Relay to JFrog Build
+        run: 
           jfrog rt dl artifacts/
           jfrog rt u aether artifacts/
           jfrog rt bp
