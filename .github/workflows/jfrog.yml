@@ -18,7 +18,7 @@ jobs:
       - name: test
         shell: bash
         env:
-          SUPER_SECRET: ${{ secrets.JFROG_TOKEN }}
+          JFROG_TOKEN: ${{ secrets.JFROG_TOKEN }}
         run: echo "$JFROG_TOKEN"
         
         
