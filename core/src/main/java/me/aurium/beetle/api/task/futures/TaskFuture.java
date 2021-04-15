@@ -239,10 +239,15 @@ public class TaskFuture<T> extends CompletableFuture<T> {
      * @return itself
      */
     public TaskFuture<T> thenSleep(TimeUnit unit, long amount) {
+        return this.thenApply(s -> {
+            try {
+                Thread.sleep(unit.toMillis(amount));
+            } catch (InterruptedException e) {
+                e.printStackTrace(); //TODO
+            }
 
-        LockSupport.parkUntil(unit.toNanos(amount));
-
-        return this.thenApply(s -> s); //is there a point to this or should i just return ""this""
+            return s;
+        }); //is there a point to this or should i just return ""this""
 
         //i want to be able to
         //somefuture

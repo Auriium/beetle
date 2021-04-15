@@ -65,11 +65,7 @@
     <modules>
         <module>core</module>
         <module>core-default</module>
-        <module>spigot-impl</module>
-        <module>velo-impl</module>
-        <module>discord-impl</module>
         <module>spigot-commons</module>
-        <module>paper-impl</module>
     </modules>
 
     <dependencyManagement>

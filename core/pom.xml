@@ -16,7 +16,7 @@
     </properties>
 
     <dependencies>
-
+        <!-- ADD BACK SLF4J HERE !-->
     </dependencies>
 
 </project>
