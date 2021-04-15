@@ -5,6 +5,7 @@ import me.aurium.beetle.api.task.sync.SyncExecutorProvider;
 import me.aurium.beetle.api.task.sync.coordination.TaskCoordinator;
 
 import java.util.concurrent.*;
+import java.util.concurrent.locks.LockSupport;
 import java.util.function.*;
 
 @SuppressWarnings("unchecked")
@@ -277,6 +278,10 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
         return (SyncTaskerFuture<T>) super.exceptionally(fn);
     }
 
+    public TaskFuture<T> thenWaitSync(TimeUnit unit, long amount, Executor executor) {
+        return this.thenApplyAsync((s) -> s ,CompletableFuture.delayedExecutor(amount,unit,executor));
+    }
+
     @Override
     public TaskFuture<T> toCompletableFuture() {
         return this;
@@ -284,6 +289,21 @@ public class SyncTaskerFuture<T> extends TaskFuture<T> {
 
     //SHIT STARTS HERE
 
+    //TODO
+    @Override
+    public SyncTaskerFuture<T> thenSleep(TimeUnit unit, long amount) {
+
+        if (coordinator.isMainThread()) {
+
+
+
+
+        } else {
+            LockSupport.parkUntil(unit.toNanos(amount));
+        }
+
+        return this.thenApply((s) -> s);
+    }
 
     @Override
     public T get(long amount, TimeUnit unit) throws ExecutionException, InterruptedException, TimeoutException {

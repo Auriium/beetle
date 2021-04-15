@@ -19,12 +19,16 @@
         <option value="$PROJECT_DIR$/core-defaults/pom.xml" />
         <option value="$PROJECT_DIR$/core-implementation/pom.xml" />
         <option value="$PROJECT_DIR$/core-omniscient/pom.xml" />
+        <option value="$PROJECT_DIR$/discord-impl/pom.xml" />
         <option value="$PROJECT_DIR$/generic-impl/pom.xml" />
+        <option value="$PROJECT_DIR$/paper-impl/pom.xml" />
         <option value="$PROJECT_DIR$/spigot-examples/pom.xml" />
+        <option value="$PROJECT_DIR$/spigot-impl/pom.xml" />
+        <option value="$PROJECT_DIR$/velo-impl/pom.xml" />
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="azul-11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
