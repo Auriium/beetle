@@ -1,8 +1,12 @@
 package me.aurium.beetle.api.initializer;
 
-//static hellscape
-public interface Initializer {
+/**
+ * Bullshit fuckcrap that
+ * @param <T>
+ */
+public interface Initializer<T> {
 
-    <T extends AbstractInitialization<C>,C> C initialize(Class<T> initializer);
+    T initialize();
+    byte priority();
 
 }

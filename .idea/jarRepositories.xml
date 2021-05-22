@@ -13,6 +13,11 @@
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
+      <option name="name" value="aurium-libs-release" />
+      <option name="url" value="https://aurium.jfrog.io/artifactory/aurium-libs-release" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
       <option name="name" value="a0phrw82hnl4g-artifactory-primary-0-releases" />
       <option name="url" value="https://aurium.jfrog.io/artifactory/aurium-libs-release-local" />
     </remote-repository>
@@ -30,6 +35,11 @@
       <option name="id" value="solar-snapshots" />
       <option name="name" value="solar-snapshots" />
       <option name="url" value="https://mvn-repo.platinum-mc.com/snapshots" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="aurium-libs-snapshot" />
+      <option name="url" value="https://aurium.jfrog.io/artifactory/aurium-libs-snapshot" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="solar-releases" />
