@@ -1,11 +1,11 @@
-package me.aurium.beetle.defaults.utility.map;
+package me.aurium.beetle.defaults.utility.map.multi;
+
+import me.aurium.beetle.defaults.utility.aspect.KeyCloseable;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
-public class OrderedMultiMap<T,V> extends DelegatingMultiMap<T,V> {
-
+public class CloseableOrderedMap<T,V extends KeyCloseable<T>> extends CloseableMultiMap<T,V> {
     @Override
     public void insert(T t, V v) {
         map.computeIfAbsent(t, k -> new ArrayList<>()).add(v);
@@ -15,5 +15,4 @@ public class OrderedMultiMap<T,V> extends DelegatingMultiMap<T,V> {
     public void insertAll(T t, Collection<V> v) {
         map.computeIfAbsent(t,k -> new ArrayList<>()).addAll(v);
     }
-
 }

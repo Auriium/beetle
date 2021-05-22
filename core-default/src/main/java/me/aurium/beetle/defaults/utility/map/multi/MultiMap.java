@@ -1,4 +1,4 @@
-package me.aurium.beetle.defaults.utility.map;
+package me.aurium.beetle.defaults.utility.map.multi;
 
 import java.util.Collection;
 import java.util.Map;
@@ -17,6 +17,6 @@ public interface MultiMap<T,V> {
     void replaceAll(T t, Collection<V> v);
 
     void forEach(T key, Consumer<V> consumer);
-    void forAll(T key, Consumer<Collection<V>> consumer);
+    void forEvery(Consumer<V> consumer);
 
 }

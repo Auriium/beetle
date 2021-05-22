@@ -1,4 +1,4 @@
-package me.aurium.beetle.defaults.utility.map;
+package me.aurium.beetle.defaults.utility.map.multi;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -47,11 +47,7 @@ public abstract class DelegatingMultiMap<T,V> implements MultiMap<T,V> {
     }
 
     @Override
-    public void forAll(T key, Consumer<Collection<V>> consumer) {
-        Collection<V> col = map.get(key);
-
-        if (col != null) {
-            consumer.accept(col);
-        }
+    public void forEvery(Consumer<V> consumer) {
+        map.forEach((k,v) -> v.forEach(consumer));
     }
 }

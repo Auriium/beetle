@@ -1,14 +1,13 @@
-package me.aurium.beetle.defaults.utility.map;
+package me.aurium.beetle.defaults.utility.map.optional;
 
 import me.aurium.beetle.defaults.utility.aspect.KeyCloseable;
+import me.aurium.beetle.defaults.utility.map.optional.DelegatingOptionalMap;
 
-import java.io.Closeable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 
-public class CloseableOptionalMap<T,E> extends DelegatingOptionalMap<T,E> implements KeyCloseable<T> {
+public class CloseableOptionalMap<T,E extends KeyCloseable<T>> extends DelegatingOptionalMap<T,E> implements KeyCloseable<T> {
 
     public CloseableOptionalMap(Map<T, E> delegate) {
         super(delegate);
@@ -20,11 +19,12 @@ public class CloseableOptionalMap<T,E> extends DelegatingOptionalMap<T,E> implem
 
     @Override
     public void closeSingle(T uuid) {
-        delegate.remove(uuid);
+        this.removeIfPresent(uuid,ob -> ob.closeSingle(uuid));
     }
 
     @Override
     public void close() {
+        delegate.forEach((t,e) -> e.close());
         delegate.clear();
     }
 

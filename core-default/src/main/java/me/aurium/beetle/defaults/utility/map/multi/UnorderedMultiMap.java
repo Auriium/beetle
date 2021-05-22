@@ -1,4 +1,4 @@
-package me.aurium.beetle.defaults.utility.map;
+package me.aurium.beetle.defaults.utility.map.multi;
 
 import java.util.Collection;
 import java.util.HashSet;

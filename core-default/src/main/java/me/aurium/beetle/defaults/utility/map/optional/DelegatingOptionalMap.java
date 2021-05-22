@@ -1,4 +1,6 @@
-package me.aurium.beetle.defaults.utility.map;
+package me.aurium.beetle.defaults.utility.map.optional;
+
+import me.aurium.beetle.defaults.utility.map.optional.OptionalMap;
 
 import java.util.HashMap;
 import java.util.Map;
