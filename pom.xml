@@ -20,7 +20,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Auriium/Beetle.git</developerConnection>
-        <tag>1.1.2</tag>
     </scm>
 
     <build>
@@ -80,5 +79,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <repositories>
+        <!-- required to get parent accessible to build !-->
+
+        <repository>
+            <id>central-repository</id>
+            <url>https://repo.auriium.xyz/releases</url>
+        </repository>
+    </repositories>
 
 </project>
