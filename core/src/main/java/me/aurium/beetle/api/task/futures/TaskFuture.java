@@ -231,7 +231,7 @@ public class TaskFuture<T> extends CompletableFuture<T> {
     }
 
     /**
-     * This does exactly what you think it does. If you have a main thread, don't call this. (Although if you have a main thread,
+     * This does exactly what you think it doesn't. don't call this
      * you should be using {@link SyncTaskerFuture} instead.
      *
      * @param unit time unit
