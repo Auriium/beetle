@@ -1,9 +1,6 @@
 package me.aurium.beetle.defaults.datacore;
 
-import me.aurium.beetle.api.datacore.CoreSource;
-import me.aurium.beetle.api.datacore.DataCore;
-import me.aurium.beetle.api.datacore.TransactConsumer;
-import me.aurium.beetle.api.datacore.UncheckedSQLException;
+import me.aurium.beetle.api.datacore.*;
 import me.aurium.beetle.api.task.TaskRunner;
 
 import java.sql.Connection;
@@ -21,6 +18,34 @@ public class CommonDatacore implements DataCore {
     }
 
     //TODO TransactProvider interface, separate class out a bit more, make ease of access system
+
+    @Override
+    public CompletableFuture<Void> runAction(TransactAction action) {
+        return taskRunner.supplyAsync(() -> {
+            try (Connection connection = source.getConnection()) {
+                SQLTransact transaction = new SQLTransact(connection);
+
+                try {
+                    action.accept(transaction); //wow such copy/paste
+                } catch (RuntimeException ex) {
+                    try {
+                        connection.rollback();
+                    } catch (SQLException suppressed) {
+                        ex.addSuppressed(suppressed);
+                    }
+                    throw ex;
+                }
+
+                //manually commit
+                connection.commit();
+
+                return null;
+
+            } catch (SQLException ex) {
+                throw new UncheckedSQLException(ex);
+            }
+        });
+    }
 
     @Override
     public <R> CompletableFuture<R> runConsumer(TransactConsumer<R> consumer) {
