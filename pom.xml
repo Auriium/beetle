@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>beetle</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -20,7 +20,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Auriium/Beetle.git</developerConnection>
-        <tag>2.0.0</tag>
+        <tag>1.1.2</tag>
     </scm>
 
     <build>
@@ -71,12 +71,12 @@
             <dependency>
                 <groupId>xyz.auriium</groupId>
                 <artifactId>beetle-core</artifactId>
-                <version>2.0.0</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>xyz.auriium</groupId>
                 <artifactId>beetle-core-default</artifactId>
-                <version>2.0.0</version>
+                <version>2.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
