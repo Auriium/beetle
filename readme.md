@@ -1,3 +1,4 @@
+# Warning: The entire project is due for a huge reformatting!!
 # **Beetle**
 _A collection of semicentralized utilities for Java development_
 

@@ -4,8 +4,8 @@
 
     <parent>
         <artifactId>insect</artifactId>
-        <groupId>me.aurium</groupId>
-        <version>0.2.1</version>
+        <groupId>xyz.auriium</groupId>
+        <version>0.3.0</version>
     </parent>
 
     <artifactId>beetle</artifactId>
@@ -65,11 +65,7 @@
     <modules>
         <module>core</module>
         <module>core-default</module>
-        <module>spigot-impl</module>
-        <module>velo-impl</module>
-        <module>discord-impl</module>
         <module>spigot-commons</module>
-        <module>paper-impl</module>
     </modules>
 
     <dependencyManagement>
