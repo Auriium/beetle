@@ -1,4 +1,3 @@
-# Warning: The entire project is due for a huge reformatting!!
 # **Beetle**
 _A collection of semicentralized utilities for Java development_
 
@@ -38,17 +37,17 @@ Make pull requests that arent bad and I accept them. It's about that simple!
 ```
     <dependencies>
         <dependency>
-            <groupId>me.aurium</groupId>
-            <artifactId>beetle-spigot-impl</artifactId>
-            <version>0.2.1</version>
+            <groupId>xyz.auriium</groupId>
+            <artifactId>beetle-spigot-commons</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 ```
 ```
     <repositories>
         <repository>
-            <id>aurium</id>
-            <url>https://repo.repsy.io/mvn/elytraforce/default</url>
+            <id>central-repo</id>
+            <url>https://repo.auriium.xyz/releases</url>
         </repository>
     </repositories>
 ```
