@@ -19,8 +19,12 @@
         <option value="$PROJECT_DIR$/core-defaults/pom.xml" />
         <option value="$PROJECT_DIR$/core-implementation/pom.xml" />
         <option value="$PROJECT_DIR$/core-omniscient/pom.xml" />
+        <option value="$PROJECT_DIR$/discord-impl/pom.xml" />
         <option value="$PROJECT_DIR$/generic-impl/pom.xml" />
+        <option value="$PROJECT_DIR$/paper-impl/pom.xml" />
         <option value="$PROJECT_DIR$/spigot-examples/pom.xml" />
+        <option value="$PROJECT_DIR$/spigot-impl/pom.xml" />
+        <option value="$PROJECT_DIR$/velo-impl/pom.xml" />
       </set>
     </option>
   </component>
